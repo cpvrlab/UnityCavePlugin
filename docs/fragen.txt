@@ -1,0 +1,24 @@
+Offene Fragen:
+--------------
+
+Trackingserver TS1:
+- Dell-Std Software (MacAffee)
+  (Firewall die VRPN blockt?)
+
+- WorldViz Software
+  (Tracker Einstellungen "Tracker0"?)
+  (Login WorldViz Homepage für weitere SW)
+
+- Tracker USB Host Station 
+  (Tracker Identifikation)
+
+- Einstellungen DNS,IP,DHCP,etc
+
+
+
+Cameras:
+- Defekte Kameras
+
+- Kalibrieren
+
+- Aufstarten Cameras funktioniert nur sporradisch

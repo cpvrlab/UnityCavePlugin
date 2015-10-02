@@ -1,0 +1,61 @@
+besprechung:
+
+- cave das erste C ist CAVE	
+
+- übersichtsgraphik software, cave, rendering server, cameras, etc
+- "soll situation" (hardware bestehend -> neu, software bestehend->neu)
+- systembeschreibung
+
+- bilder, verweise für WAND; etc 
+
+
+
+funktionale anforderungen
+- plugin
+-- noch schreiben, das wir die technisch beste lösung mit einem prototypen evaluieren wellen
+   (kriterien, etc)
+   (kapselung VRPN &  CAVE, eventuell XML, etc)
+
+- worldviz tracking
+-- neu beschreiben wie das der mouselook (headtracking) noch funktiuoiniert zu der normalen steuerung
+
+- unterstuetzung von vrpn protokoll noch eintragen
+
+- tabelle mit funktionalitäten, prios
+
+- adjustments für alle 6DoF 
+
+- games/szenarien noch priorisieren, funktionsumfang 
+
+
+nicht funktionale anforderungen
+
+- mosaic
+
+- unity 5
+
+(bei projektausgangslage)
+- unity noch erklären
+
+
+glossar fehlt noch 
+
+entwickler-guide
+- technisch dokumentieren
+
+
+testing
+
+- szenarien aufnehmen 
+
+projekt 2
+- zusammenfassung, und erklären
+(bei der ausgangslage)
+
+
+
+
+EXPERTE:
+
+- MELDEN 
+- projekt 2 erklären
