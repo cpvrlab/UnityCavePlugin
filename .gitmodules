@@ -1,0 +1,3 @@
+[submodule "unityVRPN"]
+	path = src/prototypes/vrpn/VRPNConnector/unitVRPN
+	url = https://github.com/arviceblot/unityVRPN.git
