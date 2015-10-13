@@ -1,0 +1,3 @@
+[submodule "@"]
+	path = @
+	url = git://github.com/arviceblot/unityVRPN.git
