@@ -1,0 +1,6 @@
+C:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\bin\Release\WandToMouse.exe.config
+C:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\bin\Release\WandToMouse.exe
+C:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\bin\Release\WandToMouse.pdb
+C:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\bin\Release\UnityEngine.dll
+C:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\obj\Release\WandToMouse.exe
+C:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\obj\Release\WandToMouse.pdb
