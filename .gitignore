@@ -102,6 +102,3 @@ Temporary Items
 *.exe
 *.out
 *.app
-
-# Custom Config
-!/WandToMouse/
