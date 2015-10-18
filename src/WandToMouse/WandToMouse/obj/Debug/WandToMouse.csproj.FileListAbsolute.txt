@@ -5,3 +5,10 @@ C:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\ob
 C:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\obj\Debug\WandToMouse.exe
 C:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\obj\Debug\WandToMouse.pdb
 C:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\bin\Debug\UnityEngine.dll
+D:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\bin\Debug\WandToMouse.exe.config
+D:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\bin\Debug\WandToMouse.exe
+D:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\bin\Debug\WandToMouse.pdb
+D:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\bin\Debug\UnityEngine.dll
+D:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\obj\Debug\WandToMouse.csprojResolveAssemblyReference.cache
+D:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\obj\Debug\WandToMouse.exe
+D:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\obj\Debug\WandToMouse.pdb
