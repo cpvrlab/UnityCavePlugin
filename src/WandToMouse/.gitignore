@@ -56,3 +56,4 @@ Ankh.NoLoad
 !*.user
 !*.dll
 !/Library
+!/Bin/Debug/unityVrpn.dll
