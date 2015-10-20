@@ -12,3 +12,4 @@ D:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\bi
 D:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\obj\Debug\WandToMouse.csprojResolveAssemblyReference.cache
 D:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\obj\Debug\WandToMouse.exe
 D:\Development\GitHub\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\obj\Debug\WandToMouse.pdb
+D:\devZoneRoot\devZoneGit\ch.bfh.cpvr.unitycavethesis\src\WandToMouse\WandToMouse\bin\Debug\WandToMouse.exe.config
