@@ -1,5 +1,9 @@
 # Created by https://www.gitignore.io/api/unity,windows,osx,c++
 
+!/src/build/*
+!/src/build/*/*
+
+
 ### Unity ###
 /[Ll]ibrary/
 /[Tt]emp/
@@ -84,10 +88,6 @@ Temporary Items
 *.gch
 *.pch
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
 
 # Fortran module files
 *.mod
