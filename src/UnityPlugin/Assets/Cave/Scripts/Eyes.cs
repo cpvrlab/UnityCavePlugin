@@ -6,12 +6,12 @@ namespace Cave
     public class Eyes : MonoBehaviour
     {
 
-        private Main _main;
+        private CaveMain _main;
 
         // Use this for initialization
         void Start()
         {
-            _main = GameObject.Find("Cave").GetComponent<Main>();
+            _main = GameObject.Find("Cave").GetComponent<CaveMain>();
         }
 
         // Update is called once per frame

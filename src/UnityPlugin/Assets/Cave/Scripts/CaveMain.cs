@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Cave
 {
-    public class Main : MonoBehaviour
+    public class CaveMain : MonoBehaviour
     {
         [Header("Main")]
         public int BeamerResolutionWidth = 1280;
@@ -19,7 +19,6 @@ namespace Cave
         [Header("Gamepad")]
         public GamepadSettings GamepadSettings;
 
-
         // Use this for initialization
         void Start()
         {
@@ -30,7 +29,12 @@ namespace Cave
         {
             CalculatedValues.Instance.Calculate();
 
-            Debug.Log(CalculatedValues.Instance.AngleWandEyes);
+           // Debug.Log(CalculatedValues.Instance.AngleWandEyes);
+        }
+
+        private void SetCameraTag()
+        {
+
         }
     }
 }

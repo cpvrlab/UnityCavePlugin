@@ -9,12 +9,14 @@ namespace Cave
 
         public Wand Wand { get { return _wand; } }
         public Eyes Eyes { get { return _eyes; } }
+        public CameraManager CameraManager { get { return _cameraManager; } }
 
         public float AngleWandEyes { get { return _angleWandEyes; } }
         public Vector3 DirectionWandEyes { get { return _directionWandEyes; } }
 
         private Wand _wand;
         private Eyes _eyes;
+        private CameraManager _cameraManager;
 
         private float _angleWandEyes;
         private Vector3 _directionWandEyes;
@@ -31,6 +33,7 @@ namespace Cave
         {
             _wand = GameObject.Find("Wand").GetComponent<Wand>();
             _eyes = GameObject.Find("Eyes").GetComponent<Eyes>();
+            _cameraManager = GameObject.Find("CameraManager").GetComponent<CameraManager>();
         }
 
         public void Calculate()
