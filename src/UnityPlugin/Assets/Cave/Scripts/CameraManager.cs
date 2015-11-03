@@ -48,10 +48,10 @@ namespace Cave
         {
 
             // Get Camera based on cursor position
-            int camIndexX = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / _main.BeamerResolutionWidth)), 0);
-            int camIndexY = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Screen.currentResolution.height - Input.mousePosition.y) / _main.BeamerResolutionHeight)), 0);
+           // int camIndexX = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / _main.BeamerResolutionWidth)), 0);
+            //int camIndexY = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Screen.currentResolution.height - Input.mousePosition.y) / _main.BeamerResolutionHeight)), 0);
 
-            _cameraWithCursor = _camMatrix[camIndexY][camIndexX];
+           // _cameraWithCursor = _camMatrix[camIndexY][camIndexX];
         }
     }
 }
