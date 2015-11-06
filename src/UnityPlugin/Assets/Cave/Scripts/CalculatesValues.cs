@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 namespace Cave
 {
@@ -10,6 +11,8 @@ namespace Cave
         public Wand Wand { get { return _wand; } }
         public Eyes Eyes { get { return _eyes; } }
         public CameraManager CameraManager { get { return _cameraManager; } }
+
+        public Vector2 GameViewSize {  get { return GetMainGameViewSize(); } }
 
         public float AngleWandEyes { get { return _angleWandEyes; } }
         public Vector3 DirectionWandEyes { get { return _directionWandEyes; } }
@@ -43,6 +46,20 @@ namespace Cave
 
             // Calculate Vector between Wand / Eyes
             _directionWandEyes = _eyes.transform.position - _wand.transform.position;
+        }
+
+        public static Vector2 GetMainGameViewSize()
+        {
+            System.Type T = System.Type.GetType("UnityEditor.GameView,UnityEditor");
+            System.Reflection.MethodInfo GetSizeOfMainGameView = T.GetMethod("GetSizeOfMainGameView", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            System.Object Res = GetSizeOfMainGameView.Invoke(null, null);
+            return (Vector2)Res;
+        }
+        public static EditorWindow GetEditorWindow() { 
+            System.Reflection.Assembly assembly = typeof(UnityEditor.EditorWindow).Assembly;
+            System.Type type = assembly.GetType("UnityEditor.GameView");
+            EditorWindow gameview = EditorWindow.GetWindow(type);
+            return gameview;
         }
     }
 }
