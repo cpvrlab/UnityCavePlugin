@@ -9,7 +9,9 @@ Shooting Gallery:
 - Rotation Rifle
 - Targetshooting
 - Particle Effect
-- Animation Controller
+- Animation Controller (Screenshot)
+- Ente -> Polygonreduzierung Blender, Normalmap
+- Punktesystem mit delegates
 - 
 
 Unity Plugin:
