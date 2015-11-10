@@ -33,7 +33,16 @@ namespace Cave
         [Header("Weiteres")]
         public float EyeDistance = 0.07f;
 
-        
+        public Plane CAVELeft { get { return _CAVELeft; } }
+        public Plane CAVEFront { get { return _CAVEFront; } }
+        public Plane CAVERight { get { return _CAVERight; } }
+        public Plane CAVEBottom { get { return _CAVEBottom; } }
+
+        private Plane _CAVELeft;
+        private Plane _CAVEFront;
+        private Plane _CAVERight;
+        private Plane _CAVEBottom;
+
         private List<Camera> mySecondaryCameras = new List<Camera>();
         
         // Use this for initialization
@@ -45,6 +54,10 @@ namespace Cave
                 if (c != Camera.main) { mySecondaryCameras.Add(c); }
             };
 
+            _CAVELeft = GameObject.FindWithTag("CaveLeft").GetComponent<Plane>();
+            _CAVEFront = GameObject.FindWithTag("CaveFront").GetComponent<Plane>();
+            _CAVERight = GameObject.FindWithTag("CaveRight").GetComponent<Plane>();
+            _CAVEBottom = GameObject.FindWithTag("CaveBottom").GetComponent<Plane>();
         }
 
         // Update is called once per frame
