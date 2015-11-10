@@ -6,6 +6,8 @@ namespace Cave
     public class Eyes : MonoBehaviour
     {
 
+        public bool useDebugMover = false;
+
         private CaveMain _main;
 
         // Use this for initialization
@@ -17,8 +19,11 @@ namespace Cave
         // Update is called once per frame
         void Update()
         {
-            HandlePosition();
-            HandleRotation();
+            if (!useDebugMover) {
+                HandlePosition();
+                HandleRotation();
+            }
+
         }
 
         private void HandlePosition()

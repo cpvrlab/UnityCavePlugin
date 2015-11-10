@@ -10,17 +10,27 @@ namespace Cave
     {
 
 #region "structs"
-        struct ViewInfo
+        public struct ViewInfo
         {
             public Camera Left;
             public Camera Right;
+            public CAVEPlanesettings CAVESide;
+        }
+        public struct CAVEPlanesettings
+        {
+            public string name;
+            public float width;
+            public float height;
+            public Vector3 center;
+            public Vector3 normal;
             public Plane CAVESide;
         }
 
         #endregion
 
-#region "public properties"
+        #region "public properties"
         public Camera CameraWithCursor { get { return _cameraWithCursor; } }
+        public Dictionary<int,ViewInfo> FullViewInfo { get { return _viewInfo; } }
 
 #endregion
 
@@ -61,14 +71,15 @@ namespace Cave
             _cameraBottomRight = GameObject.Find("CameraBottomRight").GetComponent<Camera>();
 
             _viewInfo = new Dictionary<int, ViewInfo>();
-            _viewInfo.Add(0, new ViewInfo { Left = _cameraLeftLeft, Right = _cameraLeftRight, CAVESide = _main.CAVELeft });
-            _viewInfo.Add(1, new ViewInfo { Left = _cameraFrontLeft, Right = _cameraFrontRight, CAVESide = _main.CAVEFront });
-            _viewInfo.Add(2, new ViewInfo { Left = _cameraRightLeft, Right = _cameraRightRight, CAVESide = _main.CAVERight });
-            _viewInfo.Add(3, new ViewInfo { Left = _cameraBottomLeft, Right = _cameraBottomRight, CAVESide = _main.CAVEBottom });
+            _viewInfo.Add(0, new ViewInfo { Left = _cameraLeftLeft, Right = _cameraLeftRight, CAVESide =  new CAVEPlanesettings { name = "left", center = new Vector3(_main.CaveDimensions.lHeight / 2, 0f, 0f), normal = new Vector3(-1f, 0f, 0f), height = _main.CaveDimensions.lHeight, width = _main.CaveDimensions.lWidth, CAVESide = _main.CAVELeft } });
+                                                                                                                                                                                                //lwidth = distance
+            _viewInfo.Add(1, new ViewInfo { Left = _cameraFrontLeft, Right = _cameraFrontRight, CAVESide =  new CAVEPlanesettings { name = "front", center = new Vector3(0f, _main.CaveDimensions.lWidth / 2), normal = new Vector3(0f, 0f, 1f), height = _main.CaveDimensions.fHeight, width = _main.CaveDimensions.fWidth, CAVESide = _main.CAVEFront  } });
+            _viewInfo.Add(2, new ViewInfo { Left = _cameraRightLeft, Right = _cameraRightRight, CAVESide = new CAVEPlanesettings { name = "right", center = new Vector3(_main.CaveDimensions.rHeight / 2, 0f, 0f), normal = new Vector3(1f, 0f, 0f), height = _main.CaveDimensions.rHeight, width = _main.CaveDimensions.rWidth, CAVESide = _main.CAVERight } });
+            _viewInfo.Add(3, new ViewInfo { Left = _cameraBottomLeft, Right = _cameraBottomRight, CAVESide = new CAVEPlanesettings { name = "bottom", center = new Vector3(0f, _main.CaveDimensions.bHeight / 2,  0f), normal = new Vector3(0f, 1f, 0f), height = _main.CaveDimensions.bHeight, width = _main.CaveDimensions.bWidth, CAVESide = _main.CAVEBottom } });
 
 
-            // copy settings from main camera
-            foreach(var vi in _viewInfo.Values)
+                // copy settings from main camera
+            foreach (var vi in _viewInfo.Values)
             {
                 vi.Left.CopyFrom(Camera.main);
                 vi.Right.CopyFrom(Camera.main);
@@ -195,14 +206,14 @@ namespace Cave
                     break;
             }
 
-            Debug.Log(string.Format("window pos x:{0}, window pos y:{1}, window w:{2}, window h:{3}, mouse x:{4}, mouse y:{5} , {6} {7} {8}",
-            CalculatedValues.GetEditorWindow().position.x,
-            CalculatedValues.GetEditorWindow().position.y,
-            CalculatedValues.GetMainGameViewSize()[0],
-            CalculatedValues.GetMainGameViewSize()[1],
-            Input.mousePosition.x,
-            Input.mousePosition.y, camIndexX, camIndexY, _cameraWithCursor.name
-            ));
+            //Debug.Log(string.Format("window pos x:{0}, window pos y:{1}, window w:{2}, window h:{3}, mouse x:{4}, mouse y:{5} , {6} {7} {8}",
+            //CalculatedValues.GetEditorWindow().position.x,
+            //CalculatedValues.GetEditorWindow().position.y,
+            //CalculatedValues.GetMainGameViewSize()[0],
+            //CalculatedValues.GetMainGameViewSize()[1],
+            //Input.mousePosition.x,
+            //Input.mousePosition.y, camIndexX, camIndexY, _cameraWithCursor.name
+            //));
 
         }
     }

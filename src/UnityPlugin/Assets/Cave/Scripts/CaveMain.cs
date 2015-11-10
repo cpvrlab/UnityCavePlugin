@@ -10,6 +10,11 @@ namespace Cave
         FourScreen, FourScreenStereo
     };
 
+    public enum TrackedObject
+    {
+        Eyes, Wand, Nothing
+    };
+
     #endregion
 
 
@@ -23,7 +28,10 @@ namespace Cave
         public int BeamerResolutionHeight = 960;
         public string Host = "192.168.0.201";
         public CAVEMode myCAVEMode = CAVEMode.FourScreen;
+        public TrackedObject myTrackingMode = TrackedObject.Eyes;
         public bool rotateCave = true;
+        //this is used to calc the frustum
+        public CAVEDimensions CaveDimensions;
 
         [Header("Wand")]
         public WandSettings WandSettings;
@@ -36,7 +44,7 @@ namespace Cave
 
         [Header("Weiteres")]
         public float EyeDistance = 0.07f;
-
+                
         #endregion
 
 
@@ -46,6 +54,8 @@ namespace Cave
         public Plane CAVEFront { get { return _CAVEFront; } }
         public Plane CAVERight { get { return _CAVERight; } }
         public Plane CAVEBottom { get { return _CAVEBottom; } }
+
+        public Vector3 currentTrackedObject { get { return _TrackedObject; } }
 
         #endregion
 
@@ -58,6 +68,8 @@ namespace Cave
         private Plane _CAVEBottom;
 
         private List<Camera> mySecondaryCameras = new List<Camera>();
+
+        private Vector3 _TrackedObject;
 
         #endregion
 
@@ -74,6 +86,22 @@ namespace Cave
             _CAVEFront = GameObject.FindWithTag("CaveFront").GetComponent<Plane>();
             _CAVERight = GameObject.FindWithTag("CaveRight").GetComponent<Plane>();
             _CAVEBottom = GameObject.FindWithTag("CaveBottom").GetComponent<Plane>();
+
+            if(myTrackingMode == TrackedObject.Eyes)
+            {
+                _TrackedObject = GameObject.FindWithTag("Wand").GetComponent<Transform>().position;
+            }
+            else if (myTrackingMode == Cave.TrackedObject.Eyes )
+            {
+                _TrackedObject = GameObject.FindWithTag("Eyes").GetComponent<Transform>().position;
+
+                //debug
+                //_TrackedObject = new Vector3(1f, 1f, 0.5f);
+            }
+            else
+            {
+                _TrackedObject = Vector3.zero ;
+            }
         }
 
         // Update is called once per frame
