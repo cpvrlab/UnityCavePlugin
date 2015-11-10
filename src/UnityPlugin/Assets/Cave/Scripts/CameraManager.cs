@@ -8,16 +8,26 @@ namespace Cave
 {
     public class CameraManager : MonoBehaviour
     {
+
+#region "structs"
+        struct ViewInfo
+        {
+            public Camera Left;
+            public Camera Right;
+            public Plane CAVESide;
+        }
+
+        #endregion
+
+#region "public properties"
+        public Camera CameraWithCursor { get { return _cameraWithCursor; } }
+
+#endregion
+
+#region "private vars"
+
         private List<Camera> _cameras;
         private Dictionary<int, ViewInfo> _viewInfo;
-
-        public Camera CameraWithCursor
-        {
-            get
-            {
-                return _cameraWithCursor;
-            }
-        }
 
         private CaveMain _main;
 
@@ -31,15 +41,11 @@ namespace Cave
         private Camera _cameraBottomRight = null;
 
         private Camera _cameraWithCursor;
-        
-        struct ViewInfo
-        {
-            public Camera Left;
-            public Camera Right;
-            public Plane CAVESide;
-        }
 
-        List<List<Camera>> _camMatrix;
+
+#endregion
+        
+
 
         void Start()
         {
@@ -60,9 +66,6 @@ namespace Cave
             _viewInfo.Add(2, new ViewInfo { Left = _cameraRightLeft, Right = _cameraRightRight, CAVESide = _main.CAVERight });
             _viewInfo.Add(3, new ViewInfo { Left = _cameraBottomLeft, Right = _cameraBottomRight, CAVESide = _main.CAVEBottom });
 
-            //_cameras = new Dictionary<int, ViewInfo> { _cameraLeftLeft, _cameraFrontLeft, _camera }
-
-            
 
             // copy settings from main camera
             foreach(var vi in _viewInfo.Values)
@@ -100,30 +103,23 @@ namespace Cave
             _cameraBottomLeft.transform.position.Set(-(_main.EyeDistance / 2), 0f, 0f);
             _cameraBottomRight.transform.position.Set(_main.EyeDistance / 2, 0f, 0f);
 
-
-
-
-            _camMatrix = new List<List<Camera>> { };
-
             if(_main.myCAVEMode == CAVEMode.FourScreen)
             {
-                _camMatrix.Add(new List<Camera> { _cameraLeftLeft, _cameraFrontLeft });
-                _camMatrix.Add(new List<Camera> { _cameraRightLeft, _cameraBottomLeft });
+
                 _cameraLeftLeft.rect = new Rect(new Vector2(0f, 0.5f), new Vector2(0.5f, 0.5f));
                 _cameraFrontLeft.rect = new Rect(new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
                 _cameraRightLeft.rect = new Rect(new Vector2(0f, 0f), new Vector2(0.5f, 0.5f));
                 _cameraBottomLeft.rect = new Rect(new Vector2(0.5f, 0f), new Vector2(0.5f, 0.5f));
+                foreach (var vi in _viewInfo.Values)
+                {
+                    vi.Left.enabled = true;
+                    vi.Right.enabled = false;
+                }
 
-                
 
             }
             else if(_main.myCAVEMode == CAVEMode.FourScreenStereo)
             {
-                //not correct at the moment
-                _camMatrix.Add(new List<Camera> { _cameraLeftLeft, _cameraFrontLeft });
-                _camMatrix.Add(new List<Camera> { _cameraRightLeft, _cameraBottomLeft });
-                //finished not correct
-
 
                 _cameraLeftLeft.rect  = new Rect(new Vector2(0f, 0.5f), new Vector2(0.25f, 0.5f));
                 _cameraFrontLeft.rect = new Rect(new Vector2(0.5f, 0.5f), new Vector2(0.25f, 0.5f));
@@ -134,6 +130,12 @@ namespace Cave
                 _cameraFrontRight.rect = new Rect(new Vector2(0.75f, 0.5f), new Vector2(0.25f, 0.5f));
                 _cameraRightRight.rect = new Rect(new Vector2(0.25f, 0f), new Vector2(0.25f, 0.5f));
                 _cameraBottomRight.rect = new Rect(new Vector2(0.75f, 0f), new Vector2(0.25f, 0.5f));
+
+                foreach (var vi in _viewInfo.Values)
+                {
+                    vi.Left.enabled = true;
+                    vi.Right.enabled = true;
+                }
             };
             
             
@@ -142,29 +144,66 @@ namespace Cave
 
         void Update()
         {
-            int camIndexX, camIndexY;
-            camIndexX = camIndexY = 0;
+
+
+
 
 #if UNITY_EDITOR
-
-            //not finished now
-            camIndexX = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / CalculatedValues.GetEditorWindow().position.x - CalculatedValues.GetMainGameViewSize()[0])), 0);
-            camIndexY = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.y) / CalculatedValues.GetEditorWindow().position.y - CalculatedValues.GetMainGameViewSize()[1])), 0);
-            Debug.Log(CalculatedValues.GetEditorWindow());
-            Debug.Log("camIndexX: " + camIndexX);
-            Debug.Log("camIndexY: " + camIndexY);
+            int divisorX = 2;
+            int divisorY = 2;
+            if (_main.myCAVEMode == CAVEMode.FourScreenStereo) { divisorX = 4; }
+            int camIndexX, camIndexY;
+            camIndexX = camIndexY = 0;
+            camIndexX = Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / Convert.ToInt32(CalculatedValues.GetMainGameViewSize()[0] / divisorX)));
+            camIndexY = Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.y) / Convert.ToInt32(CalculatedValues.GetMainGameViewSize()[1] / divisorY)));
+            
 #else
             camIndeX = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / _main.BeamerResolutionWidth)), 0);
             camIndexY = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.y) / _main.BeamerResolutionHeight)), 0);
 #endif
 
             // Get Camera based on cursor position
-            // int camIndexX = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / _main.BeamerResolutionWidth)), 0);
-            //int camIndexY = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Screen.currentResolution.height - Input.mousePosition.y) / _main.BeamerResolutionHeight)), 0);
+            
+ 
+            switch ((camIndexX*10)+camIndexY)
+            {
+                case 0:
+                    _cameraWithCursor = _viewInfo[2].Left;
+                    break;
+                case 1:
+                    _cameraWithCursor = _viewInfo[0].Left;
+                    break;
+                case 10:
+                    if(_main.myCAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[3].Left; }
+                    else { _cameraWithCursor = _viewInfo[2].Right; }
+                    break;
+                case 11:
+                    if (_main.myCAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[1].Left; }
+                    else { _cameraWithCursor = _viewInfo[0].Right; }
+                    break;
+                case 20:
+                     _cameraWithCursor = _viewInfo[3].Left; 
+                    break;
+                case 21:
+                    _cameraWithCursor = _viewInfo[1].Left;
+                    break;
+                case 30:
+                    _cameraWithCursor = _viewInfo[3].Right;
+                    break;
+                case 31:
+                    _cameraWithCursor = _viewInfo[1].Right;
+                    break;
+            }
 
-            // _cameraWithCursor = _camMatrix[camIndexY][camIndexX];
+            Debug.Log(string.Format("window pos x:{0}, window pos y:{1}, window w:{2}, window h:{3}, mouse x:{4}, mouse y:{5} , {6} {7} {8}",
+            CalculatedValues.GetEditorWindow().position.x,
+            CalculatedValues.GetEditorWindow().position.y,
+            CalculatedValues.GetMainGameViewSize()[0],
+            CalculatedValues.GetMainGameViewSize()[1],
+            Input.mousePosition.x,
+            Input.mousePosition.y, camIndexX, camIndexY, _cameraWithCursor.name
+            ));
 
-            // Debug.Log(_cameraWithCursor.name);
         }
     }
 }

@@ -48,6 +48,7 @@ namespace Cave
             {
                 var rot = VRPN.vrpnTrackerQuat(_main.WandSettings.WorldVizObject + "@" + _main.Host, _main.WandSettings.Channel);
                 transform.rotation = rot;
+                if(_main.rotateCave == true) { _main.transform.rotation = rot; }
             }
         }
 

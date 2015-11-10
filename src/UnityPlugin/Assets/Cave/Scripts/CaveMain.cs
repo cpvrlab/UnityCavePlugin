@@ -4,22 +4,26 @@ using System.Collections.Generic;
 
 namespace Cave
 {
-
+    #region "enum"
     public enum CAVEMode
     {
         FourScreen, FourScreenStereo
     };
 
-        
+    #endregion
+
+
     public class CaveMain : MonoBehaviour
     {
-        
+
+        #region "settings"
 
         [Header("Main")]
         public int BeamerResolutionWidth = 1280;
         public int BeamerResolutionHeight = 960;
         public string Host = "192.168.0.201";
         public CAVEMode myCAVEMode = CAVEMode.FourScreen;
+        public bool rotateCave = true;
 
         [Header("Wand")]
         public WandSettings WandSettings;
@@ -33,10 +37,20 @@ namespace Cave
         [Header("Weiteres")]
         public float EyeDistance = 0.07f;
 
+        #endregion
+
+
+        #region "public properties"
+
         public Plane CAVELeft { get { return _CAVELeft; } }
         public Plane CAVEFront { get { return _CAVEFront; } }
         public Plane CAVERight { get { return _CAVERight; } }
         public Plane CAVEBottom { get { return _CAVEBottom; } }
+
+        #endregion
+
+
+        #region "private vars"
 
         private Plane _CAVELeft;
         private Plane _CAVEFront;
@@ -44,7 +58,9 @@ namespace Cave
         private Plane _CAVEBottom;
 
         private List<Camera> mySecondaryCameras = new List<Camera>();
-        
+
+        #endregion
+
         // Use this for initialization
         void Start()
         {

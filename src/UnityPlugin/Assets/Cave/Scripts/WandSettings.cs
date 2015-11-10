@@ -26,6 +26,10 @@ namespace Cave
         public BlockRotationAxisWand RotationAxisConstraints;
         public GameObject RotationTarget;
 
+        [Header("Joystick")]
+        public bool allowJoystick = true;
+
+
         //public enum MyCustomClassEnum
         //{
         //    OptionOne,
