@@ -50,10 +50,10 @@ namespace Cave
 
         #region "public properties"
 
-        public Plane CAVELeft { get { return _CAVELeft; } }
-        public Plane CAVEFront { get { return _CAVEFront; } }
-        public Plane CAVERight { get { return _CAVERight; } }
-        public Plane CAVEBottom { get { return _CAVEBottom; } }
+        public Transform CAVELeft { get { return _CAVELeft; } }
+        public Transform CAVEFront { get { return _CAVEFront; } }
+        public Transform CAVERight { get { return _CAVERight; } }
+        public Transform CAVEBottom { get { return _CAVEBottom; } }
 
         public Vector3 currentTrackedObject { get { return _TrackedObject; } }
 
@@ -62,10 +62,10 @@ namespace Cave
 
         #region "private vars"
 
-        private Plane _CAVELeft;
-        private Plane _CAVEFront;
-        private Plane _CAVERight;
-        private Plane _CAVEBottom;
+        private Transform _CAVELeft;
+        private Transform _CAVEFront;
+        private Transform _CAVERight;
+        private Transform _CAVEBottom;
 
         private List<Camera> mySecondaryCameras = new List<Camera>();
 
@@ -82,10 +82,10 @@ namespace Cave
                 if (c != Camera.main) { mySecondaryCameras.Add(c); }
             };
 
-            _CAVELeft = GameObject.FindWithTag("CaveLeft").GetComponent<Plane>();
-            _CAVEFront = GameObject.FindWithTag("CaveFront").GetComponent<Plane>();
-            _CAVERight = GameObject.FindWithTag("CaveRight").GetComponent<Plane>();
-            _CAVEBottom = GameObject.FindWithTag("CaveBottom").GetComponent<Plane>();
+            _CAVELeft = GameObject.FindWithTag("CaveLeft").GetComponent<Transform>();
+            _CAVEFront = GameObject.FindWithTag("CaveFront").GetComponent<Transform>();
+            _CAVERight = GameObject.FindWithTag("CaveRight").GetComponent<Transform>();
+            _CAVEBottom = GameObject.FindWithTag("CaveBottom").GetComponent<Transform>();
 
             if(myTrackingMode == TrackedObject.Eyes)
             {

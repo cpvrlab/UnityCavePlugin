@@ -23,7 +23,7 @@ namespace Cave
             public float height;
             public Vector3 center;
             public Vector3 normal;
-            public Plane CAVESide;
+            public Transform CAVESide;
         }
 
         #endregion

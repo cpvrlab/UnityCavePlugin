@@ -1,4 +1,11 @@
-08.11.2015:
+13.11.2015:
 
-- Werden Wand Inputs am Unity Rechner direkt als Joystick / Buttons / usw. interpretiert?
-- 
+- Joystick / Buttons / usw. des Wands in Unity interpretieren
+- Viewfrustum mit Matrix manipulieren
+- Drehung CAVE analog Hauptkamera
+- Dynamisch Kameras an Hauptkamera anhängen
+- Entwicklung Gerätschaft Kalibrierung Wand (Pappbox)
+- Brainstorming UnityModul (Abschlussprojekt)
+
+Later:
+- Abmessungen aus CavePlanes nehmen
