@@ -32,20 +32,28 @@ public class FrustumManager : MonoBehaviour {
                 Camera c = var.Value.Left;
 
                 Plane p = new Plane(var.Value.CAVESide.normal, var.Value.CAVESide.center);
+
+                // TODO replace Vector3.zero with eye-translation
+                Vector3 eye = new Vector3(-0.035f, 1.01f, 0);
+
                 //float distance = Math.Abs(p.GetDistanceToPoint(_main.currentTrackedObject));
-                float distance = Math.Abs(p.GetDistanceToPoint(Camera.main.transform.position));
+                //float distance = Math.Abs(var.Value.CAVESide.Plane.GetDistanceToPoint(eye));
+                float distance = Math.Abs(p.GetDistanceToPoint(eye));
 
-                //set the position of the  camera here?
+                // set the position of the camera
+                //c.transform.position = eye;
 
+                // set LookAt of camera
+                //c.transform.LookAt(eye - var.Value.CAVESide.normal, var.Value.CAVESide.up);
 
                 //use trackedObject and calc them to screen coordinates
                 //Vector3 screenCoords = Quaternion.Inverse(var.Value.Left.transform.rotation) * _main.currentTrackedObject;
-                Vector3 screenCoords = Quaternion.Inverse(var.Value.Left.transform.rotation) * Camera.main.transform.position;
+                eye = Quaternion.Inverse(var.Value.Left.transform.rotation) * eye;
 
-                Frustum.setFrustum(ref c, (-screenCoords.x * -0.5f * var.Value.CAVESide.width) * var.Value.Left.nearClipPlane / distance,
-                                                    (-screenCoords.x * +0.5f * var.Value.CAVESide.width) * var.Value.Left.nearClipPlane / distance,
-                                                    (-screenCoords.y * -0.5f * var.Value.CAVESide.height) * var.Value.Left.nearClipPlane / distance,
-                                                    (-screenCoords.y * +0.5f * var.Value.CAVESide.height) * var.Value.Left.nearClipPlane / distance);
+                Frustum.setFrustum(ref c, (-eye.x - 0.5f * var.Value.CAVESide.width) * var.Value.Left.nearClipPlane / distance,
+                                          (-eye.x + 0.5f * var.Value.CAVESide.width) * var.Value.Left.nearClipPlane / distance,
+                                          (-eye.y - 0.5f * var.Value.CAVESide.height) * var.Value.Left.nearClipPlane / distance,
+                                          (-eye.y + 0.5f * var.Value.CAVESide.height) * var.Value.Left.nearClipPlane / distance);
             }
 
         }

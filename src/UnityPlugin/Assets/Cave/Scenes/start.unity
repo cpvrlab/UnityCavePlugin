@@ -579,8 +579,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: .300000012
-  far clip plane: 20
-  field of view: 60
+  far clip plane: 1000
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -756,7 +756,7 @@ GameObject:
   - 81: {fileID: 1586003234}
   m_Layer: 0
   m_Name: CameraFrontLeft
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -779,21 +779,21 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1586003232}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!92 &1586003235
 Behaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1586003232}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &1586003236
 Behaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1586003232}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1586003237
 Camera:
   m_ObjectHideFlags: 0
@@ -906,6 +906,26 @@ Prefab:
     - target: {fileID: 192226, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: m_TagString
       value: Eyes
+      objectReference: {fileID: 0}
+    - target: {fileID: 431338, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -.0769999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 431338, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .867999971
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: EyesSettings.TrackPosition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: WandSettings.TrackPosition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: WandSettings.TrackRotation
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}

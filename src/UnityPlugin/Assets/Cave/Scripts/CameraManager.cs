@@ -23,7 +23,9 @@ namespace Cave
             public float height;
             public Vector3 center;
             public Vector3 normal;
-            public Transform CAVESide;
+            public Transform Transform;
+            public Plane Plane;
+            public Vector3 up;
         }
 
         #endregion
@@ -71,15 +73,11 @@ namespace Cave
             _cameraBottomRight = GameObject.Find("CameraBottomRight").GetComponent<Camera>();
 
             _viewInfo = new Dictionary<int, ViewInfo>();
-<<<<<<< HEAD
-            _viewInfo.Add(0, new ViewInfo { Left = _cameraLeftLeft, Right = _cameraLeftRight, CAVESide =  new CAVEPlanesettings { name = "left", center = new Vector3(_main.CaveDimensions.lHeight / 2, 0f, 0f), normal = _main.CAVELeft, height = _main.CaveDimensions.lHeight, width = _main.CaveDimensions.lWidth, CAVESide = _main.CAVELeft } });
-=======
-            _viewInfo.Add(0, new ViewInfo { Left = _cameraLeftLeft, Right = _cameraLeftRight, CAVESide =  new CAVEPlanesettings { name = "left", center = new Vector3(_main.CaveDimensions.lHeight / 2, 0f, 0f), normal = new Vector3(1f,0f,0f), height = _main.CaveDimensions.lHeight, width = _main.CaveDimensions.lWidth, CAVESide = _main.CAVELeft } });
->>>>>>> dd984a00cd9cd06782abfde9e6331f0f99c0e8e2
-                                                                                                                                                                                                //lwidth = distance
-            _viewInfo.Add(1, new ViewInfo { Left = _cameraFrontLeft, Right = _cameraFrontRight, CAVESide =  new CAVEPlanesettings { name = "front", center = new Vector3(0f, _main.CaveDimensions.lWidth / 2), normal = new Vector3(0f, 1f, 0f), height = _main.CaveDimensions.fHeight, width = _main.CaveDimensions.fWidth, CAVESide = _main.CAVEFront  } });
-            _viewInfo.Add(2, new ViewInfo { Left = _cameraRightLeft, Right = _cameraRightRight, CAVESide = new CAVEPlanesettings { name = "right", center = new Vector3(_main.CaveDimensions.rHeight / 2, 0f, 0f), normal = new Vector3(-1f, 0f, 0f), height = _main.CaveDimensions.rHeight, width = _main.CaveDimensions.rWidth, CAVESide = _main.CAVERight } });
-            _viewInfo.Add(3, new ViewInfo { Left = _cameraBottomLeft, Right = _cameraBottomRight, CAVESide = new CAVEPlanesettings { name = "bottom", center = new Vector3(0f, _main.CaveDimensions.bHeight / 2,  0f), normal = new Vector3(0f, 0f, 1f), height = _main.CaveDimensions.bHeight, width = _main.CaveDimensions.bWidth, CAVESide = _main.CAVEBottom } });
+
+            _viewInfo.Add(0, new ViewInfo { Left = _cameraLeftLeft, Right = _cameraLeftRight, CAVESide =  new CAVEPlanesettings { name = "left", center = new Vector3(_main.CaveDimensions.lHeight / 2, 0f, 0f), normal = new Vector3(-1f,0f,0f), height = _main.CaveDimensions.lHeight, width = _main.CaveDimensions.lWidth, Transform = _main.CAVELeft, up = new Vector3(0, 1, 0) } });                                                                                                                                                                                              //lwidth = distance
+            _viewInfo.Add(1, new ViewInfo { Left = _cameraFrontLeft, Right = _cameraFrontRight, CAVESide =  new CAVEPlanesettings { name = "front", center = new Vector3(0f, 0f, _main.CaveDimensions.lWidth / 2), normal = new Vector3(0f, 0f, 1f), width = _main.CaveDimensions.fHeight, height = _main.CaveDimensions.fWidth, Transform = _main.CAVEFront, up = new Vector3(0, 1, 0) } });
+            _viewInfo.Add(2, new ViewInfo { Left = _cameraRightLeft, Right = _cameraRightRight, CAVESide = new CAVEPlanesettings { name = "right", center = new Vector3(_main.CaveDimensions.rHeight / 2, 0f, 0f), normal = new Vector3(1f, 0f, 0f), height = _main.CaveDimensions.rHeight, width = _main.CaveDimensions.rWidth, Transform = _main.CAVERight, up = new Vector3(0, 1, 0) } });
+            _viewInfo.Add(3, new ViewInfo { Left = _cameraBottomLeft, Right = _cameraBottomRight, CAVESide = new CAVEPlanesettings { name = "bottom", center = new Vector3(0f, _main.CaveDimensions.bHeight / 2,  0f), normal = new Vector3(0f, 1f, 0f), height = _main.CaveDimensions.bHeight, width = _main.CaveDimensions.bWidth, Transform = _main.CAVEBottom, up = new Vector3(1, 0, 0) } });
 
 
                 // copy settings from main camera
@@ -90,11 +88,17 @@ namespace Cave
 
                 // initially deactivate all cams
                 vi.Left.enabled = false;
+                vi.Left.depth = 1;
+                vi.Left.fieldOfView = 90;
+
                 vi.Right.enabled = false;
+                vi.Right.depth = 1;
+                vi.Right.fieldOfView = 90;
             }
 
             // deactivate default main camera
-            Camera.main.enabled = false;
+            //Camera.main.enabled = false;
+            Camera.main.depth = -1;
 
             _cameraLeftLeft.transform.Rotate(new Vector3(0f, 270f, 0f));
             _cameraLeftRight.transform.Rotate(new Vector3(0f, 270f, 0f));
@@ -219,6 +223,9 @@ namespace Cave
             //Input.mousePosition.y, camIndexX, camIndexY, _cameraWithCursor.name
             //));
 
+
+            // Rotate CAVE according to Maincamera
+            _main.transform.rotation = Camera.main.transform.rotation;
         }
     }
 }
