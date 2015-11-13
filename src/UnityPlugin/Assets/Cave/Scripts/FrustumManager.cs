@@ -32,13 +32,15 @@ public class FrustumManager : MonoBehaviour {
                 Camera c = var.Value.Left;
 
                 Plane p = new Plane(var.Value.CAVESide.normal, var.Value.CAVESide.center);
-                float distance = Math.Abs(p.GetDistanceToPoint(_main.currentTrackedObject));
+                //float distance = Math.Abs(p.GetDistanceToPoint(_main.currentTrackedObject));
+                float distance = Math.Abs(p.GetDistanceToPoint(Camera.main.transform.position));
 
                 //set the position of the  camera here?
 
 
                 //use trackedObject and calc them to screen coordinates
-                Vector3 screenCoords = Quaternion.Inverse(var.Value.Left.transform.rotation) * _main.currentTrackedObject;
+                //Vector3 screenCoords = Quaternion.Inverse(var.Value.Left.transform.rotation) * _main.currentTrackedObject;
+                Vector3 screenCoords = Quaternion.Inverse(var.Value.Left.transform.rotation) * Camera.main.transform.position;
 
                 Frustum.setFrustum(ref c, (-screenCoords.x * -0.5f * var.Value.CAVESide.width) * var.Value.Left.nearClipPlane / distance,
                                                     (-screenCoords.x * +0.5f * var.Value.CAVESide.width) * var.Value.Left.nearClipPlane / distance,

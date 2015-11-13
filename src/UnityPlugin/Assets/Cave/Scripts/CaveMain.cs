@@ -55,7 +55,7 @@ namespace Cave
         public Transform CAVERight { get { return _CAVERight; } }
         public Transform CAVEBottom { get { return _CAVEBottom; } }
 
-        public Vector3 currentTrackedObject { get { return _TrackedObject; } }
+        //public Vector3 currentTrackedObject { get { return _TrackedObject; } }
 
         #endregion
 
@@ -69,7 +69,7 @@ namespace Cave
 
         private List<Camera> mySecondaryCameras = new List<Camera>();
 
-        private Vector3 _TrackedObject;
+        //private Vector3 _TrackedObject;
 
         #endregion
 
@@ -87,21 +87,21 @@ namespace Cave
             _CAVERight = GameObject.FindWithTag("CaveRight").GetComponent<Transform>();
             _CAVEBottom = GameObject.FindWithTag("CaveBottom").GetComponent<Transform>();
 
-            if(myTrackingMode == TrackedObject.Eyes)
-            {
-                _TrackedObject = GameObject.FindWithTag("Wand").GetComponent<Transform>().position;
-            }
-            else if (myTrackingMode == Cave.TrackedObject.Eyes )
-            {
-                _TrackedObject = GameObject.FindWithTag("Eyes").GetComponent<Transform>().position;
+            //if(myTrackingMode == TrackedObject.Eyes)
+            //{
+            //    _TrackedObject = GameObject.FindWithTag("Wand").GetComponent<Transform>().position;
+            //}
+            //else if (myTrackingMode == Cave.TrackedObject.Eyes )
+            //{
+            //    _TrackedObject = GameObject.FindWithTag("Eyes").GetComponent<Transform>().position;
 
-                //debug
-                //_TrackedObject = new Vector3(1f, 1f, 0.5f);
-            }
-            else
-            {
-                _TrackedObject = Vector3.zero ;
-            }
+            //    //debug
+            //    //_TrackedObject = new Vector3(1f, 1f, 0.5f);
+            //}
+            //else
+            //{
+            //    _TrackedObject = Vector3.zero ;
+            //}
         }
 
         // Update is called once per frame
