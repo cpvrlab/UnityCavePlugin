@@ -10,13 +10,14 @@ namespace Cave
 
         public Wand Wand { get { return _wand; } }
         public Eyes Eyes { get { return _eyes; } }
-        public CameraManager CameraManager { get { return _cameraManager; } }
+        public CameraManager CameraManager { get { return _main.CameraManager; } }
 
         public Vector2 GameViewSize {  get { return GetMainGameViewSize(); } }
 
         public float AngleWandEyes { get { return _angleWandEyes; } }
         public Vector3 DirectionWandEyes { get { return _directionWandEyes; } }
 
+        private CaveMain _main;
         private Wand _wand;
         private Eyes _eyes;
         private CameraManager _cameraManager;
@@ -34,9 +35,9 @@ namespace Cave
 
         CalculatedValues()
         {
+            _main = GameObject.Find("Cave").GetComponent<CaveMain>();
             _wand = GameObject.Find("Wand").GetComponent<Wand>();
             _eyes = GameObject.Find("Eyes").GetComponent<Eyes>();
-            _cameraManager = GameObject.Find("CameraManager").GetComponent<CameraManager>();
         }
 
         public void Calculate()
@@ -55,6 +56,7 @@ namespace Cave
             System.Object Res = GetSizeOfMainGameView.Invoke(null, null);
             return (Vector2)Res;
         }
+
         public static EditorWindow GetEditorWindow() { 
             System.Reflection.Assembly assembly = typeof(UnityEditor.EditorWindow).Assembly;
             System.Type type = assembly.GetType("UnityEditor.GameView");

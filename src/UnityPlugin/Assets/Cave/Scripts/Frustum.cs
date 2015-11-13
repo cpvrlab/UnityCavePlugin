@@ -9,7 +9,6 @@ public class Frustum : MonoBehaviour {
     {
         Matrix4x4 m = calcFrustum(left, right, bottom, top, cam.nearClipPlane, cam.farClipPlane);
 
-
         cam.projectionMatrix = m;
     }
 

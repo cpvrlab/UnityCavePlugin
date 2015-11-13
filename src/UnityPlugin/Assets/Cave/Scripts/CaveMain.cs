@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace Cave
 {
@@ -55,6 +56,9 @@ namespace Cave
         public Transform CAVERight { get { return _CAVERight; } }
         public Transform CAVEBottom { get { return _CAVEBottom; } }
 
+        public CameraManager CameraManager;
+        public FrustumManager FrustumManager;
+
         //public Vector3 currentTrackedObject { get { return _TrackedObject; } }
 
         #endregion
@@ -69,14 +73,22 @@ namespace Cave
 
         private List<Camera> mySecondaryCameras = new List<Camera>();
 
+        private CameraManager _cm;
+        private FrustumManager _fm;
+
         //private Vector3 _TrackedObject;
 
         #endregion
+        
+        void Awake()
+        {
+            Instantiate(CameraManager);
+            Instantiate(FrustumManager);
+        }
 
         // Use this for initialization
         void Start()
         {
-           
             foreach(Camera c in Camera.allCameras)
             {
                 if (c != Camera.main) { mySecondaryCameras.Add(c); }
@@ -86,6 +98,24 @@ namespace Cave
             _CAVEFront = GameObject.FindWithTag("CaveFront").GetComponent<Transform>();
             _CAVERight = GameObject.FindWithTag("CaveRight").GetComponent<Transform>();
             _CAVEBottom = GameObject.FindWithTag("CaveBottom").GetComponent<Transform>();
+
+            
+
+            //GameObject cm = new GameObject();
+            //cm.AddComponent<CameraManager>();
+            ////cm.AddComponent(Type.GetType("CameraManager"));
+            //cm.transform.parent = transform;
+
+            //GameObject fm = new GameObject();
+            ////fm.AddComponent(Type.GetType("FrustumManager"));
+            //fm.AddComponent<FrustumManager>();
+            //fm.transform.parent = transform;
+
+            //_cm = new CameraManager();
+            //_cm.Init(GetComponent<CaveMain>());
+
+            //_fm = new FrustumManager();
+            //_fm.Init(GetComponent<CaveMain>());
 
             //if(myTrackingMode == TrackedObject.Eyes)
             //{
@@ -109,6 +139,9 @@ namespace Cave
         {
             //performance ?
             CalculatedValues.Instance.Calculate();
+
+            //_cm.Update();
+            //_fm.Update();
 
            // Debug.Log(CalculatedValues.Instance.AngleWandEyes);
         }

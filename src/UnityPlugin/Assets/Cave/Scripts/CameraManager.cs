@@ -10,12 +10,14 @@ namespace Cave
     {
 
 #region "structs"
+
         public struct ViewInfo
         {
             public Camera Left;
             public Camera Right;
             public CAVEPlanesettings CAVESide;
         }
+
         public struct CAVEPlanesettings
         {
             public string name;
@@ -53,20 +55,20 @@ namespace Cave
         private Camera _cameraBottomRight = null;
 
         private Camera _cameraWithCursor;
-
-
+        
 #endregion
         
-
+        void Awake()
+        {
+            _main = GameObject.Find("Cave").GetComponent<CaveMain>();
+        }
 
         void Start()
         {
-            _main = GameObject.Find("Cave").GetComponent<CaveMain>();
-   
-            _cameraLeftLeft  = GameObject.Find("CameraLeftLeft").GetComponent<Camera>();
+            _cameraLeftLeft = GameObject.Find("CameraLeftLeft").GetComponent<Camera>();
             _cameraFrontLeft = GameObject.Find("CameraFrontLeft").GetComponent<Camera>();
             _cameraRightLeft = GameObject.Find("CameraRightLeft").GetComponent<Camera>();
-            _cameraBottomLeft  = GameObject.Find("CameraBottomLeft").GetComponent<Camera>();
+            _cameraBottomLeft = GameObject.Find("CameraBottomLeft").GetComponent<Camera>();
             _cameraLeftRight = GameObject.Find("CameraLeftRight").GetComponent<Camera>();
             _cameraFrontRight = GameObject.Find("CameraFrontRight").GetComponent<Camera>();
             _cameraRightRight = GameObject.Find("CameraRightRight").GetComponent<Camera>();
@@ -74,13 +76,77 @@ namespace Cave
 
             _viewInfo = new Dictionary<int, ViewInfo>();
 
-            _viewInfo.Add(0, new ViewInfo { Left = _cameraLeftLeft, Right = _cameraLeftRight, CAVESide =  new CAVEPlanesettings { name = "left", center = new Vector3(_main.CaveDimensions.lHeight / 2, 0f, 0f), normal = new Vector3(-1f,0f,0f), height = _main.CaveDimensions.lHeight, width = _main.CaveDimensions.lWidth, Transform = _main.CAVELeft, up = new Vector3(0, 1, 0) } });                                                                                                                                                                                              //lwidth = distance
-            _viewInfo.Add(1, new ViewInfo { Left = _cameraFrontLeft, Right = _cameraFrontRight, CAVESide =  new CAVEPlanesettings { name = "front", center = new Vector3(0f, 0f, _main.CaveDimensions.lWidth / 2), normal = new Vector3(0f, 0f, 1f), width = _main.CaveDimensions.fHeight, height = _main.CaveDimensions.fWidth, Transform = _main.CAVEFront, up = new Vector3(0, 1, 0) } });
-            _viewInfo.Add(2, new ViewInfo { Left = _cameraRightLeft, Right = _cameraRightRight, CAVESide = new CAVEPlanesettings { name = "right", center = new Vector3(_main.CaveDimensions.rHeight / 2, 0f, 0f), normal = new Vector3(1f, 0f, 0f), height = _main.CaveDimensions.rHeight, width = _main.CaveDimensions.rWidth, Transform = _main.CAVERight, up = new Vector3(0, 1, 0) } });
-            _viewInfo.Add(3, new ViewInfo { Left = _cameraBottomLeft, Right = _cameraBottomRight, CAVESide = new CAVEPlanesettings { name = "bottom", center = new Vector3(0f, _main.CaveDimensions.bHeight / 2,  0f), normal = new Vector3(0f, 1f, 0f), height = _main.CaveDimensions.bHeight, width = _main.CaveDimensions.bWidth, Transform = _main.CAVEBottom, up = new Vector3(1, 0, 0) } });
+            // Add Settings Left
+            _viewInfo.Add(0, new ViewInfo
+            {
+                Left = _cameraLeftLeft,
+                Right = _cameraLeftRight,
+                CAVESide = new CAVEPlanesettings
+                {
+                    name = "left",
+                    center = new Vector3(_main.CaveDimensions.lHeight / 2, 0f, 0f),
+                    normal = new Vector3(-1f, 0f, 0f),
+                    height = _main.CaveDimensions.lHeight,
+                    width = _main.CaveDimensions.lWidth,
+                    Transform = _main.CAVELeft,
+                    up = new Vector3(0, 1, 0)
+                }
+            });
 
+            Debug.Log("height: " + _main.CAVELeft.transform.localScale);
 
-                // copy settings from main camera
+            // Add Settings Front
+            _viewInfo.Add(1, new ViewInfo
+            {
+                Left = _cameraFrontLeft,
+                Right = _cameraFrontRight,
+                CAVESide = new CAVEPlanesettings
+                {
+                    name = "front",
+                    center = new Vector3(0f, 0f, _main.CaveDimensions.lWidth / 2),
+                    normal = new Vector3(0f, 0f, 1f),
+                    width = _main.CaveDimensions.fHeight,
+                    height = _main.CaveDimensions.fWidth,
+                    Transform = _main.CAVEFront,
+                    up = new Vector3(0, 1, 0)
+                }
+            });
+
+            // Add Settings Right
+            _viewInfo.Add(2, new ViewInfo
+            {
+                Left = _cameraRightLeft,
+                Right = _cameraRightRight,
+                CAVESide = new CAVEPlanesettings
+                {
+                    name = "right",
+                    center = new Vector3(_main.CaveDimensions.rHeight / 2, 0f, 0f),
+                    normal = new Vector3(1f, 0f, 0f),
+                    height = _main.CaveDimensions.rHeight,
+                    width = _main.CaveDimensions.rWidth,
+                    Transform = _main.CAVERight,
+                    up = new Vector3(0, 1, 0)
+                }
+            });
+
+            // Add Settings Bottom
+            _viewInfo.Add(3, new ViewInfo
+            {
+                Left = _cameraBottomLeft,
+                Right = _cameraBottomRight,
+                CAVESide = new CAVEPlanesettings
+                {
+                    name = "bottom",
+                    center = new Vector3(0f, _main.CaveDimensions.bHeight / 2, 0f),
+                    normal = new Vector3(0f, 1f, 0f),
+                    height = _main.CaveDimensions.bHeight,
+                    width = _main.CaveDimensions.bWidth,
+                    Transform = _main.CAVEBottom,
+                    up = new Vector3(1, 0, 0)
+                }
+            });
+
+            // copy settings from main camera
             foreach (var vi in _viewInfo.Values)
             {
                 vi.Left.CopyFrom(Camera.main);
@@ -111,8 +177,8 @@ namespace Cave
 
 
             //one of thise is correct
-            _cameraLeftLeft.transform.position.Set(_cameraLeftLeft.transform.position.x,_cameraLeftLeft.transform.position.y, _cameraLeftLeft.transform.position.x- (_main.EyeDistance / 2));
-            _cameraLeftRight.transform.position.Set(_cameraLeftRight.transform.position.x, _cameraLeftRight.transform.position.x, _cameraLeftRight.transform.position.x+(_main.EyeDistance / 2));
+            _cameraLeftLeft.transform.position.Set(_cameraLeftLeft.transform.position.x, _cameraLeftLeft.transform.position.y, _cameraLeftLeft.transform.position.x - (_main.EyeDistance / 2));
+            _cameraLeftRight.transform.position.Set(_cameraLeftRight.transform.position.x, _cameraLeftRight.transform.position.x, _cameraLeftRight.transform.position.x + (_main.EyeDistance / 2));
             _cameraFrontLeft.transform.position.Set(-(_main.EyeDistance / 2), 0f, 0f);
             _cameraFrontRight.transform.position.Set(_main.EyeDistance / 2, 0f, 0f);
 
@@ -122,25 +188,23 @@ namespace Cave
             _cameraBottomLeft.transform.position.Set(-(_main.EyeDistance / 2), 0f, 0f);
             _cameraBottomRight.transform.position.Set(_main.EyeDistance / 2, 0f, 0f);
 
-            if(_main.myCAVEMode == CAVEMode.FourScreen)
+            if (_main.myCAVEMode == CAVEMode.FourScreen)
             {
-
                 _cameraLeftLeft.rect = new Rect(new Vector2(0f, 0.5f), new Vector2(0.5f, 0.5f));
                 _cameraFrontLeft.rect = new Rect(new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
                 _cameraRightLeft.rect = new Rect(new Vector2(0f, 0f), new Vector2(0.5f, 0.5f));
                 _cameraBottomLeft.rect = new Rect(new Vector2(0.5f, 0f), new Vector2(0.5f, 0.5f));
+
                 foreach (var vi in _viewInfo.Values)
                 {
                     vi.Left.enabled = true;
                     vi.Right.enabled = false;
                 }
-
-
             }
-            else if(_main.myCAVEMode == CAVEMode.FourScreenStereo)
+            else if (_main.myCAVEMode == CAVEMode.FourScreenStereo)
             {
 
-                _cameraLeftLeft.rect  = new Rect(new Vector2(0f, 0.5f), new Vector2(0.25f, 0.5f));
+                _cameraLeftLeft.rect = new Rect(new Vector2(0f, 0.5f), new Vector2(0.25f, 0.5f));
                 _cameraFrontLeft.rect = new Rect(new Vector2(0.5f, 0.5f), new Vector2(0.25f, 0.5f));
                 _cameraRightLeft.rect = new Rect(new Vector2(0f, 0f), new Vector2(0.25f, 0.5f));
                 _cameraBottomLeft.rect = new Rect(new Vector2(0.5f, 0f), new Vector2(0.25f, 0.5f));
@@ -156,15 +220,11 @@ namespace Cave
                     vi.Right.enabled = true;
                 }
             };
-            
-            
-        
         }
 
         void Update()
         {
-
-
+            if (_main == null) return;
 
 
 #if UNITY_EDITOR

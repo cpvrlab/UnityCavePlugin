@@ -4,7 +4,8 @@ using System;
 using System.Collections.Generic;
 using Cave;
 
-public class FrustumManager : MonoBehaviour {
+public class FrustumManager : MonoBehaviour
+{
 
 
     #region "private vars"
@@ -14,15 +15,19 @@ public class FrustumManager : MonoBehaviour {
 
 
     #endregion
-    // Use this for initialization
-    void Start () {
-        _main = GameObject.Find("Cave").GetComponent<CaveMain>();
-        _cameramanager = GameObject.Find("CameraManager").GetComponent<CameraManager>();
 
+    void Awake()
+    {
+        _main = GameObject.Find("Cave").GetComponent<CaveMain>();
+        _cameramanager = GameObject.FindWithTag("CameraManager").GetComponent<CameraManager>();
+    }
+
+    void Start () {
     }
 	
-	// Update is called once per frame
 	void Update () {
+
+        if (_main == null) return;
 
         if(_main.myCAVEMode == CAVEMode.FourScreen )
         {
@@ -62,8 +67,5 @@ public class FrustumManager : MonoBehaviour {
 
 
         }
-
-
-	
 	}
 }
