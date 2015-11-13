@@ -5,9 +5,9 @@ public class Frustum : MonoBehaviour {
 
     #region "Functions"
 
-    public static void setFrustum(ref Camera cam, double left, double right, double bottom, double top)
+    public static void setFrustum(ref Camera cam, double left, double right, double bottom, double top, double dist)
     {
-        Matrix4x4 m = calcFrustum(left, right, bottom, top, cam.nearClipPlane, cam.farClipPlane);
+        Matrix4x4 m = calcFrustum(left, right, bottom, top, cam.nearClipPlane, dist);
 
         cam.projectionMatrix = m;
     }
