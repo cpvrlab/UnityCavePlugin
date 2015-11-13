@@ -37,8 +37,8 @@ public class FrustumManager : MonoBehaviour
 
             Plane p = new Plane(var.Value.CAVESide.normal, var.Value.CAVESide.center);
 
-            Vector3 eyeLeft = new Vector3(var.Value.Left.offset, 0f, 0f);
-            Vector3 eyeRight = new Vector3(var.Value.Left.offset, 0f, 0f);
+            Vector3 eyeLeft = var.Value.Left.offset;
+            Vector3 eyeRight = var.Value.Left.offset;
 
             //float distance = Math.Abs(p.GetDistanceToPoint(_main.currentTrackedObject));
             //float distance = Math.Abs(var.Value.CAVESide.Plane.GetDistanceToPoint(eye));
@@ -59,12 +59,12 @@ public class FrustumManager : MonoBehaviour
             Frustum.setFrustum(ref cLeft, (-eyeLeft.x - 0.5f * var.Value.CAVESide.width) * var.Value.Left.cam.nearClipPlane / distanceLeft,
                                         (-eyeLeft.x + 0.5f * var.Value.CAVESide.width) * var.Value.Left.cam.nearClipPlane / distanceLeft,
                                         (-eyeLeft.y - 0.5f * var.Value.CAVESide.height) * var.Value.Left.cam.nearClipPlane / distanceLeft,
-                                        (-eyeLeft.y + 0.5f * var.Value.CAVESide.height) * var.Value.Left.cam.nearClipPlane / distanceLeft);
+                                        (-eyeLeft.y + 0.5f * var.Value.CAVESide.height) * var.Value.Left.cam.nearClipPlane / distanceLeft, distanceLeft);
 
             Frustum.setFrustum(ref cRight, (-eyeRight.x - 0.5f * var.Value.CAVESide.width) * var.Value.Right.cam.nearClipPlane / distanceRight,
                                         (-eyeRight.x + 0.5f * var.Value.CAVESide.width) * var.Value.Right.cam.nearClipPlane / distanceRight,
                                         (-eyeRight.y - 0.5f * var.Value.CAVESide.height) * var.Value.Right.cam.nearClipPlane / distanceRight,
-                                        (-eyeRight.y + 0.5f * var.Value.CAVESide.height) * var.Value.Right.cam.nearClipPlane / distanceRight);
+                                        (-eyeRight.y + 0.5f * var.Value.CAVESide.height) * var.Value.Right.cam.nearClipPlane / distanceRight, distanceRight);
         }
 
 

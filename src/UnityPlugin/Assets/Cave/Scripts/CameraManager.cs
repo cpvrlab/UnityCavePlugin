@@ -14,7 +14,7 @@ namespace Cave
         public struct CameraInfo
         {
             public Camera cam;
-            public float offset;
+            public Vector3 offset;
         }
 
         public struct ViewInfo
@@ -86,9 +86,9 @@ namespace Cave
             _viewInfo.Add(0, new ViewInfo
             {
                 Left = new CameraInfo
-                { cam = _cameraLeftLeft, offset = -(_main.EyeDistance / 2) },
+                { cam = _cameraLeftLeft, offset = new Vector3(0f,0f,-(_main.EyeDistance / 2)) },
                 Right = new CameraInfo
-                { cam = _cameraLeftRight, offset = +(_main.EyeDistance / 2) },
+                { cam = _cameraLeftRight, offset = new Vector3(0f, 0f, +(_main.EyeDistance / 2)) },
                 CAVESide = new CAVEPlanesettings
                 {
                     name = "left",
@@ -107,9 +107,9 @@ namespace Cave
             _viewInfo.Add(1, new ViewInfo
             {
                 Left = new CameraInfo
-                { cam = _cameraFrontLeft, offset = -(_main.EyeDistance / 2) },
+                { cam = _cameraFrontLeft, offset = new Vector3(-(_main.EyeDistance / 2),0f,0f) },
                 Right = new CameraInfo
-                { cam = _cameraFrontRight, offset = +(_main.EyeDistance / 2) },
+                { cam = _cameraFrontRight, offset = new Vector3(+(_main.EyeDistance / 2), 0f, 0f) },
                 CAVESide = new CAVEPlanesettings
                 {
                     name = "front",
@@ -126,9 +126,9 @@ namespace Cave
             _viewInfo.Add(2, new ViewInfo
             {
                 Left = new CameraInfo
-                { cam = _cameraRightLeft, offset = -(_main.EyeDistance / 2) },
+                { cam = _cameraRightLeft, offset = new Vector3(0f,0f,+(_main.EyeDistance / 2)) },
                 Right = new CameraInfo
-                { cam = _cameraRightRight, offset = +(_main.EyeDistance / 2) },
+                { cam = _cameraRightRight, offset = new Vector3(0f, 0f, -(_main.EyeDistance / 2)) },
                 CAVESide = new CAVEPlanesettings
                 {
                     name = "right",
@@ -145,9 +145,9 @@ namespace Cave
             _viewInfo.Add(3, new ViewInfo
             {
                 Left = new CameraInfo
-                { cam = _cameraBottomLeft, offset = -(_main.EyeDistance / 2) },
+                { cam = _cameraBottomLeft, offset = new Vector3(-(_main.EyeDistance / 2),0f,0f) },
                 Right = new CameraInfo
-                { cam = _cameraBottomRight, offset = +(_main.EyeDistance / 2) },
+                { cam = _cameraBottomRight, offset = new Vector3(+(_main.EyeDistance / 2),0f,0f) },
                 CAVESide = new CAVEPlanesettings
                 {
                     name = "bottom",
@@ -175,8 +175,9 @@ namespace Cave
                 vi.Right.cam.depth = 1;
                 vi.Right.cam.fieldOfView = 90;
 
-                vi.Left.cam.transform.localPosition = new Vector3(vi.Left.offset, 0f, 0f);
-                vi.Right.cam.transform.localPosition = new Vector3(vi.Right.offset, 0f, 0f);
+
+                vi.Left.cam.transform.localPosition = vi.Left.offset;
+                vi.Right.cam.transform.localPosition = vi.Right.offset;
             }
 
             // deactivate default main camera

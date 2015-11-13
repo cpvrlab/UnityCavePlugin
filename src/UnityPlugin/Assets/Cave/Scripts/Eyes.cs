@@ -39,6 +39,7 @@ namespace Cave
                 if (_main.EyesSettings.PositionAxisConstraints.Y) pos.x = posOri.z;
                 if (_main.EyesSettings.PositionAxisConstraints.Z) pos.x = posOri.z;
 
+                Camera.main.transform.position = pos;
                 transform.position = pos;
             }
         }
@@ -49,6 +50,7 @@ namespace Cave
             {
                 var rot = VRPN.vrpnTrackerQuat(_main.EyesSettings.WorldVizObject + "@" + _main.Host, _main.EyesSettings.Channel);
                 transform.rotation = rot;
+                
                 if (_main.rotateCave == true) { _main.transform.rotation = rot; }
             }
         }
