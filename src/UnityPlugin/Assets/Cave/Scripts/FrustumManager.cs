@@ -59,12 +59,12 @@ public class FrustumManager : MonoBehaviour
             Frustum.setFrustum(ref cLeft, (-eyeLeft.x - 0.5f * var.Value.CAVESide.width) * var.Value.Left.cam.nearClipPlane / distanceLeft,
                                         (-eyeLeft.x + 0.5f * var.Value.CAVESide.width) * var.Value.Left.cam.nearClipPlane / distanceLeft,
                                         (-eyeLeft.y - 0.5f * var.Value.CAVESide.height) * var.Value.Left.cam.nearClipPlane / distanceLeft,
-                                        (-eyeLeft.y + 0.5f * var.Value.CAVESide.height) * var.Value.Left.cam.nearClipPlane / distanceLeft, distanceLeft);
+                                        (-eyeLeft.y + 0.5f * var.Value.CAVESide.height) * var.Value.Left.cam.nearClipPlane / distanceLeft);
 
             Frustum.setFrustum(ref cRight, (-eyeRight.x - 0.5f * var.Value.CAVESide.width) * var.Value.Right.cam.nearClipPlane / distanceRight,
                                         (-eyeRight.x + 0.5f * var.Value.CAVESide.width) * var.Value.Right.cam.nearClipPlane / distanceRight,
                                         (-eyeRight.y - 0.5f * var.Value.CAVESide.height) * var.Value.Right.cam.nearClipPlane / distanceRight,
-                                        (-eyeRight.y + 0.5f * var.Value.CAVESide.height) * var.Value.Right.cam.nearClipPlane / distanceRight, distanceRight);
+                                        (-eyeRight.y + 0.5f * var.Value.CAVESide.height) * var.Value.Right.cam.nearClipPlane / distanceRight);
         }
 
 
