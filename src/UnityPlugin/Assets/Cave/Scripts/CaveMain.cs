@@ -99,6 +99,8 @@ namespace Cave
             _CAVERight = GameObject.FindWithTag("CaveRight").GetComponent<Transform>();
             _CAVEBottom = GameObject.FindWithTag("CaveBottom").GetComponent<Transform>();
 
+
+            if (myCAVEMode == CAVEMode.FourScreen) EyeDistance = 0f;
             
 
             //GameObject cm = new GameObject();

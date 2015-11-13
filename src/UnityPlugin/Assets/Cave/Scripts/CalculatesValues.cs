@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
+
 
 namespace Cave
 {
@@ -57,11 +57,11 @@ namespace Cave
             return (Vector2)Res;
         }
 
-        public static EditorWindow GetEditorWindow() { 
-            System.Reflection.Assembly assembly = typeof(UnityEditor.EditorWindow).Assembly;
-            System.Type type = assembly.GetType("UnityEditor.GameView");
-            EditorWindow gameview = EditorWindow.GetWindow(type);
-            return gameview;
-        }
+        //public static UnityEditor.EditorWindow GetEditorWindow() { 
+        //    System.Reflection.Assembly assembly = typeof(UnityEditor.EditorWindow).Assembly;
+        //    System.Type type = assembly.GetType("UnityEditor.GameView");
+        //    UnityEditor.EditorWindow gameview = UnityEditor.EditorWindow.GetWindow(type);
+        //    return gameview;
+        //}
     }
 }

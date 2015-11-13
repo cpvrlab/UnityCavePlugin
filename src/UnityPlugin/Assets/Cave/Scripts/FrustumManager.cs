@@ -28,44 +28,45 @@ public class FrustumManager : MonoBehaviour
 	void Update () {
 
         if (_main == null) return;
-
-        if(_main.myCAVEMode == CAVEMode.FourScreen )
+        
+        foreach(KeyValuePair<int,CameraManager.ViewInfo>  var in _cameramanager.FullViewInfo)
         {
-            foreach(KeyValuePair<int,CameraManager.ViewInfo>  var in _cameramanager.FullViewInfo)
-            {
-                //cannot access to value-pair as reference in dict
-                Camera c = var.Value.Left;
+            //cannot access to value-pair as reference in dict
+            Camera cLeft = var.Value.Left.cam;
+            Camera cRight = var.Value.Right.cam;
 
-                Plane p = new Plane(var.Value.CAVESide.normal, var.Value.CAVESide.center);
+            Plane p = new Plane(var.Value.CAVESide.normal, var.Value.CAVESide.center);
 
-                // TODO replace Vector3.zero with eye-translation
-                Vector3 eye = new Vector3(-0.035f, 1.01f, 0);
+            Vector3 eyeLeft = new Vector3(var.Value.Left.offset, 0f, 0f);
+            Vector3 eyeRight = new Vector3(var.Value.Left.offset, 0f, 0f);
 
-                //float distance = Math.Abs(p.GetDistanceToPoint(_main.currentTrackedObject));
-                //float distance = Math.Abs(var.Value.CAVESide.Plane.GetDistanceToPoint(eye));
-                float distance = Math.Abs(p.GetDistanceToPoint(eye));
+            //float distance = Math.Abs(p.GetDistanceToPoint(_main.currentTrackedObject));
+            //float distance = Math.Abs(var.Value.CAVESide.Plane.GetDistanceToPoint(eye));
+            float distanceLeft = Math.Abs(p.GetDistanceToPoint(eyeLeft));
+            float distanceRight = Math.Abs(p.GetDistanceToPoint(eyeLeft));
 
-                // set the position of the camera
-                //c.transform.position = eye;
+            // set the position of the camera
+            //c.transform.position = eye;
 
-                // set LookAt of camera
-                //c.transform.LookAt(eye - var.Value.CAVESide.normal, var.Value.CAVESide.up);
+            // set LookAt of camera
+            //c.transform.LookAt(eye - var.Value.CAVESide.normal, var.Value.CAVESide.up);
 
-                //use trackedObject and calc them to screen coordinates
-                //Vector3 screenCoords = Quaternion.Inverse(var.Value.Left.transform.rotation) * _main.currentTrackedObject;
-                eye = Quaternion.Inverse(var.Value.Left.transform.rotation) * eye;
+            //use trackedObject and calc them to screen coordinates
+            //Vector3 screenCoords = Quaternion.Inverse(var.Value.Left.transform.rotation) * _main.currentTrackedObject;
+            eyeLeft = Quaternion.Inverse(var.Value.Left.cam.transform.rotation) * eyeLeft;
+            eyeRight = Quaternion.Inverse(var.Value.Right.cam.transform.rotation) * eyeRight;
 
-                Frustum.setFrustum(ref c, (-eye.x - 0.5f * var.Value.CAVESide.width) * var.Value.Left.nearClipPlane / distance,
-                                          (-eye.x + 0.5f * var.Value.CAVESide.width) * var.Value.Left.nearClipPlane / distance,
-                                          (-eye.y - 0.5f * var.Value.CAVESide.height) * var.Value.Left.nearClipPlane / distance,
-                                          (-eye.y + 0.5f * var.Value.CAVESide.height) * var.Value.Left.nearClipPlane / distance);
-            }
+            Frustum.setFrustum(ref cLeft, (-eyeLeft.x - 0.5f * var.Value.CAVESide.width) * var.Value.Left.cam.nearClipPlane / distanceLeft,
+                                        (-eyeLeft.x + 0.5f * var.Value.CAVESide.width) * var.Value.Left.cam.nearClipPlane / distanceLeft,
+                                        (-eyeLeft.y - 0.5f * var.Value.CAVESide.height) * var.Value.Left.cam.nearClipPlane / distanceLeft,
+                                        (-eyeLeft.y + 0.5f * var.Value.CAVESide.height) * var.Value.Left.cam.nearClipPlane / distanceLeft);
 
+            Frustum.setFrustum(ref cRight, (-eyeRight.x - 0.5f * var.Value.CAVESide.width) * var.Value.Right.cam.nearClipPlane / distanceRight,
+                                        (-eyeRight.x + 0.5f * var.Value.CAVESide.width) * var.Value.Right.cam.nearClipPlane / distanceRight,
+                                        (-eyeRight.y - 0.5f * var.Value.CAVESide.height) * var.Value.Right.cam.nearClipPlane / distanceRight,
+                                        (-eyeRight.y + 0.5f * var.Value.CAVESide.height) * var.Value.Right.cam.nearClipPlane / distanceRight);
         }
-        else if(_main.myCAVEMode == CAVEMode.FourScreenStereo)
-        {
 
 
-        }
 	}
 }
