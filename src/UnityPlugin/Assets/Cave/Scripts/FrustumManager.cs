@@ -6,8 +6,6 @@ using Cave;
 
 public class FrustumManager : MonoBehaviour
 {
-
-
     #region "private vars"
 
     private CaveMain _main;
@@ -20,6 +18,8 @@ public class FrustumManager : MonoBehaviour
     {
         _main = GameObject.Find("Cave").GetComponent<CaveMain>();
         _cameramanager = GameObject.FindWithTag("CameraManager").GetComponent<CameraManager>();
+
+        transform.parent = _main.gameObject.transform;
     }
 
     void Start () {
@@ -65,6 +65,19 @@ public class FrustumManager : MonoBehaviour
                                         (-eyeRight.x + 0.5f * var.Value.CAVESide.width) * var.Value.Right.cam.nearClipPlane / distanceRight,
                                         (-eyeRight.y - 0.5f * var.Value.CAVESide.height) * var.Value.Right.cam.nearClipPlane / distanceRight,
                                         (-eyeRight.y + 0.5f * var.Value.CAVESide.height) * var.Value.Right.cam.nearClipPlane / distanceRight);
+
+            
+
+            // http://forum.unity3d.com/threads/code-sample-off-center-projection-code-for-vr-cave-or-just-for-fun.142383/
+            // Unfortunatley without any good results...
+            //Vector3 topLeft = GameObject.Find("TopLeft").transform.TransformPoint(GameObject.Find("TopLeft").transform.position);
+            //Vector3 bottomLeft = GameObject.Find("BottomLeft").transform.TransformPoint(GameObject.Find("BottomLeft").transform.position);
+            //Vector3 bottomRight = GameObject.Find("BottomRight").transform.TransformPoint(GameObject.Find("BottomRight").transform.position);
+            //Vector3 headTrackerLocation = var.Value.Left.cam.transform.TransformPoint(var.Value.Left.cam.transform.position);
+            //float near = var.Value.Left.cam.nearClipPlane;
+            //float far = var.Value.Left.cam.farClipPlane;
+
+            //var.Value.Left.cam.projectionMatrix = Frustum.GeneralizedPerspectiveProjection(bottomLeft, bottomRight, topLeft, headTrackerLocation, near, far);
         }
 
 

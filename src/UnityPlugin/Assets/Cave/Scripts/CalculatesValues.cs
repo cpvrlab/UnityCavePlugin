@@ -14,15 +14,14 @@ namespace Cave
 
         public Vector2 GameViewSize {  get { return GetMainGameViewSize(); } }
 
-        public float AngleWandEyes { get { return _angleWandEyes; } }
+        public Quaternion AngleWandEyes { get { return _angleWandEyes; } }
         public Vector3 DirectionWandEyes { get { return _directionWandEyes; } }
 
         private CaveMain _main;
         private Wand _wand;
         private Eyes _eyes;
-        private CameraManager _cameraManager;
 
-        private float _angleWandEyes;
+        private Quaternion _angleWandEyes;
         private Vector3 _directionWandEyes;
 
         public static CalculatedValues Instance
@@ -43,7 +42,7 @@ namespace Cave
         public void Calculate()
         {
             // Calculate Angle between Wand / Eyes
-            _angleWandEyes = Quaternion.Angle(_wand.transform.rotation, _eyes.transform.rotation);
+            _angleWandEyes = Quaternion.Inverse(CalculatedValues.Instance.Eyes.transform.rotation) * CalculatedValues.Instance.Wand.transform.rotation;
 
             // Calculate Vector between Wand / Eyes
             _directionWandEyes = _eyes.transform.position - _wand.transform.position;

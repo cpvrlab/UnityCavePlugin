@@ -67,6 +67,8 @@ namespace Cave
         void Awake()
         {
             _main = GameObject.Find("Cave").GetComponent<CaveMain>();
+
+            transform.parent = _main.gameObject.transform;
         }
 
         void Start()
@@ -86,37 +88,47 @@ namespace Cave
             _viewInfo.Add(0, new ViewInfo
             {
                 Left = new CameraInfo
-                { cam = _cameraLeftLeft, offset = new Vector3(0f,0f,-(_main.EyeDistance / 2)) },
+                {
+                    cam = _cameraLeftLeft,
+                    offset = new Vector3(0f, 0f, -(_main.EyeDistance / 2))
+                },
                 Right = new CameraInfo
-                { cam = _cameraLeftRight, offset = new Vector3(0f, 0f, +(_main.EyeDistance / 2)) },
+                {
+                    cam = _cameraLeftRight,
+                    offset = new Vector3(0f, 0f, +(_main.EyeDistance / 2))
+                },
                 CAVESide = new CAVEPlanesettings
                 {
                     name = "left",
-                    center = new Vector3(_main.CaveDimensions.lHeight / 2, 0f, 0f),
+                    width = _main.CAVELeft.transform.localScale.z * 10f,
+                    height = _main.CAVELeft.transform.localScale.x * 10f,
+                    center = new Vector3(_main.CAVELeft.transform.localScale.x * 10f / 2, 0f, 0f),
                     normal = new Vector3(-1f, 0f, 0f),
-                    height = _main.CaveDimensions.lHeight,
-                    width = _main.CaveDimensions.lWidth,
                     Transform = _main.CAVELeft,
                     up = new Vector3(0, 1, 0)
                 }
             });
 
-            Debug.Log("height: " + _main.CAVELeft.transform.localScale);
-
             // Add Settings Front
             _viewInfo.Add(1, new ViewInfo
             {
                 Left = new CameraInfo
-                { cam = _cameraFrontLeft, offset = new Vector3(-(_main.EyeDistance / 2),0f,0f) },
+                {
+                    cam = _cameraFrontLeft,
+                    offset = new Vector3(-(_main.EyeDistance / 2), 0f, 0f)
+                },
                 Right = new CameraInfo
-                { cam = _cameraFrontRight, offset = new Vector3(+(_main.EyeDistance / 2), 0f, 0f) },
+                {
+                    cam = _cameraFrontRight,
+                    offset = new Vector3(+(_main.EyeDistance / 2), 0f, 0f)
+                },
                 CAVESide = new CAVEPlanesettings
                 {
                     name = "front",
-                    center = new Vector3(0f, 0f, _main.CaveDimensions.lWidth / 2),
+                    width = _main.CAVEFront.transform.localScale.z * 10f,
+                    height = _main.CAVEFront.transform.localScale.x * 10f,
+                    center = new Vector3(0f, 0f, _main.CAVEFront.transform.localScale.z * 10f / 2),
                     normal = new Vector3(0f, 0f, 1f),
-                    width = _main.CaveDimensions.fHeight,
-                    height = _main.CaveDimensions.fWidth,
                     Transform = _main.CAVEFront,
                     up = new Vector3(0, 1, 0)
                 }
@@ -126,16 +138,22 @@ namespace Cave
             _viewInfo.Add(2, new ViewInfo
             {
                 Left = new CameraInfo
-                { cam = _cameraRightLeft, offset = new Vector3(0f,0f,+(_main.EyeDistance / 2)) },
+                {
+                    cam = _cameraRightLeft,
+                    offset = new Vector3(0f,0f,+(_main.EyeDistance / 2))
+                },
                 Right = new CameraInfo
-                { cam = _cameraRightRight, offset = new Vector3(0f, 0f, -(_main.EyeDistance / 2)) },
+                {
+                    cam = _cameraRightRight,
+                    offset = new Vector3(0f, 0f, -(_main.EyeDistance / 2))
+                },
                 CAVESide = new CAVEPlanesettings
                 {
                     name = "right",
-                    center = new Vector3(_main.CaveDimensions.rHeight / 2, 0f, 0f),
+                    width = _main.CAVERight.transform.localScale.z * 10f,
+                    height = _main.CAVERight.transform.localScale.x * 10f,
+                    center = new Vector3(_main.CAVERight.transform.localScale.x * 10f / 2, 0f, 0f),
                     normal = new Vector3(1f, 0f, 0f),
-                    height = _main.CaveDimensions.rHeight,
-                    width = _main.CaveDimensions.rWidth,
                     Transform = _main.CAVERight,
                     up = new Vector3(0, 1, 0)
                 }
@@ -145,16 +163,22 @@ namespace Cave
             _viewInfo.Add(3, new ViewInfo
             {
                 Left = new CameraInfo
-                { cam = _cameraBottomLeft, offset = new Vector3(-(_main.EyeDistance / 2),0f,0f) },
+                {
+                    cam = _cameraBottomLeft,
+                    offset = new Vector3(-(_main.EyeDistance / 2), 0f, 0f)
+                },
                 Right = new CameraInfo
-                { cam = _cameraBottomRight, offset = new Vector3(+(_main.EyeDistance / 2),0f,0f) },
+                {
+                    cam = _cameraBottomRight,
+                    offset = new Vector3(+(_main.EyeDistance / 2), 0f, 0f)
+                },
                 CAVESide = new CAVEPlanesettings
                 {
                     name = "bottom",
-                    center = new Vector3(0f, _main.CaveDimensions.bHeight / 2, 0f),
+                    width = _main.CAVEBottom.transform.localScale.z * 10f,
+                    height = _main.CAVEBottom.transform.localScale.x * 10f,
+                    center = new Vector3(0f, _main.CAVEBottom.transform.localScale.x * 10f, 0f),
                     normal = new Vector3(0f, 1f, 0f),
-                    height = _main.CaveDimensions.bHeight,
-                    width = _main.CaveDimensions.bWidth,
                     Transform = _main.CAVEBottom,
                     up = new Vector3(1, 0, 0)
                 }

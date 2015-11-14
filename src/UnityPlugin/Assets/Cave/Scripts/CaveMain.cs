@@ -32,7 +32,7 @@ namespace Cave
         public TrackedObject myTrackingMode = TrackedObject.Eyes;
         public bool rotateCave = true;
         //this is used to calc the frustum
-        public CAVEDimensions CaveDimensions;
+        //public CAVEDimensions CaveDimensions;
 
         [Header("Wand")]
         public WandSettings WandSettings;
@@ -47,8 +47,7 @@ namespace Cave
         public float EyeDistance = 0.07f;
                 
         #endregion
-
-
+        
         #region "public properties"
 
         public Transform CAVELeft { get { return _CAVELeft; } }
@@ -58,6 +57,7 @@ namespace Cave
 
         public CameraManager CameraManager;
         public FrustumManager FrustumManager;
+        public GameObject CameraContainer;
 
         //public Vector3 currentTrackedObject { get { return _TrackedObject; } }
 
@@ -73,9 +73,6 @@ namespace Cave
 
         private List<Camera> mySecondaryCameras = new List<Camera>();
 
-        private CameraManager _cm;
-        private FrustumManager _fm;
-
         //private Vector3 _TrackedObject;
 
         #endregion
@@ -84,6 +81,7 @@ namespace Cave
         {
             Instantiate(CameraManager);
             Instantiate(FrustumManager);
+            Instantiate(CameraContainer);
         }
 
         // Use this for initialization

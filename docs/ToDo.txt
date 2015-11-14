@@ -2,12 +2,22 @@
 
 - Joystick / Buttons / usw. des Wands in Unity interpretieren
 - Viewfrustum mit Matrix manipulieren
+-	NOPE - Neuer Versuch Viewfrustum gemacht, ohne Erfolg
 - OK - Drehung CAVE analog Hauptkamera
-- Dynamisch Kameras an Hauptkamera anhängen
+- 	OK - Dynamisch Kameras an Hauptkamera anhängen
 - OK - Entwicklung Gerätschaft Kalibrierung Wand (Pappbox)
 - Brainstorming UnityModul (Abschlussprojekt)
 
+14.11.2015:
+- 	OK - Rotation Gewehr (anhand Wand / Eyes)
+- Belichtung
+- 	OK - Gewehr Animation
+-	OK - Smoke Gewehr
+- 	OK - Abmessungen CAVE aus Mesh auslesen
+- Doku ShootingGallery
+- Doku UnityPackage
+- Doku Device Wand
+
 Later:
-- Abmessungen aus CavePlanes nehmen
 - Eyes / Wand Lerping
-- 
+- CameraManager / FrustumMangager / CameraContainer NICHT mit Prefabs instantiieren. Verbindung geht verloren beim Exportieren des Packages.
