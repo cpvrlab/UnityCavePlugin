@@ -2,20 +2,20 @@ Doku Themes:
 
 
 Shooting Gallery:
-- Landscape
-- Models
-- Interpretation Wand
-- Interpretation Eyes
-- Rotation Rifle
-- Targetshooting
-- Particle Effect
-- Animation Controller (Screenshot)
-- Ente -> Polygonreduzierung Blender, Normalmap
-- Punktesystem mit delegates
+- ok - Landscape
+- ok - Models
+- ok - Interpretation Wand
+- ok - Interpretation Eyes
+- ok - Rotation Rifle
+- ok - Targetshooting
+- ok - Particle Effect
+- ok - Animation Controller (Screenshot)
+- ok - Ente -> Polygonreduzierung Blender, Normalmap
+- ok - Punktesystem mit delegates
 - 
 
 Unity Plugin:
 - Package Management
 - Set Camera, based on cursor position
 - Manipulation Viewfrustum
-- 
+- Doku: Quellen der Modelle usw. als Fussnote rein

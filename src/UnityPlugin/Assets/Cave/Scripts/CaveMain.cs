@@ -138,7 +138,7 @@ namespace Cave
         void Update()
         {
             //performance ?
-            CalculatedValues.Instance.Calculate();
+            API.Instance.Calculate();
 
             //_cm.Update();
             //_fm.Update();

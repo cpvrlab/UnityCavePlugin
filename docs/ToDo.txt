@@ -1,11 +1,10 @@
 13.11.2015:
 
 - Joystick / Buttons / usw. des Wands in Unity interpretieren
-- Viewfrustum mit Matrix manipulieren
--	NOPE - Neuer Versuch Viewfrustum gemacht, ohne Erfolg
-- OK - Drehung CAVE analog Hauptkamera
+- Viewfrustum mit Matrix manipulieren -> Fail, Neuer Versuch Viewfrustum gemacht, ohne Erfolg
+- 	OK - Drehung CAVE analog Hauptkamera
 - 	OK - Dynamisch Kameras an Hauptkamera anhängen
-- OK - Entwicklung Gerätschaft Kalibrierung Wand (Pappbox)
+- 	OK - Entwicklung Gerätschaft Kalibrierung Wand (Pappbox)
 - Brainstorming UnityModul (Abschlussprojekt)
 
 14.11.2015:
@@ -14,10 +13,11 @@
 - 	OK - Gewehr Animation
 -	OK - Smoke Gewehr
 - 	OK - Abmessungen CAVE aus Mesh auslesen
-- Doku ShootingGallery
+- 	OK - Doku ShootingGallery
 - Doku UnityPackage
 - Doku Device Wand
 
 Later:
 - Eyes / Wand Lerping
 - CameraManager / FrustumMangager / CameraContainer NICHT mit Prefabs instantiieren. Verbindung geht verloren beim Exportieren des Packages.
+- UnityPlugin: Cave-Prefab automatisch an Position 0/0/0 verschieben

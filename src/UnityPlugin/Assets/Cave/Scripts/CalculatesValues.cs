@@ -4,9 +4,9 @@ using System.Collections;
 
 namespace Cave
 {
-    public sealed class CalculatedValues
+    public sealed class API
     {
-        static readonly CalculatedValues _instance = new CalculatedValues();
+        static readonly API _instance = new API();
 
         public Wand Wand { get { return _wand; } }
         public Eyes Eyes { get { return _eyes; } }
@@ -24,7 +24,7 @@ namespace Cave
         private Quaternion _angleWandEyes;
         private Vector3 _directionWandEyes;
 
-        public static CalculatedValues Instance
+        public static API Instance
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Cave
             }
         }
 
-        CalculatedValues()
+        API()
         {
             _main = GameObject.Find("Cave").GetComponent<CaveMain>();
             _wand = GameObject.Find("Wand").GetComponent<Wand>();
@@ -42,7 +42,7 @@ namespace Cave
         public void Calculate()
         {
             // Calculate Angle between Wand / Eyes
-            _angleWandEyes = Quaternion.Inverse(CalculatedValues.Instance.Eyes.transform.rotation) * CalculatedValues.Instance.Wand.transform.rotation;
+            _angleWandEyes = Quaternion.Inverse(API.Instance.Eyes.transform.rotation) * API.Instance.Wand.transform.rotation;
 
             // Calculate Vector between Wand / Eyes
             _directionWandEyes = _eyes.transform.position - _wand.transform.position;
