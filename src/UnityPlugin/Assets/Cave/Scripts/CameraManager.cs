@@ -32,8 +32,16 @@ namespace Cave
             public Vector3 center;
             public Vector3 normal;
             public Transform Transform;
-            public Plane Plane;
+            public Transform TransformXXL;
             public Vector3 up;
+            public corners corners;
+        }
+
+        public struct corners
+        {
+            public Vector3 topleft;
+            public Vector3 bottomleft;
+            public Vector3 bottomright;
         }
 
         #endregion
@@ -61,6 +69,8 @@ namespace Cave
         private Camera _cameraBottomRight = null;
 
         private Camera _cameraWithCursor;
+
+
         
 #endregion
         
@@ -81,6 +91,7 @@ namespace Cave
             _cameraFrontRight = GameObject.Find("CameraFrontRight").GetComponent<Camera>();
             _cameraRightRight = GameObject.Find("CameraRightRight").GetComponent<Camera>();
             _cameraBottomRight = GameObject.Find("CameraBottomRight").GetComponent<Camera>();
+
 
             _viewInfo = new Dictionary<int, ViewInfo>();
 
@@ -105,8 +116,15 @@ namespace Cave
                     center = new Vector3(_main.CAVELeft.transform.localScale.x * 10f / 2, 0f, 0f),
                     normal = new Vector3(-1f, 0f, 0f),
                     Transform = _main.CAVELeft,
-                    up = new Vector3(0, 1, 0)
-                }
+                    TransformXXL = _main.CAVELeftXXL,
+                    up = new Vector3(0, 1, 0),
+                    corners = new corners
+                    {
+                        topleft = new Vector3(5f, 0f,5f),
+                        bottomleft = new Vector3(-5f, 0f, 5f),
+                        bottomright = new Vector3(-5f, 0f, -5f)
+                    }
+        }
             });
 
             // Add Settings Front
@@ -130,7 +148,14 @@ namespace Cave
                     center = new Vector3(0f, 0f, _main.CAVEFront.transform.localScale.z * 10f / 2),
                     normal = new Vector3(0f, 0f, 1f),
                     Transform = _main.CAVEFront,
-                    up = new Vector3(0, 1, 0)
+                    TransformXXL = _main.CAVEFrontXXL,
+                    up = new Vector3(0, 1, 0),
+                    corners = new corners
+                    {
+                        topleft = new Vector3(5f, 0f,5f),
+                        bottomleft = new Vector3(-5f, 0f, 5f),
+                        bottomright = new Vector3(-5f, 0f, -5f)
+                    }
                 }
             });
 
@@ -155,7 +180,15 @@ namespace Cave
                     center = new Vector3(_main.CAVERight.transform.localScale.x * 10f / 2, 0f, 0f),
                     normal = new Vector3(1f, 0f, 0f),
                     Transform = _main.CAVERight,
-                    up = new Vector3(0, 1, 0)
+                    TransformXXL = _main.CAVERightXXL,
+                    up = new Vector3(0, 1, 0),
+                    corners = new corners
+                    {
+                        topleft = new Vector3(5f, 0f,5f),
+                        bottomleft = new Vector3(-5f, 0f, 5f),
+                        bottomright = new Vector3(-5f, 0f, -5f)
+                    }
+
                 }
             });
 
@@ -180,7 +213,14 @@ namespace Cave
                     center = new Vector3(0f, _main.CAVEBottom.transform.localScale.x * 10f, 0f),
                     normal = new Vector3(0f, 1f, 0f),
                     Transform = _main.CAVEBottom,
-                    up = new Vector3(1, 0, 0)
+                    TransformXXL = _main.CAVEBottomXXL,
+                    up = new Vector3(1, 0, 0),
+                    corners = new corners
+                    {
+                        topleft = new Vector3(5f, 0f,5f),
+                        bottomleft = new Vector3(-5f, 0f, 5f),
+                        bottomright = new Vector3(-5f, 0f, -5f)
+                    }
                 }
             });
 
@@ -203,6 +243,8 @@ namespace Cave
                 vi.Left.cam.transform.localPosition = vi.Left.offset;
                 vi.Right.cam.transform.localPosition = vi.Right.offset;
             }
+
+
 
             // deactivate default main camera
             //Camera.main.enabled = false;
@@ -319,10 +361,10 @@ namespace Cave
             }
 
             //Debug.Log(string.Format("window pos x:{0}, window pos y:{1}, window w:{2}, window h:{3}, mouse x:{4}, mouse y:{5} , {6} {7} {8}",
-            //CalculatedValues.GetEditorWindow().position.x,
-            //CalculatedValues.GetEditorWindow().position.y,
-            //CalculatedValues.GetMainGameViewSize()[0],
-            //CalculatedValues.GetMainGameViewSize()[1],
+            //API.GetEditorWindow().position.x,
+            //API.GetEditorWindow().position.y,
+            //API.GetMainGameViewSize()[0],
+            //API.GetMainGameViewSize()[1],
             //Input.mousePosition.x,
             //Input.mousePosition.y, camIndexX, camIndexY, _cameraWithCursor.name
             //));

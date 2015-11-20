@@ -55,6 +55,11 @@ namespace Cave
         public Transform CAVERight { get { return _CAVERight; } }
         public Transform CAVEBottom { get { return _CAVEBottom; } }
 
+        public Transform CAVELeftXXL { get { return _CAVELeftXXL; } }
+        public Transform CAVEFrontXXL { get { return _CAVEFrontXXL; } }
+        public Transform CAVERightXXL { get { return _CAVERightXXL; } }
+        public Transform CAVEBottomXXL { get { return _CAVEBottomXXL; } }
+
         public CameraManager CameraManager;
         public FrustumManager FrustumManager;
         public GameObject CameraContainer;
@@ -70,6 +75,11 @@ namespace Cave
         private Transform _CAVEFront;
         private Transform _CAVERight;
         private Transform _CAVEBottom;
+
+        private Transform _CAVELeftXXL;
+        private Transform _CAVEFrontXXL;
+        private Transform _CAVERightXXL;
+        private Transform _CAVEBottomXXL;
 
         private List<Camera> mySecondaryCameras = new List<Camera>();
 
@@ -96,6 +106,12 @@ namespace Cave
             _CAVEFront = GameObject.FindWithTag("CaveFront").GetComponent<Transform>();
             _CAVERight = GameObject.FindWithTag("CaveRight").GetComponent<Transform>();
             _CAVEBottom = GameObject.FindWithTag("CaveBottom").GetComponent<Transform>();
+
+
+            _CAVELeftXXL = GameObject.FindWithTag("CaveLeftXXL").GetComponent<Transform>();
+            _CAVEFrontXXL = GameObject.FindWithTag("CaveFrontXXL").GetComponent<Transform>();
+            _CAVERightXXL = GameObject.FindWithTag("CaveRightXXL").GetComponent<Transform>();
+            _CAVEBottomXXL = GameObject.FindWithTag("CaveBottomXXL").GetComponent<Transform>();
 
 
             if (myCAVEMode == CAVEMode.FourScreen) EyeDistance = 0f;

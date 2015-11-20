@@ -12,8 +12,8 @@ namespace Cave
 
         [Header("Position")]
         public bool TrackPosition = true;
-        [Range(0.0f, 1.0f)]
-        public float MovementSensivity;
+        
+        public AxisSensivity MovementSensivity;
         public BlockPositionAxis PositionAxisConstraints;
         public GameObject PositionTarget;
 

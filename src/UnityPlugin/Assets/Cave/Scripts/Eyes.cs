@@ -40,6 +40,8 @@ namespace Cave
                 if (_main.EyesSettings.PositionAxisConstraints.Z) pos.x = posOri.z;
 
                 //Camera.main.transform.position = pos;
+                //_main.CameraContainer.transform.position = pos;
+                //_main.CameraContainer.transform.localPosition = pos;
                 transform.position = pos;
             }
         }

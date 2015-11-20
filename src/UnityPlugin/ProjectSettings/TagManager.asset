@@ -12,6 +12,10 @@ TagManager:
   - Eyes
   - CameraManager
   - FrustumManager
+  - CaveLeftXXL
+  - CaveFrontXXL
+  - CaveRightXXL
+  - CaveBottomXXL
   layers:
   - Default
   - TransparentFX

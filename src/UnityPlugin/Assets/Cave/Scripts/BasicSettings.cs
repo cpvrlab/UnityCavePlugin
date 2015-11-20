@@ -28,5 +28,16 @@ namespace Cave
             public bool Yaw;
             public bool Roll;
         }
+
+        [System.Serializable]
+        public class AxisSensivity
+        {
+            [Range(0.0f, 2.0f)]
+            public float x = 1f;
+            [Range(0.0f, 2.0f)]
+            public float y = 1f;
+            [Range(0.0f, 2.0f)]
+            public float z = 1f;
+        }
     }
 }

@@ -56,7 +56,8 @@ namespace Cave
             return (Vector2)Res;
         }
 
-        //public static UnityEditor.EditorWindow GetEditorWindow() { 
+        //public static UnityEditor.EditorWindow GetEditorWindow()
+        //{
         //    System.Reflection.Assembly assembly = typeof(UnityEditor.EditorWindow).Assembly;
         //    System.Type type = assembly.GetType("UnityEditor.GameView");
         //    UnityEditor.EditorWindow gameview = UnityEditor.EditorWindow.GetWindow(type);
