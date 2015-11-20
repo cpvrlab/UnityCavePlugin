@@ -14,10 +14,14 @@
 -	OK - Smoke Gewehr
 - 	OK - Abmessungen CAVE aus Mesh auslesen
 - 	OK - Doku ShootingGallery
+
+Julien:
+- ShootingGallery Wand-Position auf Rifle mappen
+- UnityPlugin: Cave-Prefab automatisch mit Position Gamecamera abgleichen
 - Doku UnityPackage
 - Doku Device Wand
 
-Later:
+Daniiiee:
 - Eyes / Wand Lerping
-- CameraManager / FrustumMangager / CameraContainer NICHT mit Prefabs instantiieren. Verbindung geht verloren beim Exportieren des Packages.
-- UnityPlugin: Cave-Prefab automatisch an Position 0/0/0 verschieben
+- Doku VRPN
+- Doku Frustumtransformation
