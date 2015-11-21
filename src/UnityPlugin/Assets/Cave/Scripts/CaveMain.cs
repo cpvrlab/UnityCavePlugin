@@ -45,9 +45,9 @@ namespace Cave
 
         [Header("Weiteres")]
         public float EyeDistance = 0.07f;
-                
+
         #endregion
-        
+
         #region "public properties"
 
         public Transform CAVELeft { get { return _CAVELeft; } }
@@ -63,9 +63,13 @@ namespace Cave
         public Eyes Eyes { get { return _eyes; } }
         public Wand Wand { get { return _wand; } }
 
-        public CameraManager CameraManager;
-        public FrustumManager FrustumManager;
-        public GameObject CameraContainer;
+        public CameraManager CameraManager { get { return _cameraManager; } }
+        public FrustumManager FrustumManager { get { return _frustumManager; } }
+        public GameObject CameraContainer { get { return _cameraContainer; } }
+
+        public CameraManager CameraManagerPrefab;
+        public FrustumManager FrustumManagerPrefab;
+        public GameObject CameraContainerPrefab;
 
         //public Vector3 currentTrackedObject { get { return _TrackedObject; } }
 
@@ -87,73 +91,53 @@ namespace Cave
         private Eyes _eyes;
         private Wand _wand;
 
-        private List<Camera> mySecondaryCameras = new List<Camera>();
+        private CameraManager _cameraManager;
+        private FrustumManager _frustumManager;
+        private GameObject _cameraContainer;
 
-        //private Vector3 _TrackedObject;
+        private List<Camera> mySecondaryCameras = new List<Camera>();
+        private List<Transform> _walls = new List<Transform>();
+        private List<Transform> _wallsXXL = new List<Transform>();
 
         #endregion
-        
+
         void Awake()
         {
-            Instantiate(CameraManager);
-            Instantiate(FrustumManager);
-            Instantiate(CameraContainer);
+            Instantiate(CameraManagerPrefab);
+            Instantiate(FrustumManagerPrefab);
+            Instantiate(CameraContainerPrefab);
         }
 
         // Use this for initialization
         void Start()
         {
-            foreach(Camera c in Camera.allCameras)
+            foreach (Camera c in Camera.allCameras)
             {
                 if (c != Camera.main) { mySecondaryCameras.Add(c); }
             };
 
-            _CAVELeft = GameObject.FindWithTag("CaveLeft").GetComponent<Transform>();
-            _CAVEFront = GameObject.FindWithTag("CaveFront").GetComponent<Transform>();
-            _CAVERight = GameObject.FindWithTag("CaveRight").GetComponent<Transform>();
-            _CAVEBottom = GameObject.FindWithTag("CaveBottom").GetComponent<Transform>();
+            _walls.Add(_CAVELeft = GameObject.FindWithTag("CaveLeft").GetComponent<Transform>());
+            _walls.Add(_CAVEFront = GameObject.FindWithTag("CaveFront").GetComponent<Transform>());
+            _walls.Add(_CAVERight = GameObject.FindWithTag("CaveRight").GetComponent<Transform>());
+            _walls.Add(_CAVEBottom = GameObject.FindWithTag("CaveBottom").GetComponent<Transform>());
 
-            _CAVELeftXXL = GameObject.FindWithTag("CaveLeftXXL").GetComponent<Transform>();
-            _CAVEFrontXXL = GameObject.FindWithTag("CaveFrontXXL").GetComponent<Transform>();
-            _CAVERightXXL = GameObject.FindWithTag("CaveRightXXL").GetComponent<Transform>();
-            _CAVEBottomXXL = GameObject.FindWithTag("CaveBottomXXL").GetComponent<Transform>();
+            _wallsXXL.Add(_CAVELeftXXL = GameObject.FindWithTag("CaveLeftXXL").GetComponent<Transform>());
+            _wallsXXL.Add(_CAVEFrontXXL = GameObject.FindWithTag("CaveFrontXXL").GetComponent<Transform>());
+            _wallsXXL.Add(_CAVERightXXL = GameObject.FindWithTag("CaveRightXXL").GetComponent<Transform>());
+            _wallsXXL.Add(_CAVEBottomXXL = GameObject.FindWithTag("CaveBottomXXL").GetComponent<Transform>());
 
             _eyes = GameObject.FindWithTag("Eyes").GetComponent<Eyes>();
             _wand = GameObject.FindWithTag("Wand").GetComponent<Wand>();
 
+            _cameraManager = GameObject.FindWithTag("CameraManager").GetComponent<CameraManager>();
+            _frustumManager = GameObject.FindWithTag("FrustumManager").GetComponent<FrustumManager>();
+            _cameraContainer = GameObject.FindWithTag("CameraContainer");
+
             if (myCAVEMode == CAVEMode.FourScreen) EyeDistance = 0f;
 
-            //GameObject cm = new GameObject();
-            //cm.AddComponent<CameraManager>();
-            ////cm.AddComponent(Type.GetType("CameraManager"));
-            //cm.transform.parent = transform;
+            ToggleColliders(false);
 
-            //GameObject fm = new GameObject();
-            ////fm.AddComponent(Type.GetType("FrustumManager"));
-            //fm.AddComponent<FrustumManager>();
-            //fm.transform.parent = transform;
-
-            //_cm = new CameraManager();
-            //_cm.Init(GetComponent<CaveMain>());
-
-            //_fm = new FrustumManager();
-            //_fm.Init(GetComponent<CaveMain>());
-
-            //if(myTrackingMode == TrackedObject.Eyes)
-            //{
-            //    _TrackedObject = GameObject.FindWithTag("Wand").GetComponent<Transform>().position;
-            //}
-            //else if (myTrackingMode == Cave.TrackedObject.Eyes )
-            //{
-            //    _TrackedObject = GameObject.FindWithTag("Eyes").GetComponent<Transform>().position;
-
-            //    //debug
-            //    //_TrackedObject = new Vector3(1f, 1f, 0.5f);
-            //}
-            //else
-            //{
-            //    _TrackedObject = Vector3.zero ;
-            //}
+            API.Instance.Calculate();
         }
 
         // Update is called once per frame
@@ -169,6 +153,19 @@ namespace Cave
         private void SetCameraTag()
         {
 
+        }
+
+        public void ToggleColliders(bool status)
+        {
+            foreach (var w in _walls)
+            {
+                w.GetComponent<Collider>().enabled = status;
+            }
+
+            foreach (var w in _wallsXXL)
+            {
+                w.GetComponent<Collider>().enabled = status;
+            }
         }
     }
 }

@@ -879,14 +879,14 @@ MonoBehaviour:
       TopRight: R
       BottomLeft: T
       BottomRight: Z
-    TrackPosition: 1
+    TrackPosition: 0
     MovementSensivity: 0
     PositionAxisConstraints:
       X: 0
       Y: 0
       Z: 0
     PositionTarget: {fileID: 0}
-    TrackRotation: 1
+    TrackRotation: 0
     RotationAxisConstraints:
       Yaw: 0
       Pitch: 0
@@ -896,7 +896,7 @@ MonoBehaviour:
   EyesSettings:
     WorldVizObject: PPT0
     Channel: 0
-    TrackPosition: 1
+    TrackPosition: 0
     MovementSensivity:
       x: 1
       y: 1
@@ -906,15 +906,18 @@ MonoBehaviour:
       Y: 0
       Z: 0
     PositionTarget: {fileID: 0}
-    TrackRotation: 1
+    TrackRotation: 0
     RotationAxisConstraints:
       Yaw: 0
       Roll: 0
     RotationTarget: {fileID: 0}
   EyeDistance: .0700000003
-  CameraManager: {fileID: 11439038, guid: 54c3efade4d157f4483aa38b4f7073ec, type: 2}
-  FrustumManager: {fileID: 11463222, guid: 3bb9b9e40fa70364cb0be3d445c9d73f, type: 2}
-  CameraContainer: {fileID: 132108, guid: d60238788ebea804eb97f2b4fe276066, type: 2}
+  CameraManagerPrefab: {fileID: 11439038, guid: 54c3efade4d157f4483aa38b4f7073ec,
+    type: 2}
+  FrustumManagerPrefab: {fileID: 11463222, guid: 3bb9b9e40fa70364cb0be3d445c9d73f,
+    type: 2}
+  CameraContainerPrefab: {fileID: 132108, guid: d60238788ebea804eb97f2b4fe276066,
+    type: 2}
 --- !u!114 &11497658
 MonoBehaviour:
   m_ObjectHideFlags: 1
