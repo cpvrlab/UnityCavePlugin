@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Cave
 {
-    public class CameraManager : BaseBehaviour
+    public class CameraManager : MonoBehaviour
     {
 
 #region "structs"
@@ -53,8 +53,11 @@ namespace Cave
 #endregion
 
 #region "private vars"
-        
+
+        private List<Camera> _cameras;
         private Dictionary<int, ViewInfo> _viewInfo;
+
+        private CaveMain _main;
 
         private Camera _cameraLeftLeft = null;
         private Camera _cameraFrontLeft = null;
@@ -67,11 +70,13 @@ namespace Cave
 
         private Camera _cameraWithCursor;
 
-        #endregion
 
+        
+#endregion
+        
         void Awake()
         {
-            base.Awake();
+            _main = GameObject.Find("Cave").GetComponent<CaveMain>();
 
             transform.parent = _main.gameObject.transform;
         }
@@ -86,7 +91,8 @@ namespace Cave
             _cameraFrontRight = GameObject.Find("CameraFrontRight").GetComponent<Camera>();
             _cameraRightRight = GameObject.Find("CameraRightRight").GetComponent<Camera>();
             _cameraBottomRight = GameObject.Find("CameraBottomRight").GetComponent<Camera>();
-            
+
+
             _viewInfo = new Dictionary<int, ViewInfo>();
 
             // Add Settings Left
@@ -232,10 +238,13 @@ namespace Cave
                 vi.Right.cam.enabled = false;
                 vi.Right.cam.depth = 1;
                 vi.Right.cam.fieldOfView = 90;
-                
+
+
                 vi.Left.cam.transform.localPosition = vi.Left.offset;
                 vi.Right.cam.transform.localPosition = vi.Right.offset;
             }
+
+
 
             // deactivate default main camera
             //Camera.main.enabled = false;
