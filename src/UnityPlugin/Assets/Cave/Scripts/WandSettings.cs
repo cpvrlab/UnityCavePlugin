@@ -13,6 +13,7 @@ namespace Cave
         public int Channel = 0;
         public int Port = 8945;
         public WandSettingsButtons ButtonMapping;
+        
 
         [Header("Position")]
         public bool TrackPosition = true;
@@ -20,11 +21,13 @@ namespace Cave
         public float MovementSensivity;
         public BlockPositionAxis PositionAxisConstraints;
         public GameObject PositionTarget;
+        public MovementSmoothing PositionMovementConstraints;
 
         [Header("Rotation")]
         public bool TrackRotation = true;
         public BlockRotationAxisWand RotationAxisConstraints;
         public GameObject RotationTarget;
+        public MovementSmoothing RotationMovementConstraints;
 
         [Header("Joystick")]
         public bool allowJoystick = true;

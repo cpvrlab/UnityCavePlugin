@@ -16,10 +16,14 @@ namespace Cave
         public AxisSensivity MovementSensivity;
         public BlockPositionAxis PositionAxisConstraints;
         public GameObject PositionTarget;
+        public MovementSmoothing PositionMovementConstraints;
 
         [Header("Rotation")]
         public bool TrackRotation = true;
         public BlockRotationAxisEyes RotationAxisConstraints;
         public GameObject RotationTarget;
+        public MovementSmoothing RotationMovementConstraints;
+
+
     }
 }

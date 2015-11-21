@@ -39,5 +39,15 @@ namespace Cave
             [Range(0.0f, 2.0f)]
             public float z = 1f;
         }
+
+        [System.Serializable]
+        public class MovementSmoothing
+        {
+            public bool useOneEuroSmoothing = true;
+            [Range(0.0f, 1.0f)]
+            public float jitterReduction = 1f;
+            [Range(0.0f, 1.0f)]
+            public float lagReduction = 1f;
+        }
     }
 }
