@@ -18,10 +18,8 @@ namespace Cave
 
     #endregion
 
-
     public class CaveMain : MonoBehaviour
     {
-
         #region "settings"
 
         [Header("Main")]
@@ -30,7 +28,6 @@ namespace Cave
         public string Host = "192.168.0.201";
         public CAVEMode myCAVEMode = CAVEMode.FourScreen;
         public TrackedObject myTrackingMode = TrackedObject.Eyes;
-        public bool rotateCave = true;
         //this is used to calc the frustum
         //public CAVEDimensions CaveDimensions;
 
@@ -47,7 +44,6 @@ namespace Cave
         public float EyeDistance = 0.07f;
                 
         #endregion
-        
         #region "public properties"
 
         public Transform CAVELeft { get { return _CAVELeft; } }
@@ -67,8 +63,6 @@ namespace Cave
         //public Vector3 currentTrackedObject { get { return _TrackedObject; } }
 
         #endregion
-
-
         #region "private vars"
 
         private Transform _CAVELeft;
@@ -100,66 +94,29 @@ namespace Cave
             foreach(Camera c in Camera.allCameras)
             {
                 if (c != Camera.main) { mySecondaryCameras.Add(c); }
-            };
+            }
 
             _CAVELeft = GameObject.FindWithTag("CaveLeft").GetComponent<Transform>();
             _CAVEFront = GameObject.FindWithTag("CaveFront").GetComponent<Transform>();
             _CAVERight = GameObject.FindWithTag("CaveRight").GetComponent<Transform>();
             _CAVEBottom = GameObject.FindWithTag("CaveBottom").GetComponent<Transform>();
-
-
+            
             _CAVELeftXXL = GameObject.FindWithTag("CaveLeftXXL").GetComponent<Transform>();
             _CAVEFrontXXL = GameObject.FindWithTag("CaveFrontXXL").GetComponent<Transform>();
             _CAVERightXXL = GameObject.FindWithTag("CaveRightXXL").GetComponent<Transform>();
             _CAVEBottomXXL = GameObject.FindWithTag("CaveBottomXXL").GetComponent<Transform>();
-
-
-            if (myCAVEMode == CAVEMode.FourScreen) EyeDistance = 0f;
             
-
-            //GameObject cm = new GameObject();
-            //cm.AddComponent<CameraManager>();
-            ////cm.AddComponent(Type.GetType("CameraManager"));
-            //cm.transform.parent = transform;
-
-            //GameObject fm = new GameObject();
-            ////fm.AddComponent(Type.GetType("FrustumManager"));
-            //fm.AddComponent<FrustumManager>();
-            //fm.transform.parent = transform;
-
-            //_cm = new CameraManager();
-            //_cm.Init(GetComponent<CaveMain>());
-
-            //_fm = new FrustumManager();
-            //_fm.Init(GetComponent<CaveMain>());
-
-            //if(myTrackingMode == TrackedObject.Eyes)
-            //{
-            //    _TrackedObject = GameObject.FindWithTag("Wand").GetComponent<Transform>().position;
-            //}
-            //else if (myTrackingMode == Cave.TrackedObject.Eyes )
-            //{
-            //    _TrackedObject = GameObject.FindWithTag("Eyes").GetComponent<Transform>().position;
-
-            //    //debug
-            //    //_TrackedObject = new Vector3(1f, 1f, 0.5f);
-            //}
-            //else
-            //{
-            //    _TrackedObject = Vector3.zero ;
-            //}
+            if (myCAVEMode == CAVEMode.FourScreen) EyeDistance = 0f;
         }
 
         // Update is called once per frame
         void Update()
         {
-            //performance ?
             API.Instance.Calculate();
 
-            //_cm.Update();
-            //_fm.Update();
-
-           // Debug.Log(CalculatedValues.Instance.AngleWandEyes);
+            // Update position and rotation of cave according to maincamera
+            transform.position = Camera.main.transform.position;
+            transform.rotation = Camera.main.transform.rotation;
         }
 
         private void SetCameraTag()

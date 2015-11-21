@@ -5,16 +5,11 @@ using System;
 
 namespace Cave
 {
-    public class Wand : MonoBehaviour
+    public class Wand : BaseBehaviour
     {
-
-        private CaveMain _main;
-
         // Use this for initialization
         void Start()
-        {
-            _main = GameObject.Find("Cave").GetComponent<CaveMain>();
-        }
+        { }
 
         // Update is called once per frame
         void Update()
@@ -48,7 +43,6 @@ namespace Cave
             {
                 var rot = VRPN.vrpnTrackerQuat(_main.WandSettings.WorldVizObject + "@" + _main.Host, _main.WandSettings.Channel);
                 transform.rotation = rot;
-                if(_main.rotateCave == true) { _main.transform.rotation = rot; }
             }
         }
 

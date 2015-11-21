@@ -15,9 +15,15 @@
 - 	OK - Abmessungen CAVE aus Mesh auslesen
 - 	OK - Doku ShootingGallery
 
+21.11.2015:
+- 	OK - Eye Position mapping to CameraContainer on / off
+- 	OK - Base-Class (BaseBehaviour)
+- 
+
 Julien:
 - ShootingGallery Wand-Position auf Rifle mappen
-- UnityPlugin: Cave-Prefab automatisch mit Position Gamecamera abgleichen
+- 	OK - UnityPlugin: Cave-Prefab automatisch mit Position Gamecamera abgleichen
+- Komisches Problelm: CameraManager-Script ist initial deaktiviert???
 - Doku UnityPackage
 - Doku Device Wand
 

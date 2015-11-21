@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
 namespace Cave
 {
     public sealed class API
@@ -42,7 +41,7 @@ namespace Cave
         public void Calculate()
         {
             // Calculate Angle between Wand / Eyes
-            _angleWandEyes = Quaternion.Inverse(API.Instance.Eyes.transform.rotation) * API.Instance.Wand.transform.rotation;
+            _angleWandEyes = Quaternion.Inverse(_eyes.transform.rotation) * _wand.transform.rotation;
 
             // Calculate Vector between Wand / Eyes
             _directionWandEyes = _eyes.transform.position - _wand.transform.position;

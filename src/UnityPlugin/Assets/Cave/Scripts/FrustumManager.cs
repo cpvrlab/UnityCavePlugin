@@ -4,24 +4,15 @@ using System;
 using System.Collections.Generic;
 using Cave;
 
-public class FrustumManager : MonoBehaviour
+public class FrustumManager : BaseBehaviour
 {
     #region "private vars"
-
-    private CaveMain _main;
-    private CameraManager _cameramanager;
-
-
-
-
-        
 
     #endregion
 
     void Awake()
     {
-        _main = GameObject.Find("Cave").GetComponent<CaveMain>();
-        _cameramanager = GameObject.FindWithTag("CameraManager").GetComponent<CameraManager>();
+        base.Awake();
 
         transform.parent = _main.gameObject.transform;
     }
@@ -35,7 +26,7 @@ public class FrustumManager : MonoBehaviour
 
         if (_main == null) return;
         
-        foreach(KeyValuePair<int,CameraManager.ViewInfo>  var in _cameramanager.FullViewInfo)
+        foreach(KeyValuePair<int,CameraManager.ViewInfo>  var in _cameraManager.FullViewInfo)
         {
             //cannot access to value-pair as reference in dict
             Camera cLeft = var.Value.Left.cam;
