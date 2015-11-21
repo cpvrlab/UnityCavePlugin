@@ -22,12 +22,8 @@ public class CameraContainer : MonoBehaviour {
             _lastMaincameraID = Camera.main.gameObject.GetInstanceID();
             transform.parent = Camera.main.transform;
             transform.localPosition = Vector3.zero;
-
-            Debug.Log("set new camera position");
         }
-
     
-        this.transform.localPosition = Vector3.Scale(API.Instance.Eyes.transform.position,posWithSensitity);
-        
+        transform.localPosition = Vector3.Scale(_main.Eyes.transform.localPosition, posWithSensitity);
 	}
 }

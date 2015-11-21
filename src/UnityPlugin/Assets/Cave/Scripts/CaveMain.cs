@@ -60,6 +60,9 @@ namespace Cave
         public Transform CAVERightXXL { get { return _CAVERightXXL; } }
         public Transform CAVEBottomXXL { get { return _CAVEBottomXXL; } }
 
+        public Eyes Eyes { get { return _eyes; } }
+        public Wand Wand { get { return _wand; } }
+
         public CameraManager CameraManager;
         public FrustumManager FrustumManager;
         public GameObject CameraContainer;
@@ -80,6 +83,9 @@ namespace Cave
         private Transform _CAVEFrontXXL;
         private Transform _CAVERightXXL;
         private Transform _CAVEBottomXXL;
+
+        private Eyes _eyes;
+        private Wand _wand;
 
         private List<Camera> mySecondaryCameras = new List<Camera>();
 
@@ -107,15 +113,15 @@ namespace Cave
             _CAVERight = GameObject.FindWithTag("CaveRight").GetComponent<Transform>();
             _CAVEBottom = GameObject.FindWithTag("CaveBottom").GetComponent<Transform>();
 
-
             _CAVELeftXXL = GameObject.FindWithTag("CaveLeftXXL").GetComponent<Transform>();
             _CAVEFrontXXL = GameObject.FindWithTag("CaveFrontXXL").GetComponent<Transform>();
             _CAVERightXXL = GameObject.FindWithTag("CaveRightXXL").GetComponent<Transform>();
             _CAVEBottomXXL = GameObject.FindWithTag("CaveBottomXXL").GetComponent<Transform>();
 
+            _eyes = GameObject.FindWithTag("Eyes").GetComponent<Eyes>();
+            _wand = GameObject.FindWithTag("Wand").GetComponent<Wand>();
 
             if (myCAVEMode == CAVEMode.FourScreen) EyeDistance = 0f;
-            
 
             //GameObject cm = new GameObject();
             //cm.AddComponent<CameraManager>();
@@ -156,10 +162,8 @@ namespace Cave
             //performance ?
             API.Instance.Calculate();
 
-            //_cm.Update();
-            //_fm.Update();
-
-           // Debug.Log(CalculatedValues.Instance.AngleWandEyes);
+            transform.position = Camera.main.transform.position;
+            transform.rotation = Camera.main.transform.rotation;
         }
 
         private void SetCameraTag()

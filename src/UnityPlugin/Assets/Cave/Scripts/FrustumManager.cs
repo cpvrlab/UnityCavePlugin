@@ -11,11 +11,6 @@ public class FrustumManager : MonoBehaviour
     private CaveMain _main;
     private CameraManager _cameramanager;
 
-
-
-
-        
-
     #endregion
 
     void Awake()
