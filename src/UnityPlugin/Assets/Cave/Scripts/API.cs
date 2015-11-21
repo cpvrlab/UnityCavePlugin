@@ -8,8 +8,11 @@ namespace Cave
     {
         static readonly API _instance = new API();
 
-        public Vector2 GameViewSize {  get { return GetMainGameViewSize(); } }
+        public CaveMain Cave { get { return _main; } }
+        public Eyes Eyes { get { return _main.Eyes; } }
+        public Wand Wand { get { return _main.Wand; } }
 
+        public Vector2 GameViewSize { get { return GetMainGameViewSize(); } }
         public Quaternion AngleWandEyes { get { return _angleWandEyes; } }
         public Vector3 DirectionWandEyes { get { return _directionWandEyes; } }
 

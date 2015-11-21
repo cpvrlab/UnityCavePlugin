@@ -22,7 +22,7 @@ namespace Cave
             HandlePosition();
             HandleRotation();
             //HandleButtons();
-            //SetCursor();
+            SetCursor();
         }
 
         private void HandlePosition()
@@ -48,7 +48,7 @@ namespace Cave
             {
                 var rot = VRPN.vrpnTrackerQuat(_main.WandSettings.WorldVizObject + "@" + _main.Host, _main.WandSettings.Channel);
                 transform.rotation = rot;
-                if(_main.rotateCave == true) { _main.transform.rotation = rot; }
+                if (_main.rotateCave == true) { _main.transform.rotation = rot; }
             }
         }
 
@@ -78,6 +78,10 @@ namespace Cave
 
             // Raycast
             var fwd = transform.TransformDirection(Vector3.forward);
+
+            // Enable Collider temporarily
+            _main.ToggleColliders(true);
+
             Ray ray = new Ray(transform.position, fwd);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
@@ -112,12 +116,10 @@ namespace Cave
                 float targetY = ((localSpaceHitPoint.x + 5f) / 10f) * _main.BeamerResolutionHeight + _multiplierY * _main.BeamerResolutionHeight;
                 float targetX = ((localSpaceHitPoint.z + 5f) / 10f) * _main.BeamerResolutionWidth + _multiplierX * _main.BeamerResolutionWidth;
 
-                //Debug.Log("localSpaceHitPoint.x: " + localSpaceHitPoint.x);
-
-                //Debug.Log(string.Format("{0}, {1}", targetX, targetY));
-
-                System.Windows.Forms.Cursor.Position = new Point(Convert.ToInt32(targetX), Convert.ToInt32(targetY));
+                //System.Windows.Forms.Cursor.Position = new Point(Convert.ToInt32(targetX), Convert.ToInt32(targetY));
             }
+
+            _main.ToggleColliders(false);
         }
     }
 }

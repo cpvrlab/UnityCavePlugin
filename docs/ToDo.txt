@@ -16,8 +16,9 @@
 - 	OK - Doku ShootingGallery
 
 Julien:
-- ShootingGallery Wand-Position auf Rifle mappen
-- ShootingGallery Bug: Keine Camera bei Rifle/Shoot()
+- 	OK - ShootingGallery: Wand-Position auf Rifle mappen
+- 	OK - ShootingGallery / UnityPlugin Bug: virtueller Cave / CaveXXL im Wege bei Raycasts
+- 	OK - ShootingGallery Bug: Keine Camera bei Rifle/Shoot()
 - 	OK - UnityPlugin: Cave-Prefab automatisch mit Position Gamecamera abgleichen
 -	OK - Fixed error CameraContainer Translation
 -	OK - In API nur berechnete Werte, keine Gameobjects mehr
