@@ -82,8 +82,8 @@ namespace Cave
                     OneEuroFilter.ApplyOneEuroFilter(rot.eulerAngles , Vector3.zero, rotOri, Vector3.zero, ref filteredRot, ref filteredVelocity, _rotJitterReduction, _rotLagReduction);
                     rot.eulerAngles  = filteredRot;
                 }
+
                 transform.rotation = rot;
-                if (_main.rotateCave == true) { _main.transform.rotation = rot; }
             }
         }
     }

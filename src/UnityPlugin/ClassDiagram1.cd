@@ -14,28 +14,6 @@
   </Class>
   <Class Name="Cave.BasicSettings" Collapsed="true">
     <Position X="4" Y="0.5" Width="1.5" />
-    <NestedTypes>
-      <Class Name="Cave.BasicSettings.BlockPositionAxis" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Cave\Scripts\BasicSettings.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-      <Class Name="Cave.BasicSettings.BlockRotationAxisWand" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Cave\Scripts\BasicSettings.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-      <Class Name="Cave.BasicSettings.BlockRotationAxisEyes" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Cave\Scripts\BasicSettings.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-      <Class Name="Cave.BasicSettings.AxisSensivity" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Cave\Scripts\BasicSettings.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Cave\Scripts\BasicSettings.cs</FileName>
@@ -92,13 +70,6 @@
         <Point X="3.094" Y="1.75" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="_eyes" Type="Cave.Eyes" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="12.125" Y="5.521" />
-        <Point X="12.125" Y="6.473" />
-        <Point X="9" Y="6.473" />
-      </Path>
-    </AssociationLine>
     <AssociationLine Name="EyesSettings" Type="Cave.EyesSettings" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="10.5" Y="1.902" />
@@ -108,21 +79,28 @@
         <Point X="4.75" Y="2.441" />
       </Path>
     </AssociationLine>
+    <AssociationLine Name="_eyes" Type="Cave.Eyes" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.125" Y="5.521" />
+        <Point X="12.125" Y="6.473" />
+        <Point X="9" Y="6.473" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>ABQAQAABBCAAAAgAjAQgBKiRKEFCTgACAAQAQAVRQEk=</HashCode>
       <FileName>Assets\Cave\Scripts\CaveMain.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_cameraManager" />
-      <Field Name="WandSettings" />
-      <Field Name="_wand" />
-      <Field Name="_eyes" />
-      <Field Name="EyesSettings" />
-      <Field Name="_frustumManager" />
       <Field Name="CAVEMode" />
+      <Field Name="WandSettings" />
+      <Field Name="EyesSettings" />
+      <Field Name="GamepadSettings" />
       <Field Name="CameraManagerPrefab" />
       <Field Name="FrustumManagerPrefab" />
-      <Field Name="GamepadSettings" />
+      <Field Name="_eyes" />
+      <Field Name="_wand" />
+      <Field Name="_cameraManager" />
+      <Field Name="_frustumManager" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Cave.Eyes" Collapsed="true">
@@ -135,7 +113,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAEEQAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <HashCode>AAQAACAAACAAAAFEQAAAAAAAACCAAAAAAAACAAEEAAA=</HashCode>
       <FileName>Assets\Cave\Scripts\Eyes.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -145,7 +123,7 @@
   <Class Name="Cave.EyesSettings" Collapsed="true">
     <Position X="3.75" Y="1.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAgAAQAAAABAAAgADAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <HashCode>AAAAAAAgAAQAAAABAAAgCDAAAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Assets\Cave\Scripts\EyesSettings.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -179,12 +157,9 @@
   <Class Name="Cave.WandSettings" Collapsed="true">
     <Position X="1.75" Y="1.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAEBAgAAQAAAABAAAgADAACAAAAAAAAAAAAAIQAAA=</HashCode>
+      <HashCode>AAAAEBAgAAQAAAABAAAgCDAACAAAAAAAAAAAAAIQAAA=</HashCode>
       <FileName>Assets\Cave\Scripts\WandSettings.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="ButtonMapping" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Cave.WandSettingsButtons" Collapsed="true">
     <Position X="1.75" Y="3.25" Width="2" />
@@ -226,8 +201,8 @@
       <FileName>Assets\Cave\Scripts\FrustumManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_cameramanager" />
       <Field Name="_main" />
+      <Field Name="_cameramanager" />
     </ShowAsAssociation>
   </Class>
   <Enum Name="Cave.CAVEMode">
