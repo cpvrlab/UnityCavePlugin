@@ -7,26 +7,31 @@ namespace Cave
     [System.Serializable]
     public class WandSettings : BasicSettings
     {
-        [Header("Position")]
-        public bool TrackPosition = true;
-        public AxisSensivity MovementSensivity;
-        public BlockPositionAxis PositionAxisConstraints;
-        //public GameObject PositionTarget;
-
-        [Header("Rotation")]
-        public bool TrackRotation = true;
-        public BlockRotationAxisWand RotationAxisConstraints;
-        //public GameObject RotationTarget;
-
-        [Header("Inputs")]
-        public bool allowJoystick = true;
-        public WandSettingsButtons ButtonMapping;
-
-        [Header("VRPN")]
+        [Header("General")]
         public string WorldVizObject = "PPT0";
         public string WorldVizObjectButtons = "PPT_WAND1";
         public int Channel = 0;
         public int Port = 8945;
+        public WandSettingsButtons ButtonMapping;
+        
+
+        [Header("Position")]
+        public bool TrackPosition = true;
+        [Range(0.0f, 1.0f)]
+        public float MovementSensivity;
+        public BlockPositionAxis PositionAxisConstraints;
+        public GameObject PositionTarget;
+        public MovementSmoothing PositionMovementConstraints;
+
+        [Header("Rotation")]
+        public bool TrackRotation = true;
+        public BlockRotationAxisWand RotationAxisConstraints;
+        public GameObject RotationTarget;
+        public MovementSmoothing RotationMovementConstraints;
+
+        [Header("Joystick")]
+        public bool allowJoystick = true;
+
 
         //public enum MyCustomClassEnum
         //{
