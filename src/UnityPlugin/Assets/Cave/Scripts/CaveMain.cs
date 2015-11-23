@@ -28,9 +28,10 @@ namespace Cave
         public int BeamerResolutionWidth = 1280;
         public int BeamerResolutionHeight = 960;
         public string Host = "192.168.0.201";
-        public CAVEMode myCAVEMode = CAVEMode.FourScreen;
-        public TrackedObject myTrackingMode = TrackedObject.Eyes;
-        public bool rotateCave = true;
+        public CAVEMode CAVEMode = CAVEMode.FourScreen;
+        public float EyeDistance = 0.07f;
+        //public TrackedObject myTrackingMode = TrackedObject.Eyes;
+        //public bool rotateCave = true;
         //this is used to calc the frustum
         //public CAVEDimensions CaveDimensions;
 
@@ -42,14 +43,9 @@ namespace Cave
 
         [Header("Gamepad")]
         public GamepadSettings GamepadSettings;
-
-        [Header("Weiteres")]
-        public float EyeDistance = 0.07f;
-
         #endregion
 
         #region "public properties"
-
         public Transform CAVELeft { get { return _CAVELeft; } }
         public Transform CAVEFront { get { return _CAVEFront; } }
         public Transform CAVERight { get { return _CAVERight; } }
@@ -67,6 +63,7 @@ namespace Cave
         public FrustumManager FrustumManager { get { return _frustumManager; } }
         public GameObject CameraContainer { get { return _cameraContainer; } }
 
+        [Header("System")]
         public CameraManager CameraManagerPrefab;
         public FrustumManager FrustumManagerPrefab;
         public GameObject CameraContainerPrefab;
@@ -133,7 +130,7 @@ namespace Cave
             _frustumManager = GameObject.FindWithTag("FrustumManager").GetComponent<FrustumManager>();
             _cameraContainer = GameObject.FindWithTag("CameraContainer");
 
-            if (myCAVEMode == CAVEMode.FourScreen) EyeDistance = 0f;
+            if (CAVEMode == CAVEMode.FourScreen) EyeDistance = 0f;
 
             ToggleColliders(false);
 

@@ -861,42 +861,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de4af5b4c8fa8e4fa2a4504da8a49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BeamerResolutionWidth: 840
-  BeamerResolutionHeight: 525
+  BeamerResolutionWidth: 1280
+  BeamerResolutionHeight: 1080
   Host: 192.168.0.201
-  myCAVEMode: 1
-  myTrackingMode: 0
-  rotateCave: 0
+  CAVEMode: 1
+  EyeDistance: .0700000003
   WandSettings:
-    WorldVizObject: PPT0
-    WorldVizObjectButtons: PPT_WAND1
-    Channel: 2
-    Port: 8945
-    ButtonMapping:
-      Back: Enter
-      Joystick: Space
-      TopLeft: E
-      TopRight: R
-      BottomLeft: T
-      BottomRight: Z
-    TrackPosition: 0
-    MovementSensivity: 0
-    PositionAxisConstraints:
-      X: 0
-      Y: 0
-      Z: 0
-    PositionTarget: {fileID: 0}
-    TrackRotation: 0
-    RotationAxisConstraints:
-      Yaw: 0
-      Pitch: 0
-      Roll: 0
-    RotationTarget: {fileID: 0}
-    allowJoystick: 1
-  EyesSettings:
-    WorldVizObject: PPT0
-    Channel: 0
-    TrackPosition: 0
+    TrackPosition: 1
     MovementSensivity:
       x: 1
       y: 1
@@ -905,13 +876,39 @@ MonoBehaviour:
       X: 0
       Y: 0
       Z: 0
-    PositionTarget: {fileID: 0}
-    TrackRotation: 0
+    TrackRotation: 1
+    RotationAxisConstraints:
+      Yaw: 0
+      Pitch: 0
+      Roll: 0
+    allowJoystick: 1
+    ButtonMapping:
+      Back: Enter
+      Joystick: Space
+      TopLeft: E
+      TopRight: R
+      BottomLeft: T
+      BottomRight: Z
+    WorldVizObject: PPT0
+    WorldVizObjectButtons: PPT_WAND1
+    Channel: 2
+    Port: 8945
+  EyesSettings:
+    TrackPosition: 1
+    MovementSensivity:
+      x: 1
+      y: 1
+      z: 1
+    PositionAxisConstraints:
+      X: 0
+      Y: 0
+      Z: 0
+    TrackRotation: 1
     RotationAxisConstraints:
       Yaw: 0
       Roll: 0
-    RotationTarget: {fileID: 0}
-  EyeDistance: .0700000003
+    WorldVizObject: PPT0
+    Channel: 0
   CameraManagerPrefab: {fileID: 11439038, guid: 54c3efade4d157f4483aa38b4f7073ec,
     type: 2}
   FrustumManagerPrefab: {fileID: 11463222, guid: 3bb9b9e40fa70364cb0be3d445c9d73f,

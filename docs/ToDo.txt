@@ -22,7 +22,8 @@ Julien:
 - 	OK - UnityPlugin: Cave-Prefab automatisch mit Position Gamecamera abgleichen
 -	OK - Fixed error CameraContainer Translation
 -	OK - In API nur berechnete Werte, keine Gameobjects mehr
-- Doku UnityPackage
+- UnityPlugin: Wand-RaycastALL machen (auf Distanz beschränken und auf CAVE-Leinwand prüfen)
+- Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen?
 - Doku Device Wand
 
 Daniiiee:

@@ -272,7 +272,7 @@ namespace Cave
             //_cameraBottomLeft.transform.position.Set(-(_main.EyeDistance / 2), 0f, 0f);
             //_cameraBottomRight.transform.position.Set(_main.EyeDistance / 2, 0f, 0f);
 
-            if (_main.myCAVEMode == CAVEMode.FourScreen)
+            if (_main.CAVEMode == CAVEMode.FourScreen)
             {
                 _cameraLeftLeft.rect = new Rect(new Vector2(0f, 0.5f), new Vector2(0.5f, 0.5f));
                 _cameraFrontLeft.rect = new Rect(new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
@@ -285,7 +285,7 @@ namespace Cave
                     vi.Right.cam.enabled = false;
                 }
             }
-            else if (_main.myCAVEMode == CAVEMode.FourScreenStereo)
+            else if (_main.CAVEMode == CAVEMode.FourScreenStereo)
             {
 
                 _cameraLeftLeft.rect = new Rect(new Vector2(0f, 0.5f), new Vector2(0.25f, 0.5f));
@@ -317,7 +317,7 @@ namespace Cave
 #if UNITY_EDITOR
             int divisorX = 2;
             int divisorY = 2;
-            if (_main.myCAVEMode == CAVEMode.FourScreenStereo) { divisorX = 4; }
+            if (_main.CAVEMode == CAVEMode.FourScreenStereo) { divisorX = 4; }
 
             camIndexX = Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / Convert.ToInt32(API.GetMainGameViewSize()[0] / divisorX)));
             camIndexY = Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.y) / Convert.ToInt32(API.GetMainGameViewSize()[1] / divisorY)));
@@ -339,11 +339,11 @@ namespace Cave
                     _cameraWithCursor = _viewInfo[0].Left.cam;
                     break;
                 case 10:
-                    if(_main.myCAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[3].Left.cam; }
+                    if(_main.CAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[3].Left.cam; }
                     else { _cameraWithCursor = _viewInfo[2].Right.cam; }
                     break;
                 case 11:
-                    if (_main.myCAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[1].Left.cam; }
+                    if (_main.CAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[1].Left.cam; }
                     else { _cameraWithCursor = _viewInfo[0].Right.cam; }
                     break;
                 case 20:
