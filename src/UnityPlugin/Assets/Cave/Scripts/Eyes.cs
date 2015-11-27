@@ -46,7 +46,7 @@ namespace Cave
             if (_main.EyesSettings.TrackPosition)
             {
                 // Position
-                var posOri = transform.position;
+                var posOri = transform.localPosition;
                 var pos = VRPN.vrpnTrackerPos(_main.EyesSettings.WorldVizObject + "@" + _main.Host, _main.EyesSettings.Channel);
                 if (_usePositionSmoothing)
                 {
@@ -64,7 +64,7 @@ namespace Cave
                 //Camera.main.transform.position = pos;
                 //_main.CameraContainer.transform.position = pos;
                 //_main.CameraContainer.transform.localPosition = pos;
-                transform.position = pos;
+                transform.localPosition = pos;
             }
         }
 
