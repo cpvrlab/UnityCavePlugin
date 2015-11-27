@@ -23,10 +23,15 @@ Julien:
 -	OK - Fixed error CameraContainer Translation
 -	OK - In API nur berechnete Werte, keine Gameobjects mehr
 - UnityPlugin: Wand-RaycastALL machen (auf Distanz beschränken und auf CAVE-Leinwand prüfen)
-- Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen?
+- API: API runtime objekt suchen gehen (CameraManager, FrustumManager, ...) und zwischenspeichern falls bereits mal geholt
+- GUI: GUI-Elemente auf andere Cams mappen / z-transformieren
+- Joystick
+- Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - Doku Device Wand
 
 Daniiiee:
-- Eyes / Wand Lerping
+- 	OK - Eyes / Wand Lerping
+- Künzler-Frustum Transformation
+- Joystick
 - Doku VRPN
 - Doku Frustumtransformation
