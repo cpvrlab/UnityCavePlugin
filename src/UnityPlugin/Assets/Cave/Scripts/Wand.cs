@@ -2,11 +2,21 @@
 using System.Collections;
 using System.Drawing;
 using System;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace Cave
 {
     public class Wand : MonoBehaviour
     {
+
+        public Vector2 JoystickPosition { get { return _joystickPos; } }
+        public bool TopLeft { get { return _topLeft; } }
+        public bool TopRight { get { return _topRight; } }
+        public bool BottomLeft { get { return _bottomLeft; } }
+        public bool BottomRight { get { return _bottomRight; } }
+        public bool JoystickPress { get { return _joystickPress; } }
+        public bool ButtonBack { get { return _buttonBack; } }
+
 
         private CaveMain _main;
         private bool _usePositionSmoothing;
@@ -15,6 +25,21 @@ namespace Cave
         private float _rotLagReduction;
         private float _posJitterReduction;
         private float _posLagReduction;
+
+        private Vector2 _joystickPos;
+        private bool _topLeft;
+        private bool _topRight;
+        private bool _bottomLeft;
+        private bool _bottomRight;
+        private bool _joystickPress;
+        private bool _buttonBack;
+            
+
+        //private CrossPlatformInputManager.VirtualAxis _hVirtualAxis;
+        //private CrossPlatformInputManager.VirtualAxis _vVirtualAxis;
+
+        
+
 
         // Use this for initialization
         void Start()
@@ -28,6 +53,33 @@ namespace Cave
 
             _posJitterReduction = _main.WandSettings.PositionMovementConstraints.jitterReduction;
             _posLagReduction = _main.WandSettings.PositionMovementConstraints.lagReduction;
+
+            _joystickPos = Vector2.zero;
+            
+
+            //if (!CrossPlatformInputManager.AxisExists("Horizontal"))
+            //{
+            //    _hVirtualAxis = new CrossPlatformInputManager.VirtualAxis("Horizontal",true);
+            //    CrossPlatformInputManager.RegisterVirtualAxis(_hVirtualAxis);
+            //}
+            //else
+            //{
+            //    _hVirtualAxis = CrossPlatformInputManager.VirtualAxisReference("Horizontal");
+            //}
+
+            //if (!CrossPlatformInputManager.AxisExists("Vertical"))
+            //{
+                
+            //    _vVirtualAxis = new CrossPlatformInputManager.VirtualAxis("Vertical",true);
+            //    CrossPlatformInputManager.RegisterVirtualAxis(_vVirtualAxis);
+            //}
+            //else
+            //{
+            //    _vVirtualAxis = CrossPlatformInputManager.VirtualAxisReference("Vertical");
+            //}
+
+
+
         }
 
         // Update is called once per frame
@@ -35,7 +87,8 @@ namespace Cave
         {
             HandlePosition();
             HandleRotation();
-            //HandleButtons();
+            HandleButtons();
+            HandleJoystick();
             SetCursor();
         }
 
@@ -44,7 +97,7 @@ namespace Cave
             if (_main.WandSettings.TrackPosition)
             {
                 // Position
-                var posOri = transform.position;
+                var posOri = transform.localPosition;
                 var pos = VRPN.vrpnTrackerPos(_main.WandSettings.WorldVizObject + "@" + _main.Host, _main.WandSettings.Channel);
                 if (_usePositionSmoothing)
                 {
@@ -59,7 +112,7 @@ namespace Cave
                 if (_main.WandSettings.PositionAxisConstraints.Y) pos.x = posOri.z;
                 if (_main.WandSettings.PositionAxisConstraints.Z) pos.x = posOri.z;
 
-                transform.position = pos;
+                transform.localPosition = pos;
             }
         }
 
@@ -82,16 +135,47 @@ namespace Cave
             }
         }
 
+        private void HandleJoystick()
+        {
+
+            //Debug.Log("Joystick X: " + VRPN.vrpnAnalog(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 0));
+            //Debug.Log("Joystick Y: " + VRPN.vrpnAnalog(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 1));
+
+
+            Vector2 vCurr = new Vector2();
+            vCurr.x = (float)VRPN.vrpnAnalog(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 0);
+            vCurr.y = (float)VRPN.vrpnAnalog(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 1);
+
+            _joystickPos = vCurr;
+
+
+
+        }
+
         private void HandleButtons()
         {
             //System.Windows.Forms.SendKeys.Send();
 
             // NOTE: Convert string to keycode: KeyCode thisKeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), "Whatever") ;
+            // http://inputsimulator.codeplex.com/SourceControl/latest#WindowsInput/Native/VirtualKeyCode.cs
 
-            
+            _topLeft = VRPN.vrpnButton(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 1);
+            _topRight = VRPN.vrpnButton(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 2);
+            _bottomLeft = VRPN.vrpnButton(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 0);
+            _bottomRight = VRPN.vrpnButton(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 3);
+            _joystickPress = VRPN.vrpnButton(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 4);
+            _buttonBack = VRPN.vrpnButton(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 5);
 
-            Debug.Log("Joystick X: " + VRPN.vrpnAnalog(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 0));
-            Debug.Log("Joystick Y: " + VRPN.vrpnAnalog(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 1));
+
+            //if (_topLeft) Event.KeyboardEvent(_main.WandSettings.ButtonMapping.TopLeft);
+            //if (_topRight) Event.KeyboardEvent(_main.WandSettings.ButtonMapping.TopRight);
+            //if (_bottomLeft) Event.KeyboardEvent(_main.WandSettings.ButtonMapping.BottomLeft);
+            //if (_bottomRight) Event.KeyboardEvent(_main.WandSettings.ButtonMapping.BottomRight);
+            //if (_joystickPress) Event.KeyboardEvent(_main.WandSettings.ButtonMapping.Joystick);
+            //if (_buttonBack) Event.KeyboardEvent(_main.WandSettings.ButtonMapping.Back);
+
+
+            WindowsInput.InputSimulator.SimulateKeyPress(WindowsInput.VirtualKeyCode.SPACE);
 
             Debug.Log("Top / Left: " + VRPN.vrpnButton(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 1));
             Debug.Log("Top / Right: " + VRPN.vrpnButton(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 2));
@@ -102,7 +186,7 @@ namespace Cave
 
             Debug.Log("------------------");
 
-
+        
 
 
         }
@@ -157,5 +241,11 @@ namespace Cave
 
             _main.ToggleColliders(false);
         }
+
+        //private void OnDisable()
+        //{
+        //    _hVirtualAxis.Remove();
+        //    _vVirtualAxis.Remove();
+        //}
     }
 }

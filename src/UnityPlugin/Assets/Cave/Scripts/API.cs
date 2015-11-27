@@ -16,6 +16,8 @@ namespace Cave
         public Quaternion AngleWandEyes { get { return _angleWandEyes; } }
         public Vector3 DirectionWandEyes { get { return _directionWandEyes; } }
 
+        public Vector2 WandJoystick { get { return _main.Wand.JoystickPosition; } }
+
         private CaveMain _main;
         private Quaternion _angleWandEyes;
         private Vector3 _directionWandEyes;

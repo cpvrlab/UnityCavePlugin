@@ -135,6 +135,14 @@ namespace Cave
             ToggleColliders(false);
 
             API.Instance.Calculate();
+
+
+            // expand playersettings for mobile ionput, so that we have access to the virtualAxis from wand
+            //String scriptDefineSymbols = UnityEditor.PlayerSettings.GetScriptingDefineSymbolsForGroup(UnityEditor.BuildTargetGroup.Standalone);
+            //if (scriptDefineSymbols.IndexOf("MOBILE_INPUT") < 0)
+            //{
+            //    UnityEditor.PlayerSettings.SetScriptingDefineSymbolsForGroup(UnityEditor.BuildTargetGroup.Standalone, scriptDefineSymbols + "; MOBILE_INPUT");
+            //}
         }
 
         // Update is called once per frame
