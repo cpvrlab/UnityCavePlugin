@@ -868,19 +868,24 @@ MonoBehaviour:
   EyeDistance: .0700000003
   WandSettings:
     TrackPosition: 1
-    MovementSensivity:
-      x: 1
-      y: 1
-      z: 1
+    MovementSensivity: 2
     PositionAxisConstraints:
       X: 0
       Y: 0
       Z: 0
+    PositionMovementConstraints:
+      useOneEuroSmoothing: 1
+      jitterReduction: 1
+      lagReduction: 1
     TrackRotation: 1
     RotationAxisConstraints:
       Yaw: 0
       Pitch: 0
       Roll: 0
+    RotationMovementConstraints:
+      useOneEuroSmoothing: 1
+      jitterReduction: 1
+      lagReduction: 1
     allowJoystick: 1
     ButtonMapping:
       Back: Enter
@@ -894,7 +899,7 @@ MonoBehaviour:
     Channel: 2
     Port: 8945
   EyesSettings:
-    TrackPosition: 1
+    TrackPosition: 0
     MovementSensivity:
       x: 1
       y: 1
@@ -903,10 +908,18 @@ MonoBehaviour:
       X: 0
       Y: 0
       Z: 0
-    TrackRotation: 1
+    PositionMovementConstraints:
+      useOneEuroSmoothing: 1
+      jitterReduction: 1
+      lagReduction: 1
+    TrackRotation: 0
     RotationAxisConstraints:
       Yaw: 0
       Roll: 0
+    RotationMovementConstraints:
+      useOneEuroSmoothing: 1
+      jitterReduction: 1
+      lagReduction: 1
     WorldVizObject: PPT0
     Channel: 0
   CameraManagerPrefab: {fileID: 11439038, guid: 54c3efade4d157f4483aa38b4f7073ec,

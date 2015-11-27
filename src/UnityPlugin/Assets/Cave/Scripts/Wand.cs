@@ -9,11 +9,25 @@ namespace Cave
     {
 
         private CaveMain _main;
+        private bool _usePositionSmoothing;
+        private bool _useRotationSmoothing;
+        private float _rotJitterReduction;
+        private float _rotLagReduction;
+        private float _posJitterReduction;
+        private float _posLagReduction;
 
         // Use this for initialization
         void Start()
         {
             _main = GameObject.Find("Cave").GetComponent<CaveMain>();
+            _usePositionSmoothing = _main.WandSettings.PositionMovementConstraints.useOneEuroSmoothing;
+            _useRotationSmoothing = _main.WandSettings.RotationMovementConstraints.useOneEuroSmoothing;
+
+            _rotJitterReduction = _main.WandSettings.RotationMovementConstraints.jitterReduction;
+            _rotLagReduction = _main.WandSettings.RotationMovementConstraints.lagReduction;
+
+            _posJitterReduction = _main.WandSettings.PositionMovementConstraints.jitterReduction;
+            _posLagReduction = _main.WandSettings.PositionMovementConstraints.lagReduction;
         }
 
         // Update is called once per frame
@@ -32,6 +46,13 @@ namespace Cave
                 // Position
                 var posOri = transform.position;
                 var pos = VRPN.vrpnTrackerPos(_main.WandSettings.WorldVizObject + "@" + _main.Host, _main.WandSettings.Channel);
+                if (_usePositionSmoothing)
+                {
+                    Vector3 filteredPos = Vector3.zero;
+                    Vector3 filteredVelocity = Vector3.zero;
+                    OneEuroFilter.ApplyOneEuroFilter(pos, Vector3.zero, posOri, Vector3.zero, ref filteredPos, ref filteredVelocity, _posJitterReduction, _posLagReduction);
+                    pos = filteredPos;
+                }
 
                 // Block Axis
                 if (_main.WandSettings.PositionAxisConstraints.X) pos.x = posOri.x;
@@ -47,6 +68,16 @@ namespace Cave
             if (_main.WandSettings.TrackRotation)
             {
                 var rot = VRPN.vrpnTrackerQuat(_main.WandSettings.WorldVizObject + "@" + _main.Host, _main.WandSettings.Channel);
+                Vector3 rotOri = transform.rotation.eulerAngles;
+               
+
+                if (_useRotationSmoothing)
+                {
+                    Vector3 filteredRot = Vector3.zero;
+                    Vector3 filteredVelocity = Vector3.zero;
+                    OneEuroFilter.ApplyOneEuroFilter(rot.eulerAngles, Vector3.zero, rotOri, Vector3.zero, ref filteredRot, ref filteredVelocity, _rotJitterReduction, _rotLagReduction);
+                    rot.eulerAngles = filteredRot;
+                }
                 transform.rotation = rot;
             }
         }
@@ -56,6 +87,8 @@ namespace Cave
             //System.Windows.Forms.SendKeys.Send();
 
             // NOTE: Convert string to keycode: KeyCode thisKeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), "Whatever") ;
+
+            
 
             Debug.Log("Joystick X: " + VRPN.vrpnAnalog(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 0));
             Debug.Log("Joystick Y: " + VRPN.vrpnAnalog(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 1));
@@ -68,6 +101,10 @@ namespace Cave
             Debug.Log("Button Back: " + VRPN.vrpnButton(_main.WandSettings.WorldVizObjectButtons + "@" + _main.Host + ":" + _main.WandSettings.Port, 5));
 
             Debug.Log("------------------");
+
+
+
+
         }
 
         private void SetCursor()
