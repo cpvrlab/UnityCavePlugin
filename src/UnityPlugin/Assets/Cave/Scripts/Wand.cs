@@ -15,7 +15,9 @@ namespace Cave
         public bool BottomRight { get { return _bottomRight; } }
         public bool JoystickPress { get { return _joystickPress; } }
         public bool ButtonBack { get { return _buttonBack; } }
-        
+
+        public Sprite MouseCursorDuplicate;
+
         private bool _usePositionSmoothing;
         private bool _useRotationSmoothing;
         private float _rotJitterReduction;
@@ -31,9 +33,11 @@ namespace Cave
         private bool _joystickPress;
         private bool _buttonBack;
 
+        private RectTransform _mouseCursorDuplicate;
+
         //private CrossPlatformInputManager.VirtualAxis _hVirtualAxis;
         //private CrossPlatformInputManager.VirtualAxis _vVirtualAxis;
-        
+
         // Use this for initialization
         void Start()
         {
@@ -47,7 +51,8 @@ namespace Cave
             _posLagReduction = API.Instance.Cave.WandSettings.PositionMovementConstraints.lagReduction;
 
             _joystickPos = Vector2.zero;
-            
+
+            _mouseCursorDuplicate = GameObject.Find("MouseCursorDuplicate").GetComponent<RectTransform>();
 
             //if (!CrossPlatformInputManager.AxisExists("Horizontal"))
             //{
@@ -61,7 +66,7 @@ namespace Cave
 
             //if (!CrossPlatformInputManager.AxisExists("Vertical"))
             //{
-                
+
             //    _vVirtualAxis = new CrossPlatformInputManager.VirtualAxis("Vertical",true);
             //    CrossPlatformInputManager.RegisterVirtualAxis(_vVirtualAxis);
             //}
@@ -148,7 +153,7 @@ namespace Cave
             _bottomRight = VRPN.vrpnButton(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 3);
             _joystickPress = VRPN.vrpnButton(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 4);
             _buttonBack = VRPN.vrpnButton(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 5);
-            
+
             //if (_topLeft) Event.KeyboardEvent(API.Instance.Cave.WandSettings.ButtonMapping.TopLeft);
             //if (_topRight) Event.KeyboardEvent(API.Instance.Cave.WandSettings.ButtonMapping.TopRight);
             //if (_bottomLeft) Event.KeyboardEvent(API.Instance.Cave.WandSettings.ButtonMapping.BottomLeft);
@@ -215,7 +220,7 @@ namespace Cave
                 }
 
                 float localHitpointNoramlizedX = 1f - ((localSpaceHitPoint.z + 5f) / 10f);
-                float localHitpointNoramlizedY = 1 - ((localSpaceHitPoint.x + 5f) / 10f);
+                float localHitpointNoramlizedY = 1f - ((localSpaceHitPoint.x + 5f) / 10f);
 
                 float posCaveSideX = localHitpointNoramlizedX * API.Instance.Cave.BeamerResolutionWidth;
                 float posCaveSideY = localHitpointNoramlizedY * API.Instance.Cave.BeamerResolutionHeight;
@@ -223,10 +228,19 @@ namespace Cave
                 float posCaveX = posCaveSideX + _multiplierX * API.Instance.Cave.BeamerResolutionWidth;
                 float posCaveY = posCaveSideY + _multiplierY * API.Instance.Cave.BeamerResolutionHeight;
 
-                Debug.Log("posCaveX: " + posCaveX);
-                Debug.Log("posCaveY: " + posCaveY);
+                float posCaveDuplicateX = posCaveX + API.Instance.Cave.BeamerResolutionWidth;
+                float posCaveDuplicateY = -(posCaveY - _mouseCursorDuplicate.sizeDelta.y);
 
-                System.Windows.Forms.Cursor.Position = new Point(Convert.ToInt32(posCaveX), Convert.ToInt32(posCaveY));
+                Debug.Log("posCaveDuplicateX: " + posCaveX);
+                Debug.Log("posCaveDuplicateY: " + posCaveY);
+
+                //System.Windows.Forms.Cursor.Position = new Point(Convert.ToInt32(posCaveX), Convert.ToInt32(posCaveY));
+
+                // Set Position Duplicate
+                Vector2 v2 = new Vector2(posCaveDuplicateX, posCaveDuplicateY);
+                _mouseCursorDuplicate.anchoredPosition = v2;
+
+                
             }
 
             API.Instance.Cave.ToggleColliders(false);

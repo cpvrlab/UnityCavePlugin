@@ -22,11 +22,14 @@ Julien:
 - 	OK - UnityPlugin: Cave-Prefab automatisch mit Position Gamecamera abgleichen
 -	OK - Fixed error CameraContainer Translation
 -	OK - In API nur berechnete Werte, keine Gameobjects mehr
-- 	OK - UnityPlugin: Wand-RaycastALL machen (auf Distanz beschränken und auf CAVE-Leinwand prüfen)
+- UnityPlugin: Wand-RaycastALL machen (auf Distanz beschränken und auf CAVE-Leinwand prüfen) -> Layer "CAVE" dynamisch erzeugen und zuweisen. Wird nicht beim Assets importieren übernommen.
 - 	OK - API: API runtime objekt suchen gehen (CameraManager, FrustumManager, ...) und zwischenspeichern falls bereits mal geholt
 - 	OK - Wand Mousecursor korrekt setzen
 - MouseCursor: auf Kameras fürs rechte Auge duplizieren
 - GUI: GUI-Elemente auf andere Cams mappen / z-transformieren
+	1) Canvas mit bereits existierendem Script auf andere Kamera projizieren (Screen Space - Camera) -> Frustum Transformation stört dabei
+	2) Grösse / Position Canvas ändern -> Nur mit Modus "World Space" möglich
+	3) Neues Canvas erstellen und Unterelemente reinladen
 - Joystick
 - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - Doku Device Wand
