@@ -8,19 +8,96 @@ namespace Cave
     {
         static readonly API _instance = new API();
 
-        public CaveMain Cave { get { return _main; } }
-        public Eyes Eyes { get { return _main.Eyes; } }
-        public Wand Wand { get { return _main.Wand; } }
+        public CaveMain Cave
+        {
+            get
+            {
+                if(_main == null)
+                {
+                    return _main = GameObject.Find("Cave").GetComponent<CaveMain>();
+                }
+
+                return _main;
+             }
+        }
+
+        public Eyes Eyes
+        {
+            get
+            {
+                if(_eyes == null)
+                {
+                    return _eyes = GameObject.Find("Eyes").GetComponent<Eyes>();
+                }
+
+                return _eyes;
+            }
+        }
+
+        public Wand Wand
+        {
+            get
+            {
+                if (_wand == null)
+                {
+                    return _wand = GameObject.Find("Wand").GetComponent<Wand>();
+                }
+
+                return _wand;
+            }
+        }
+
+        public CameraManager CameraManager
+        {
+            get
+            {
+                if(_cameraManager == null)
+                {
+                    return _cameraManager = GameObject.FindWithTag("CameraManager").GetComponent<CameraManager>();
+                }
+
+                return _cameraManager;
+            }
+        }
+
+        public FrustumManager FrustumManager
+        {
+            get
+            {
+                if (_frustumManager == null)
+                {
+                    return _frustumManager = GameObject.FindWithTag("FrustumManager").GetComponent<FrustumManager>();
+                }
+
+                return _frustumManager;
+            }
+        }
+
+        public GameObject CameraContainer
+        {
+            get
+            {
+                if (_cameraContainer == null)
+                {
+                    return _cameraContainer = GameObject.FindWithTag("CameraContainer");
+                }
+
+                return _cameraContainer;
+            }
+        }
 
         public Vector2 GameViewSize { get { return GetMainGameViewSize(); } }
-        public Quaternion AngleWandEyes { get { return _angleWandEyes; } }
-        public Vector3 DirectionWandEyes { get { return _directionWandEyes; } }
+        public Quaternion AngleWandEyes { get { return Quaternion.Inverse(Eyes.transform.rotation) * Wand.transform.rotation; } }
+        public Vector3 DirectionWandEyes { get { return Eyes.transform.position - Wand.transform.position; } }
 
-        public Vector2 WandJoystick { get { return _main.Wand.JoystickPosition; } }
+        public Vector2 WandJoystick { get { return Wand.JoystickPosition; } }
 
         private CaveMain _main;
-        private Quaternion _angleWandEyes;
-        private Vector3 _directionWandEyes;
+        private Eyes _eyes;
+        private Wand _wand;
+        private CameraManager _cameraManager;
+        private FrustumManager _frustumManager;
+        private GameObject _cameraContainer;
 
         public static API Instance
         {
@@ -31,18 +108,7 @@ namespace Cave
         }
 
         API()
-        {
-            _main = GameObject.Find("Cave").GetComponent<CaveMain>();
-        }
-
-        public void Calculate()
-        {
-            // Calculate Angle between Wand / Eyes
-            _angleWandEyes = Quaternion.Inverse(_main.Eyes.transform.rotation) * _main.Wand.transform.rotation;
-
-            // Calculate Vector between Wand / Eyes
-            _directionWandEyes = _main.Eyes.transform.position - _main.Wand.transform.position;
-        }
+        { }
 
         public static Vector2 GetMainGameViewSize()
         {

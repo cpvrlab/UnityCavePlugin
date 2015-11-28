@@ -56,12 +56,12 @@ namespace Cave
         public Transform CAVERightXXL { get { return _CAVERightXXL; } }
         public Transform CAVEBottomXXL { get { return _CAVEBottomXXL; } }
 
-        public Eyes Eyes { get { return _eyes; } }
-        public Wand Wand { get { return _wand; } }
+        //public Eyes Eyes { get { return _eyes; } }
+        //public Wand Wand { get { return _wand; } }
 
-        public CameraManager CameraManager { get { return _cameraManager; } }
-        public FrustumManager FrustumManager { get { return _frustumManager; } }
-        public GameObject CameraContainer { get { return _cameraContainer; } }
+        //public CameraManager CameraManager { get { return _cameraManager; } }
+        //public FrustumManager FrustumManager { get { return _frustumManager; } }
+        //public GameObject CameraContainer { get { return _cameraContainer; } }
 
         [Header("System")]
         public CameraManager CameraManagerPrefab;
@@ -69,6 +69,11 @@ namespace Cave
         public GameObject CameraContainerPrefab;
 
         //public Vector3 currentTrackedObject { get { return _TrackedObject; } }
+
+        public struct CaveSides
+        {
+            const string LEFT = "CaveLeft";
+        }
 
         #endregion
 
@@ -85,12 +90,12 @@ namespace Cave
         private Transform _CAVERightXXL;
         private Transform _CAVEBottomXXL;
 
-        private Eyes _eyes;
-        private Wand _wand;
+        //private Eyes _eyes;
+        //private Wand _wand;
 
-        private CameraManager _cameraManager;
-        private FrustumManager _frustumManager;
-        private GameObject _cameraContainer;
+        //private CameraManager _cameraManager;
+        //private FrustumManager _frustumManager;
+        //private GameObject _cameraContainer;
 
         private List<Camera> mySecondaryCameras = new List<Camera>();
         private List<Transform> _walls = new List<Transform>();
@@ -123,19 +128,16 @@ namespace Cave
             _wallsXXL.Add(_CAVERightXXL = GameObject.FindWithTag("CaveRightXXL").GetComponent<Transform>());
             _wallsXXL.Add(_CAVEBottomXXL = GameObject.FindWithTag("CaveBottomXXL").GetComponent<Transform>());
 
-            _eyes = GameObject.FindWithTag("Eyes").GetComponent<Eyes>();
-            _wand = GameObject.FindWithTag("Wand").GetComponent<Wand>();
+            //_eyes = GameObject.FindWithTag("Eyes").GetComponent<Eyes>();
+            //_wand = GameObject.FindWithTag("Wand").GetComponent<Wand>();
 
-            _cameraManager = GameObject.FindWithTag("CameraManager").GetComponent<CameraManager>();
-            _frustumManager = GameObject.FindWithTag("FrustumManager").GetComponent<FrustumManager>();
-            _cameraContainer = GameObject.FindWithTag("CameraContainer");
+            //_cameraManager = GameObject.FindWithTag("CameraManager").GetComponent<CameraManager>();
+            //_frustumManager = GameObject.FindWithTag("FrustumManager").GetComponent<FrustumManager>();
+            //_cameraContainer = GameObject.FindWithTag("CameraContainer");
 
             if (CAVEMode == CAVEMode.FourScreen) EyeDistance = 0f;
 
             ToggleColliders(false);
-
-            API.Instance.Calculate();
-
 
             // expand playersettings for mobile ionput, so that we have access to the virtualAxis from wand
             //String scriptDefineSymbols = UnityEditor.PlayerSettings.GetScriptingDefineSymbolsForGroup(UnityEditor.BuildTargetGroup.Standalone);
@@ -148,9 +150,6 @@ namespace Cave
         // Update is called once per frame
         void Update()
         {
-            //performance ?
-            API.Instance.Calculate();
-
             transform.position = Camera.main.transform.position;
             transform.rotation = Camera.main.transform.rotation;
         }

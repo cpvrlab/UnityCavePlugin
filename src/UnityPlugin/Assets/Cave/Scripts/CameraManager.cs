@@ -57,8 +57,6 @@ namespace Cave
         private List<Camera> _cameras;
         private Dictionary<int, ViewInfo> _viewInfo;
 
-        private CaveMain _main;
-
         private Camera _cameraLeftLeft = null;
         private Camera _cameraFrontLeft = null;
         private Camera _cameraRightLeft = null;
@@ -76,9 +74,9 @@ namespace Cave
         
         void Awake()
         {
-            _main = GameObject.Find("Cave").GetComponent<CaveMain>();
+            //_main = GameObject.Find("Cave").GetComponent<CaveMain>();
 
-            transform.parent = _main.gameObject.transform;
+            transform.parent = API.Instance.Cave.gameObject.transform;
         }
 
         void Start()
@@ -101,22 +99,22 @@ namespace Cave
                 Left = new CameraInfo
                 {
                     cam = _cameraLeftLeft,
-                    offset = new Vector3(0f, 0f, -(_main.EyeDistance / 2))
+                    offset = new Vector3(0f, 0f, -(API.Instance.Cave.EyeDistance / 2))
                 },
                 Right = new CameraInfo
                 {
                     cam = _cameraLeftRight,
-                    offset = new Vector3(0f, 0f, +(_main.EyeDistance / 2))
+                    offset = new Vector3(0f, 0f, +(API.Instance.Cave.EyeDistance / 2))
                 },
                 CAVESide = new CAVEPlanesettings
                 {
                     name = "left",
-                    width = _main.CAVELeft.transform.localScale.z * 10f,
-                    height = _main.CAVELeft.transform.localScale.x * 10f,
-                    center = new Vector3(_main.CAVELeft.transform.localScale.x * 10f / 2, 0f, 0f),
+                    width = API.Instance.Cave.CAVELeft.transform.localScale.z * 10f,
+                    height = API.Instance.Cave.CAVELeft.transform.localScale.x * 10f,
+                    center = new Vector3(API.Instance.Cave.CAVELeft.transform.localScale.x * 10f / 2, 0f, 0f),
                     normal = new Vector3(-1f, 0f, 0f),
-                    Transform = _main.CAVELeft,
-                    TransformXXL = _main.CAVELeftXXL,
+                    Transform = API.Instance.Cave.CAVELeft,
+                    TransformXXL = API.Instance.Cave.CAVELeftXXL,
                     up = new Vector3(0, 1, 0),
                     corners = new corners
                     {
@@ -133,22 +131,22 @@ namespace Cave
                 Left = new CameraInfo
                 {
                     cam = _cameraFrontLeft,
-                    offset = new Vector3(-(_main.EyeDistance / 2), 0f, 0f)
+                    offset = new Vector3(-(API.Instance.Cave.EyeDistance / 2), 0f, 0f)
                 },
                 Right = new CameraInfo
                 {
                     cam = _cameraFrontRight,
-                    offset = new Vector3(+(_main.EyeDistance / 2), 0f, 0f)
+                    offset = new Vector3(+(API.Instance.Cave.EyeDistance / 2), 0f, 0f)
                 },
                 CAVESide = new CAVEPlanesettings
                 {
                     name = "front",
-                    width = _main.CAVEFront.transform.localScale.z * 10f,
-                    height = _main.CAVEFront.transform.localScale.x * 10f,
-                    center = new Vector3(0f, 0f, _main.CAVEFront.transform.localScale.z * 10f / 2),
+                    width = API.Instance.Cave.CAVEFront.transform.localScale.z * 10f,
+                    height = API.Instance.Cave.CAVEFront.transform.localScale.x * 10f,
+                    center = new Vector3(0f, 0f, API.Instance.Cave.CAVEFront.transform.localScale.z * 10f / 2),
                     normal = new Vector3(0f, 0f, 1f),
-                    Transform = _main.CAVEFront,
-                    TransformXXL = _main.CAVEFrontXXL,
+                    Transform = API.Instance.Cave.CAVEFront,
+                    TransformXXL = API.Instance.Cave.CAVEFrontXXL,
                     up = new Vector3(0, 1, 0),
                     corners = new corners
                     {
@@ -165,22 +163,22 @@ namespace Cave
                 Left = new CameraInfo
                 {
                     cam = _cameraRightLeft,
-                    offset = new Vector3(0f,0f,+(_main.EyeDistance / 2))
+                    offset = new Vector3(0f,0f,+(API.Instance.Cave.EyeDistance / 2))
                 },
                 Right = new CameraInfo
                 {
                     cam = _cameraRightRight,
-                    offset = new Vector3(0f, 0f, -(_main.EyeDistance / 2))
+                    offset = new Vector3(0f, 0f, -(API.Instance.Cave.EyeDistance / 2))
                 },
                 CAVESide = new CAVEPlanesettings
                 {
                     name = "right",
-                    width = _main.CAVERight.transform.localScale.z * 10f,
-                    height = _main.CAVERight.transform.localScale.x * 10f,
-                    center = new Vector3(_main.CAVERight.transform.localScale.x * 10f / 2, 0f, 0f),
+                    width = API.Instance.Cave.CAVERight.transform.localScale.z * 10f,
+                    height = API.Instance.Cave.CAVERight.transform.localScale.x * 10f,
+                    center = new Vector3(API.Instance.Cave.CAVERight.transform.localScale.x * 10f / 2, 0f, 0f),
                     normal = new Vector3(1f, 0f, 0f),
-                    Transform = _main.CAVERight,
-                    TransformXXL = _main.CAVERightXXL,
+                    Transform = API.Instance.Cave.CAVERight,
+                    TransformXXL = API.Instance.Cave.CAVERightXXL,
                     up = new Vector3(0, 1, 0),
                     corners = new corners
                     {
@@ -198,22 +196,22 @@ namespace Cave
                 Left = new CameraInfo
                 {
                     cam = _cameraBottomLeft,
-                    offset = new Vector3(-(_main.EyeDistance / 2), 0f, 0f)
+                    offset = new Vector3(-(API.Instance.Cave.EyeDistance / 2), 0f, 0f)
                 },
                 Right = new CameraInfo
                 {
                     cam = _cameraBottomRight,
-                    offset = new Vector3(+(_main.EyeDistance / 2), 0f, 0f)
+                    offset = new Vector3(+(API.Instance.Cave.EyeDistance / 2), 0f, 0f)
                 },
                 CAVESide = new CAVEPlanesettings
                 {
                     name = "bottom",
-                    width = _main.CAVEBottom.transform.localScale.z * 10f,
-                    height = _main.CAVEBottom.transform.localScale.x * 10f,
-                    center = new Vector3(0f, _main.CAVEBottom.transform.localScale.x * 10f, 0f),
+                    width = API.Instance.Cave.CAVEBottom.transform.localScale.z * 10f,
+                    height = API.Instance.Cave.CAVEBottom.transform.localScale.x * 10f,
+                    center = new Vector3(0f, API.Instance.Cave.CAVEBottom.transform.localScale.x * 10f, 0f),
                     normal = new Vector3(0f, 1f, 0f),
-                    Transform = _main.CAVEBottom,
-                    TransformXXL = _main.CAVEBottomXXL,
+                    Transform = API.Instance.Cave.CAVEBottom,
+                    TransformXXL = API.Instance.Cave.CAVEBottomXXL,
                     up = new Vector3(1, 0, 0),
                     corners = new corners
                     {
@@ -272,7 +270,7 @@ namespace Cave
             //_cameraBottomLeft.transform.position.Set(-(_main.EyeDistance / 2), 0f, 0f);
             //_cameraBottomRight.transform.position.Set(_main.EyeDistance / 2, 0f, 0f);
 
-            if (_main.CAVEMode == CAVEMode.FourScreen)
+            if (API.Instance.Cave.CAVEMode == CAVEMode.FourScreen)
             {
                 _cameraLeftLeft.rect = new Rect(new Vector2(0f, 0.5f), new Vector2(0.5f, 0.5f));
                 _cameraFrontLeft.rect = new Rect(new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
@@ -285,7 +283,7 @@ namespace Cave
                     vi.Right.cam.enabled = false;
                 }
             }
-            else if (_main.CAVEMode == CAVEMode.FourScreenStereo)
+            else if (API.Instance.Cave.CAVEMode == CAVEMode.FourScreenStereo)
             {
 
                 _cameraLeftLeft.rect = new Rect(new Vector2(0f, 0.5f), new Vector2(0.25f, 0.5f));
@@ -308,7 +306,7 @@ namespace Cave
 
         void Update()
         {
-            if (_main == null) return;
+            if (API.Instance.Cave == null) return;
 
             int camIndexX, camIndexY;
             camIndexX = camIndexY = 0;
@@ -317,14 +315,14 @@ namespace Cave
 #if UNITY_EDITOR
             int divisorX = 2;
             int divisorY = 2;
-            if (_main.CAVEMode == CAVEMode.FourScreenStereo) { divisorX = 4; }
+            if (API.Instance.Cave.CAVEMode == CAVEMode.FourScreenStereo) { divisorX = 4; }
 
             camIndexX = Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / Convert.ToInt32(API.GetMainGameViewSize()[0] / divisorX)));
             camIndexY = Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.y) / Convert.ToInt32(API.GetMainGameViewSize()[1] / divisorY)));
             
 #else
-            camIndexX = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / _main.BeamerResolutionWidth)), 0);
-            camIndexY = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.y) / _main.BeamerResolutionHeight)), 0);
+            camIndexX = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / API.Instance.Cave.BeamerResolutionWidth)), 0);
+            camIndexY = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.y) / API.Instance.Cave.BeamerResolutionHeight)), 0);
 #endif
 
             // Get Camera based on cursor position
@@ -339,11 +337,11 @@ namespace Cave
                     _cameraWithCursor = _viewInfo[0].Left.cam;
                     break;
                 case 10:
-                    if(_main.CAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[3].Left.cam; }
+                    if(API.Instance.Cave.CAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[3].Left.cam; }
                     else { _cameraWithCursor = _viewInfo[2].Right.cam; }
                     break;
                 case 11:
-                    if (_main.CAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[1].Left.cam; }
+                    if (API.Instance.Cave.CAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[1].Left.cam; }
                     else { _cameraWithCursor = _viewInfo[0].Right.cam; }
                     break;
                 case 20:
@@ -371,7 +369,7 @@ namespace Cave
 
 
             // Rotate CAVE according to Maincamera
-            _main.transform.rotation = Camera.main.transform.rotation;
+            API.Instance.Cave.transform.rotation = Camera.main.transform.rotation;
         }
     }
 }

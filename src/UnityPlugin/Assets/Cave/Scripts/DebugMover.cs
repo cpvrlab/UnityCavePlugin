@@ -3,14 +3,8 @@ using System.Collections;
 
 namespace Cave
 {
-
-    
-
     public class DebugMover : MonoBehaviour
     {
-    
-        
-
         float TimeCounter = 0f;
 
         float speed;
@@ -20,8 +14,8 @@ namespace Cave
         void Start()
         {
             speed = 0.5f;
-            width = 0.4f;
-            height = 0.7f;
+            width = 0.8f;
+            height = 0.3f;
         }
 
         // Update is called once per frame

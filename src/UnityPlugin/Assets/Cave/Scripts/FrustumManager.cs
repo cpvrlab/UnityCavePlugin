@@ -8,17 +8,11 @@ public class FrustumManager : MonoBehaviour
 {
     #region "private vars"
 
-    private CaveMain _main;
-    private CameraManager _cameramanager;
-
     #endregion
 
     void Awake()
     {
-        _main = GameObject.Find("Cave").GetComponent<CaveMain>();
-        _cameramanager = GameObject.FindWithTag("CameraManager").GetComponent<CameraManager>();
-
-        transform.parent = _main.gameObject.transform;
+        transform.parent = API.Instance.Cave.gameObject.transform;
     }
 
     void Start () {
@@ -28,9 +22,9 @@ public class FrustumManager : MonoBehaviour
 
     void Update () {
 
-        if (_main == null) return;
+        if (API.Instance.Cave == null) return;
         
-        foreach(KeyValuePair<int,CameraManager.ViewInfo>  var in _cameramanager.FullViewInfo)
+        foreach(KeyValuePair<int,CameraManager.ViewInfo>  var in API.Instance.CameraManager.FullViewInfo)
         {
             //cannot access to value-pair as reference in dict
             Camera cLeft = var.Value.Left.cam;

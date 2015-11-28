@@ -1050,6 +1050,62 @@ Prefab:
       propertyPath: WandSettings.Channel
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: WandSettings.TrackPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: WandSettings.TrackRotation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 167124, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 137984, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 117014, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 110528, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: BeamerResolutionWidth
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: BeamerResolutionHeight
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 412266, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.29700005
+      objectReference: {fileID: 0}
+    - target: {fileID: 412266, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -.550999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 412266, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -.648051381
+      objectReference: {fileID: 0}
+    - target: {fileID: 412266, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .698458433
+      objectReference: {fileID: 0}
+    - target: {fileID: 412266, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: .222573191
+      objectReference: {fileID: 0}
+    - target: {fileID: 412266, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .206510365
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
   m_IsPrefabParent: 0
@@ -1200,6 +1256,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!1 &1878459301 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192292, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+  m_PrefabInternal: {fileID: 1712826073}
+--- !u!114 &1878459307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1878459301}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ae466d777103a4397d2e218d34214b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2042017812
 GameObject:
   m_ObjectHideFlags: 0
