@@ -1260,11 +1260,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: BeamerResolutionWidth
-      value: 480
+      value: 1280
       objectReference: {fileID: 0}
     - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: BeamerResolutionHeight
-      value: 540
+      value: 960
       objectReference: {fileID: 0}
     - target: {fileID: 412266, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1289,6 +1289,46 @@ Prefab:
     - target: {fileID: 412266, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: m_LocalRotation.z
       value: .206510365
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330584, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355682, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343052, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303408, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399806, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308460, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2340060, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306286, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: GUILocation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: ShowCave
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}

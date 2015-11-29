@@ -18,17 +18,16 @@ namespace Cave
 
     #endregion
 
-
     public class CaveMain : MonoBehaviour
     {
-
         #region "settings"
 
         [Header("Main")]
         public int BeamerResolutionWidth = 1280;
         public int BeamerResolutionHeight = 960;
         public string Host = "192.168.0.201";
-        public CAVEMode CAVEMode = CAVEMode.FourScreen;
+        public CAVEMode CAVEMode = CAVEMode.FourScreenStereo;
+        public BasicSettings.Sides GUILocation = BasicSettings.Sides.Front;
         public float EyeDistance = 0.07f;
         //public TrackedObject myTrackingMode = TrackedObject.Eyes;
         //public bool rotateCave = true;
@@ -67,13 +66,9 @@ namespace Cave
         public CameraManager CameraManagerPrefab;
         public FrustumManager FrustumManagerPrefab;
         public GameObject CameraContainerPrefab;
+        public bool ShowCave = false;
 
         //public Vector3 currentTrackedObject { get { return _TrackedObject; } }
-
-        public struct CaveSides
-        {
-            const string LEFT = "CaveLeft";
-        }
 
         #endregion
 
@@ -128,6 +123,19 @@ namespace Cave
             _wallsXXL.Add(_CAVERightXXL = GameObject.FindWithTag("CaveRightXXL").GetComponent<Transform>());
             _wallsXXL.Add(_CAVEBottomXXL = GameObject.FindWithTag("CaveBottomXXL").GetComponent<Transform>());
 
+            if (!ShowCave)
+            {
+                foreach (var w in _walls)
+                {
+                    w.GetComponent<Renderer>().enabled = false;
+                }
+
+                foreach (var w in _wallsXXL)
+                {
+                    w.GetComponent<Renderer>().enabled = false;
+                }
+            }
+
             //_eyes = GameObject.FindWithTag("Eyes").GetComponent<Eyes>();
             //_wand = GameObject.FindWithTag("Wand").GetComponent<Wand>();
 
@@ -138,6 +146,8 @@ namespace Cave
             if (CAVEMode == CAVEMode.FourScreen) EyeDistance = 0f;
 
             ToggleColliders(false);
+
+            PlaceUIElements();
 
             // expand playersettings for mobile ionput, so that we have access to the virtualAxis from wand
             //String scriptDefineSymbols = UnityEditor.PlayerSettings.GetScriptingDefineSymbolsForGroup(UnityEditor.BuildTargetGroup.Standalone);
@@ -170,6 +180,65 @@ namespace Cave
             {
                 w.GetComponent<Collider>().enabled = status;
             }
+        }
+
+        private void PlaceUIElements()
+        {
+            Transform caveSide;
+            Vector2 rot = Vector2.zero;
+
+            switch (GUILocation)
+            {
+                case BasicSettings.Sides.Left:
+                    caveSide = API.Instance.Cave.CAVELeftXXL;
+                    rot.x = 0f;
+                    rot.y = 270f;
+                    break;
+
+                case BasicSettings.Sides.Right:
+                    caveSide = API.Instance.Cave.CAVERightXXL;
+                    rot.x = 0f;
+                    rot.y = 90;
+                    break;
+
+                case BasicSettings.Sides.Bottom:
+                    caveSide = API.Instance.Cave.CAVEBottomXXL;
+                    rot.x = 90f;
+                    rot.y = 0f;
+                    break;
+
+                default:
+                    caveSide = API.Instance.Cave.CAVEFrontXXL;
+                    break;
+                }
+
+            var canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+            var canvasRectTransform = GameObject.Find("Canvas").GetComponent<RectTransform>();
+
+            canvas.renderMode = RenderMode.WorldSpace;
+            canvasRectTransform.sizeDelta = new Vector2(caveSide.transform.localScale.z * 1000f, caveSide.transform.localScale.x * 1000f);
+            canvasRectTransform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            canvasRectTransform.SetParent(API.Instance.Cave.transform);
+            //canvasRectTransform.transform.parent = API.Instance.Cave.transform;
+            canvasRectTransform.localPosition = caveSide.transform.localPosition;
+            canvasRectTransform.eulerAngles = new Vector3(rot.x, rot.y, 0f);
+        }
+
+        List<GameObject> GetAllUIElements()
+        {
+            int layerUI = LayerMask.NameToLayer("UI");
+            List<GameObject> uiElements = new List<GameObject>();
+            GameObject[] allElements = FindObjectsOfType<GameObject>();
+
+            foreach (var go in allElements)
+            {
+                if (go.layer == layerUI)
+                {
+                    uiElements.Add(go);
+                }
+            }
+
+            return uiElements;
         }
     }
 }

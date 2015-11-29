@@ -231,8 +231,8 @@ namespace Cave
                 float posCaveDuplicateX = posCaveX + API.Instance.Cave.BeamerResolutionWidth;
                 float posCaveDuplicateY = -(posCaveY - _mouseCursorDuplicate.sizeDelta.y);
 
-                Debug.Log("posCaveDuplicateX: " + posCaveX);
-                Debug.Log("posCaveDuplicateY: " + posCaveY);
+                //Debug.Log("posCaveDuplicateX: " + posCaveX);
+                //Debug.Log("posCaveDuplicateY: " + posCaveY);
 
                 //System.Windows.Forms.Cursor.Position = new Point(Convert.ToInt32(posCaveX), Convert.ToInt32(posCaveY));
 

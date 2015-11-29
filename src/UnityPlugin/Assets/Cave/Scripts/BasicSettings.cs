@@ -49,5 +49,11 @@ namespace Cave
             [Range(0.0f, 1.0f)]
             public float lagReduction = 1f;
         }
+
+        [System.Serializable]
+        public enum Sides
+        {
+            Left, Front, Right, Bottom
+        }
     }
 }
