@@ -11,6 +11,11 @@ namespace Cave
         FourScreen, FourScreenStereo
     };
 
+    public enum FrustumMode
+    {
+        CAVEXXL, OffAxis
+    };
+
     public enum TrackedObject
     {
         Eyes, Wand, Nothing
@@ -27,6 +32,7 @@ namespace Cave
         public int BeamerResolutionHeight = 960;
         public string Host = "192.168.0.201";
         public CAVEMode CAVEMode = CAVEMode.FourScreenStereo;
+        public FrustumMode FrustumMode = FrustumMode.CAVEXXL;
         public BasicSettings.Sides GUILocation = BasicSettings.Sides.Front;
         public float EyeDistance = 0.07f;
         //public TrackedObject myTrackingMode = TrackedObject.Eyes;

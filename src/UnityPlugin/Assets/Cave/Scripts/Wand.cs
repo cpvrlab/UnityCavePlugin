@@ -154,12 +154,12 @@ namespace Cave
             _joystickPress = VRPN.vrpnButton(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 4);
             _buttonBack = VRPN.vrpnButton(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 5);
 
-            //if (_topLeft) Event.KeyboardEvent(API.Instance.Cave.WandSettings.ButtonMapping.TopLeft);
-            //if (_topRight) Event.KeyboardEvent(API.Instance.Cave.WandSettings.ButtonMapping.TopRight);
-            //if (_bottomLeft) Event.KeyboardEvent(API.Instance.Cave.WandSettings.ButtonMapping.BottomLeft);
-            //if (_bottomRight) Event.KeyboardEvent(API.Instance.Cave.WandSettings.ButtonMapping.BottomRight);
-            //if (_joystickPress) Event.KeyboardEvent(API.Instance.Cave.WandSettings.ButtonMapping.Joystick);
-            //if (_buttonBack) Event.KeyboardEvent(API.Instance.Cave.WandSettings.ButtonMapping.Back);
+            if (_topLeft) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.TopLeft);
+            if (_topRight) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.TopRight);
+            if (_bottomLeft) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.BottomLeft);
+            if (_bottomRight) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.BottomRight);
+            if (_joystickPress) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.Joystick);
+            if (_buttonBack) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.Back);
 
 
             //WindowsInput.InputSimulator.SimulateKeyPress(WindowsInput.VirtualKeyCode.SPACE);

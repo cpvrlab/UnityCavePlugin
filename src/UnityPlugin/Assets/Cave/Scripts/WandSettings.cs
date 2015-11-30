@@ -40,15 +40,18 @@ namespace Cave
         //public int intField;
     }
 
+
+
+    //todo, editor stuff
     [System.Serializable]
     public class WandSettingsButtons
     {
-        public string Back = "Enter";
-        public string Joystick = "Space";
-        public string TopLeft = "E";
-        public string TopRight = "R";
-        public string BottomLeft = "T";
-        public string BottomRight = "Z";
+        public int Back = (int)WindowsInput.VirtualKeyCode.VK_A;
+        public int Joystick = (int)WindowsInput.VirtualKeyCode.VK_A;
+        public int TopLeft = (int)WindowsInput.VirtualKeyCode.VK_A;
+        public int TopRight = (int)WindowsInput.VirtualKeyCode.VK_A;
+        public int BottomLeft = (int)WindowsInput.VirtualKeyCode.VK_A;
+        public int BottomRight = (int)WindowsInput.VirtualKeyCode.VK_A;
     }
 
     //[CustomPropertyDrawer(typeof(WandSettings))]
