@@ -39,6 +39,7 @@ Julien:
 - MouseCursor: Falls nicht sichtbar im Game, Duplikat auch deaktivieren
 - MouseCursor: Setzen allgemein noch buggy
 - ShootingGallery: Gewehr macht random Rotationen...
+- Sekundäre Kameras
 - Joystick -> Eventsystem mit delegates
 - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - Doku Device Wand
@@ -46,6 +47,8 @@ Julien:
 Daniiiee:
 - 	OK - Eyes / Wand Lerping
 - Künzler-Frustum Transformation
-- Joystick
+- Joystick (Simulieren möglich?)
+- ModelViewer App
+- Warping
 - Doku VRPN
 - Doku Frustumtransformation
