@@ -30,6 +30,8 @@ public class FrustumManager : MonoBehaviour
             //cannot access to value-pair as reference in dict
             Camera cLeft = var.Value.Left.cam;
             Camera cRight = var.Value.Right.cam;
+            Camera cLeftGUI = var.Value.Left.camGUI;
+            Camera cRightGUI = var.Value.Right.camGUI;
 
             //cLeft.ResetWorldToCameraMatrix();
             //cRight.ResetWorldToCameraMatrix();
@@ -92,12 +94,33 @@ public class FrustumManager : MonoBehaviour
                                                         var.Value.Left.cam.transform.position,
                                                         var.Value.Left.cam.nearClipPlane,
                                                         var.Value.Left.cam.farClipPlane);
+
                 Frustum.GeneralizedPerspectiveProjection(ref cRight, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomleft),
                                                         var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomright),
                                                         var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.topleft),
                                                         var.Value.Right.cam.transform.position,
                                                         var.Value.Right.cam.nearClipPlane,
                                                         var.Value.Right.cam.farClipPlane);
+                if(cLeftGUI != null)
+                {
+                    Frustum.GeneralizedPerspectiveProjection(ref cLeftGUI, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomleft),
+                                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomright),
+                                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.topleft),
+                                                        var.Value.Left.camGUI.transform.position,
+                                                        var.Value.Left.camGUI.nearClipPlane,
+                                                        var.Value.Left.camGUI.farClipPlane);
+                }
+
+                if (cRightGUI != null)
+                {
+                    Frustum.GeneralizedPerspectiveProjection(ref cRightGUI, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomleft),
+                                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomright),
+                                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.topleft),
+                                                        var.Value.Right.camGUI.transform.position,
+                                                        var.Value.Right.camGUI.nearClipPlane,
+                                                        var.Value.Right.camGUI.farClipPlane);
+                }
+
             }
             else
             {

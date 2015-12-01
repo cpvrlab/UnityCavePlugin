@@ -26,15 +26,20 @@ Julien:
 - 	OK - API: API runtime objekt suchen gehen (CameraManager, FrustumManager, ...) und zwischenspeichern falls bereits mal geholt
 - 	OK - Wand Mousecursor korrekt setzen
 -	OK - MouseCursor: auf Kameras fürs rechte Auge duplizieren
-- GUI: GUI-Elemente auf andere Cams mappen / z-transformieren
+- 	OK - GUI: GUI-Elemente auf andere Cams mappen / z-transformieren
 	1) Canvas mit bereits existierendem Script auf andere Kamera projizieren (Screen Space - Camera) -> Frustum Transformation stört dabei
 	2) Grösse / Position Canvas ändern -> Nur mit Modus "World Space" möglich
 	3) Neues Canvas erstellen und Unterelemente reinladen
 
 	-> finally: Canvas Wokrld Space, exact same position as caveXXL, width: 1000fache der breite des caveXXL, scaleX 0.01
 	-> TODO find Canvas
-
-- Joystick
+	-> Zusätzliche Kamera, die nur UI-Layer rendert. Diese dann darüber legen. Somit können UI-Elemente nicht verdeckt werden, yeahi...
+	-> DONE :D
+- MouseCursor Texturen (falls Custom) duplizieren
+- MouseCursor: Falls nicht sichtbar im Game, Duplikat auch deaktivieren
+- MouseCursor: Setzen allgemein noch buggy
+- ShootingGallery: Gewehr macht random Rotationen...
+- Joystick -> Eventsystem mit delegates
 - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - Doku Device Wand
 

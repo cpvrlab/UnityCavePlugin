@@ -83,7 +83,7 @@ namespace Cave
             HandleRotation();
             HandleButtons();
             HandleJoystick();
-            SetCursor();
+            //SetCursor();
         }
 
         private void HandlePosition()
