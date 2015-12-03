@@ -22,7 +22,6 @@ Julien:
 - 	OK - UnityPlugin: Cave-Prefab automatisch mit Position Gamecamera abgleichen
 -	OK - Fixed error CameraContainer Translation
 -	OK - In API nur berechnete Werte, keine Gameobjects mehr
-- UnityPlugin: Wand-RaycastALL machen (auf Distanz beschränken und auf CAVE-Leinwand prüfen) -> Layer "CAVE" dynamisch erzeugen und zuweisen. Wird nicht beim Assets importieren übernommen.
 - 	OK - API: API runtime objekt suchen gehen (CameraManager, FrustumManager, ...) und zwischenspeichern falls bereits mal geholt
 - 	OK - Wand Mousecursor korrekt setzen
 -	OK - MouseCursor: auf Kameras fürs rechte Auge duplizieren
@@ -35,9 +34,11 @@ Julien:
 	-> TODO find Canvas
 	-> Zusätzliche Kamera, die nur UI-Layer rendert. Diese dann darüber legen. Somit können UI-Elemente nicht verdeckt werden, yeahi...
 	-> DONE :D
+- UnityPlugin: Wand-RaycastALL machen (auf Distanz beschränken und auf CAVE-Leinwand prüfen) -> Layer "CAVE" dynamisch erzeugen und zuweisen. Wird nicht beim Assets importieren übernommen.
 - MouseCursor Texturen (falls Custom) duplizieren
 - MouseCursor: Falls nicht sichtbar im Game, Duplikat auch deaktivieren
 - MouseCursor: Setzen allgemein noch buggy
+- PPT Studio korrektes Setting
 - ShootingGallery: Gewehr macht random Rotationen...
 - Sekundäre Kameras
 - Joystick -> Eventsystem mit delegates
