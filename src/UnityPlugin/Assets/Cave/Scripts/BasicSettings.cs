@@ -25,8 +25,8 @@ namespace Cave
         [System.Serializable]
         public class BlockRotationAxisEyes
         {
-            public bool Yaw;
-            public bool Roll;
+            public bool Yaw; // y-axis rotation
+            public bool Roll; // z-axis rotation
         }
 
         [System.Serializable]
@@ -53,7 +53,7 @@ namespace Cave
         [System.Serializable]
         public enum Sides
         {
-            Left, Front, Right, Bottom
+            None, Left, Front, Right, Bottom
         }
     }
 }

@@ -71,7 +71,15 @@ namespace Cave
             {
                 Vector3 rotOri = transform.rotation.eulerAngles;
                 var rot = VRPN.vrpnTrackerQuat(API.Instance.Cave.EyesSettings.WorldVizObject + "@" + API.Instance.Cave.Host, API.Instance.Cave.EyesSettings.Channel);
-                
+
+                //Debug.Log("eyes vrpn rot: " + rot.eulerAngles);
+
+                //var roll = Mathf.Atan2(2 * rot.y * rot.w - 2 * rot.x * rot.z, 1 - 2 * rot.y * rot.y - 2 * rot.z * rot.z);
+                //var pitch = Mathf.Atan2(2 * rot.x * rot.w - 2 * rot.y * rot.z, 1 - 2 * rot.x * rot.x - 2 * rot.z * rot.z);
+                //var yaw = Mathf.Asin(2 * rot.x * rot.y + 2 * rot.z * rot.w);
+
+                //Debug.Log("eyes vrpn pitch: " + pitch);
+
                 if (_useRotationSmoothing)
                 {
                     Vector3 filteredRot = Vector3.zero;
@@ -79,6 +87,15 @@ namespace Cave
                     OneEuroFilter.ApplyOneEuroFilter(rot.eulerAngles , Vector3.zero, rotOri, Vector3.zero, ref filteredRot, ref filteredVelocity, _rotJitterReduction, _rotLagReduction);
                     rot.eulerAngles  = filteredRot;
                 }
+
+                Vector3 eulerAnglesNew = rot.eulerAngles;
+                eulerAnglesNew.x = rotOri.x; // x (Pitch) not possible with eyes
+                if (API.Instance.Cave.EyesSettings.RotationAxisConstraints.Yaw) eulerAnglesNew.y = rotOri.y;
+                if (API.Instance.Cave.EyesSettings.RotationAxisConstraints.Yaw) eulerAnglesNew.z = rotOri.z;
+
+                rot.eulerAngles = eulerAnglesNew;
+
+                //Debug.Log("eyes rotation: " + rot.eulerAngles);
 
                 transform.rotation = rot;
             }

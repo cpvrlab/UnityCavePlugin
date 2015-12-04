@@ -16,8 +16,6 @@ namespace Cave
         public bool JoystickPress { get { return _joystickPress; } }
         public bool ButtonBack { get { return _buttonBack; } }
 
-        public Sprite MouseCursorDuplicate;
-
         private bool _usePositionSmoothing;
         private bool _useRotationSmoothing;
         private float _rotJitterReduction;
@@ -33,7 +31,7 @@ namespace Cave
         private bool _joystickPress;
         private bool _buttonBack;
 
-        private RectTransform _mouseCursorDuplicate;
+        private RectTransform _caveCursor;
 
         //private CrossPlatformInputManager.VirtualAxis _hVirtualAxis;
         //private CrossPlatformInputManager.VirtualAxis _vVirtualAxis;
@@ -52,7 +50,7 @@ namespace Cave
 
             _joystickPos = Vector2.zero;
 
-            _mouseCursorDuplicate = GameObject.Find("MouseCursorDuplicate").GetComponent<RectTransform>();
+            _caveCursor = GameObject.FindWithTag("CaveCursor").GetComponent<RectTransform>();
 
             //if (!CrossPlatformInputManager.AxisExists("Horizontal"))
             //{
@@ -83,7 +81,7 @@ namespace Cave
             HandleRotation();
             HandleButtons();
             HandleJoystick();
-            //SetCursor();
+            SetCursor();
         }
 
         private void HandlePosition()
@@ -93,6 +91,9 @@ namespace Cave
                 // Position
                 var posOri = transform.localPosition;
                 var pos = VRPN.vrpnTrackerPos(API.Instance.Cave.WandSettings.WorldVizObject + "@" + API.Instance.Cave.Host, API.Instance.Cave.WandSettings.Channel);
+
+                //Debug.Log("Wand pos from VRPN: " + pos);
+
                 if (_usePositionSmoothing)
                 {
                     Vector3 filteredPos = Vector3.zero;
@@ -105,6 +106,7 @@ namespace Cave
                 if (API.Instance.Cave.WandSettings.PositionAxisConstraints.X) pos.x = posOri.x;
                 if (API.Instance.Cave.WandSettings.PositionAxisConstraints.Y) pos.x = posOri.z;
                 if (API.Instance.Cave.WandSettings.PositionAxisConstraints.Z) pos.x = posOri.z;
+
 
                 transform.localPosition = pos;
             }
@@ -137,7 +139,7 @@ namespace Cave
             vCurr.x = (float)VRPN.vrpnAnalog(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 0);
             vCurr.y = (float)VRPN.vrpnAnalog(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 1);
 
-            _joystickPos = vCurr;
+            //_joystickPos = vCurr;
         }
 
         private void HandleButtons()
@@ -146,7 +148,7 @@ namespace Cave
 
             // NOTE: Convert string to keycode: KeyCode thisKeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), "Whatever") ;
             // http://inputsimulator.codeplex.com/SourceControl/latest#WindowsInput/Native/VirtualKeyCode.cs
-
+            
             _topLeft = VRPN.vrpnButton(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 1);
             _topRight = VRPN.vrpnButton(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 2);
             _bottomLeft = VRPN.vrpnButton(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 0);
@@ -178,6 +180,7 @@ namespace Cave
         {
             int _multiplierX = 0;
             int _multiplierY = 0;
+            bool _caveHit = true;
 
             // Raycast
             var fwd = transform.TransformDirection(Vector3.forward);
@@ -188,36 +191,51 @@ namespace Cave
             Ray ray = new Ray(transform.position, fwd);
             RaycastHit hit;
 
-            var mask = LayerMask.GetMask("CAVE");
+            // NOTE layers are not exported with assets
+            //var mask = LayerMask.GetMask("CAVE");
 
-            if (Physics.Raycast(ray, out hit, 100, mask))
+            var raycast = Physics.RaycastAll(ray, 10f);
+
+            foreach (var h in raycast)
             {
-                Vector3 localSpaceHitPoint = hit.transform.worldToLocalMatrix.MultiplyPoint(hit.point);
-                Debug.DrawLine(transform.position, hit.point, UnityEngine.Color.cyan);
+                _caveHit = true;
+
                 //Debug.Log(String.Format("Wand Raycast hits: {0}", hit.collider.name));
 
-                switch (hit.transform.tag)
+                switch (h.transform.tag)
                 {
                     case "CaveLeft":
                         _multiplierX = 0;
                         _multiplierY = 0;
+                        //API.Instance.CameraManager.PlaceUIElements("CanvasMouseCursorDuplicate", BasicSettings.Sides.Left);
                         break;
 
                     case "CaveFront":
                         _multiplierX = 2;
                         _multiplierY = 0;
+                        //API.Instance.CameraManager.PlaceUIElements("CanvasMouseCursorDuplicate", BasicSettings.Sides.Front);
                         break;
 
                     case "CaveRight":
                         _multiplierX = 0;
                         _multiplierY = 1;
+                        //API.Instance.CameraManager.PlaceUIElements("CanvasMouseCursorDuplicate", BasicSettings.Sides.Right);
                         break;
 
                     case "CaveBottom":
                         _multiplierX = 2;
                         _multiplierY = 1;
+                        //API.Instance.CameraManager.PlaceUIElements("CanvasMouseCursorDuplicate", BasicSettings.Sides.Bottom);
+                        break;
+
+                    default:
+                        _caveHit = false;
                         break;
                 }
+
+                if (!_caveHit) continue;
+
+                Vector3 localSpaceHitPoint = h.transform.worldToLocalMatrix.MultiplyPoint(h.point);
 
                 float localHitpointNoramlizedX = 1f - ((localSpaceHitPoint.z + 5f) / 10f);
                 float localHitpointNoramlizedY = 1f - ((localSpaceHitPoint.x + 5f) / 10f);
@@ -229,18 +247,19 @@ namespace Cave
                 float posCaveY = posCaveSideY + _multiplierY * API.Instance.Cave.BeamerResolutionHeight;
 
                 float posCaveDuplicateX = posCaveX + API.Instance.Cave.BeamerResolutionWidth;
-                float posCaveDuplicateY = -(posCaveY - _mouseCursorDuplicate.sizeDelta.y);
+                float posCaveDuplicateY = -(posCaveY - _caveCursor.sizeDelta.y);
 
-                //Debug.Log("posCaveDuplicateX: " + posCaveX);
-                //Debug.Log("posCaveDuplicateY: " + posCaveY);
+                //Debug.Log("posCaveDuplicateX: " + posCaveDuplicateX);
+                //Debug.Log("posCaveDuplicateY: " + posCaveDuplicateY);
 
                 //System.Windows.Forms.Cursor.Position = new Point(Convert.ToInt32(posCaveX), Convert.ToInt32(posCaveY));
 
                 // Set Position Duplicate
-                Vector2 v2 = new Vector2(posCaveDuplicateX, posCaveDuplicateY);
-                _mouseCursorDuplicate.anchoredPosition = v2;
-
-                
+                if (Cursor.visible)
+                {
+                    Vector2 v2 = new Vector2(posCaveDuplicateX, posCaveDuplicateY);
+                    _caveCursor.anchoredPosition = v2;
+                }
             }
 
             API.Instance.Cave.ToggleColliders(false);
