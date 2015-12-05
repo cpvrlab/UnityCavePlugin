@@ -1072,18 +1072,18 @@ MonoBehaviour:
       lagReduction: 1
     allowJoystick: 1
     ButtonMapping:
-      Back: 16
-      Joystick: 65
-      TopLeft: 65
-      TopRight: 65
-      BottomLeft: 65
-      BottomRight: 65
+      Back: 13
+      Joystick: 32
+      TopLeft: 17
+      TopRight: 16
+      BottomLeft: 48
+      BottomRight: 49
     WorldVizObject: PPT0
-    WorldVizObjectButtons: PPT_WAND1
+    WorldVizObjectButtons: PPT_WAND3
     Channel: 2
     Port: 8945
   EyesSettings:
-    TrackPosition: 1
+    TrackPosition: 0
     MovementSensivity:
       x: 1
       y: 1
@@ -1101,7 +1101,7 @@ MonoBehaviour:
       Yaw: 0
       Roll: 0
     RotationMovementConstraints:
-      useOneEuroSmoothing: 1
+      useOneEuroSmoothing: 0
       jitterReduction: 1
       lagReduction: 1
     WorldVizObject: PPT0

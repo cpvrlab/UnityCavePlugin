@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Cave
 {
@@ -166,11 +168,6 @@ namespace Cave
         {
             transform.position = Camera.main.transform.position;
             transform.rotation = Camera.main.transform.rotation;
-        }
-
-        private void SetCameraTag()
-        {
-
         }
 
         public void ToggleColliders(bool status)

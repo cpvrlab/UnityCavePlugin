@@ -16,6 +16,9 @@ namespace Cave
         public bool JoystickPress { get { return _joystickPress; } }
         public bool ButtonBack { get { return _buttonBack; } }
 
+        public delegate void DelegateJoystickAnalog(float xAxis, float yAxis);
+        public event DelegateJoystickAnalog OnJoystickAnalogUpdate;
+
         private bool _usePositionSmoothing;
         private bool _useRotationSmoothing;
         private float _rotJitterReduction;
@@ -35,6 +38,12 @@ namespace Cave
 
         //private CrossPlatformInputManager.VirtualAxis _hVirtualAxis;
         //private CrossPlatformInputManager.VirtualAxis _vVirtualAxis;
+
+        [Range(-1f, 1f)]
+        public float JoystickAnalogDebugX;
+
+        [Range(-1f, 1f)]
+        public float JoystickAnalogDebugY;
 
         // Use this for initialization
         void Start()
@@ -134,11 +143,26 @@ namespace Cave
         {
             //Debug.Log("Joystick X: " + VRPN.vrpnAnalog(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 0));
             //Debug.Log("Joystick Y: " + VRPN.vrpnAnalog(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 1));
-            
+
             Vector2 vCurr = new Vector2();
             vCurr.x = (float)VRPN.vrpnAnalog(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 0);
             vCurr.y = (float)VRPN.vrpnAnalog(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 1);
 
+            if(JoystickAnalogDebugX != 0)
+            {
+                vCurr.x = JoystickAnalogDebugX;
+            }
+
+            if (JoystickAnalogDebugY != 0)
+            {
+                vCurr.y = JoystickAnalogDebugY;
+            }
+
+            if (OnJoystickAnalogUpdate != null)
+            {
+                OnJoystickAnalogUpdate(vCurr.x, vCurr.y);
+            }
+            
             //_joystickPos = vCurr;
         }
 
@@ -163,8 +187,18 @@ namespace Cave
             if (_joystickPress) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.Joystick);
             if (_buttonBack) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.Back);
 
+            //System.Windows.Forms.SendKeys.Send("a"); // Funzt nicht
 
-            //WindowsInput.InputSimulator.SimulateKeyPress(WindowsInput.VirtualKeyCode.SPACE);
+            //KeyCode keycode = (KeyCode)System.Enum.Parse(typeof(KeyCode), "S"); // funzt so. aber keycode bringt noch nichts
+
+            //WindowsInput.InputSimulator.SimulateKeyPress(WindowsInput.VirtualKeyCode.SPACE); // Funktioniert als Input, erkennt unity!
+            //WindowsInput.InputSimulator.SimulateKeyPress(WindowsInput.VirtualKeyCode.VK_S); // Funktioniert als Input, erkennt unity!
+            //WindowsInput.InputSimulator.SimulateTextEntry("s"); // Funktioniert leider nicht als "s" input
+
+            // Test CaveInput
+            // WindowsInput.VirtualKeyCode foo = (WindowsInput.VirtualKeyCode)65;
+            //WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.Back);
+
 
             //Debug.Log("Top / Left: " + VRPN.vrpnButton(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 1));
             //Debug.Log("Top / Right: " + VRPN.vrpnButton(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 2));

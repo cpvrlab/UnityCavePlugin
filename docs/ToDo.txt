@@ -38,14 +38,19 @@ Julien:
 04.12.2015 - Julien:
 - 	OK - UnityPlugin: Wand-RaycastALL machen (auf Distanz beschränken und auf CAVE-Leinwand prüfen) -> Layer "CAVE" dynamisch erzeugen und zuweisen. Wird nicht beim Assets importieren übernommen.
 		-> Dynamisch erzeugen nicht möglich. Darum nun RaycastAll und auf Tag prüfen.
-- MouseCursor Texturen (falls Custom) duplizieren -> wohl nicht möglich
 - 	OK - MouseCursor: Falls nicht sichtbar im Game, Duplikat auch deaktivieren
-- MouseCursor: Setzen allgemein noch buggy -> Eine MouseCursor Kamera erstellen und auf die vom Wand bestrahlte CAVE-Wand ausrichten. Und auf dieser Cam nur den Cursor rendern.
 - 	OK - GUI: Canvas dynamisch holen gehen, nicht wie anhin einfach mit dem Namen "Canvas"
 - 	OK - PPT Studio korrektes Setting
 - ShootingGallery: Gewehr macht random Rotationen... -> Liegt am Übergang. Werden die Eyes schön horizontal gehalten sind sie grad an einem kritischen Punkt. YAW: Nach links schauen 270°, front 360°, rechts: 90°. Wichtig, nur bei "Assume looking forward" ausgeschaltet. Klar gibts da also Hüpfer mit dem Smoothing. der Will von 259° auf 0 interpolieren! Also Smoothing deaktivieren und Roll Constraint rein.
+
+
+05.12.2015 - Julien:
+-	OK - Joystick Buttonmapping: Mit Enums erledigt!
+- 	OK - ShootingGallery: Schiessen mit Enter / Space
+- 	OK - Joystick Analog Stick: Eventsystem mit delegates
+- MouseCursor Texturen (falls Custom) duplizieren -> wohl nicht möglich
+- MouseCursor: Setzen allgemein noch buggy -> Eine MouseCursor Kamera erstellen und auf die vom Wand bestrahlte CAVE-Wand ausrichten. Und auf dieser Cam nur den Cursor rendern.
 - Sekundäre Kameras
-- Joystick -> Eventsystem mit delegates
 - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - Doku Device Wand
 - Video vom CAVE?
