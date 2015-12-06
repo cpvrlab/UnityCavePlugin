@@ -168,8 +168,6 @@ namespace Cave
 
         private void HandleButtons()
         {
-            //System.Windows.Forms.SendKeys.Send();
-
             // NOTE: Convert string to keycode: KeyCode thisKeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), "Whatever") ;
             // http://inputsimulator.codeplex.com/SourceControl/latest#WindowsInput/Native/VirtualKeyCode.cs
             
@@ -223,7 +221,6 @@ namespace Cave
             API.Instance.Cave.ToggleColliders(true);
 
             Ray ray = new Ray(transform.position, fwd);
-            RaycastHit hit;
 
             // NOTE layers are not exported with assets
             //var mask = LayerMask.GetMask("CAVE");
@@ -241,25 +238,25 @@ namespace Cave
                     case "CaveLeft":
                         _multiplierX = 0;
                         _multiplierY = 0;
-                        //API.Instance.CameraManager.PlaceUIElements("CanvasMouseCursorDuplicate", BasicSettings.Sides.Left);
+                        API.Instance.CameraManager.AdjustCamCursor(BasicSettings.Sides.Left);
                         break;
 
                     case "CaveFront":
                         _multiplierX = 2;
                         _multiplierY = 0;
-                        //API.Instance.CameraManager.PlaceUIElements("CanvasMouseCursorDuplicate", BasicSettings.Sides.Front);
+                        API.Instance.CameraManager.AdjustCamCursor(BasicSettings.Sides.Front);
                         break;
 
                     case "CaveRight":
                         _multiplierX = 0;
                         _multiplierY = 1;
-                        //API.Instance.CameraManager.PlaceUIElements("CanvasMouseCursorDuplicate", BasicSettings.Sides.Right);
+                        API.Instance.CameraManager.AdjustCamCursor(BasicSettings.Sides.Right);
                         break;
 
                     case "CaveBottom":
                         _multiplierX = 2;
                         _multiplierY = 1;
-                        //API.Instance.CameraManager.PlaceUIElements("CanvasMouseCursorDuplicate", BasicSettings.Sides.Bottom);
+                        API.Instance.CameraManager.AdjustCamCursor(BasicSettings.Sides.Bottom);
                         break;
 
                     default:

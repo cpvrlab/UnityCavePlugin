@@ -32,6 +32,7 @@ public class FrustumManager : MonoBehaviour
             Camera cRight = var.Value.Right.cam;
             Camera cLeftGUI = var.Value.Left.camGUI;
             Camera cRightGUI = var.Value.Right.camGUI;
+            Camera cCursor = var.Value.Right.camCursor;
 
             //cLeft.ResetWorldToCameraMatrix();
             //cRight.ResetWorldToCameraMatrix();
@@ -119,6 +120,16 @@ public class FrustumManager : MonoBehaviour
                                                         var.Value.Right.camGUI.transform.position,
                                                         var.Value.Right.camGUI.nearClipPlane,
                                                         var.Value.Right.camGUI.farClipPlane);
+                }
+
+                if(cCursor != null && cCursor.enabled)
+                {
+                    Frustum.GeneralizedPerspectiveProjection(ref cCursor, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomleft),
+                                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomright),
+                                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.topleft),
+                                                        var.Value.Right.cam.transform.position,
+                                                        var.Value.Right.cam.nearClipPlane,
+                                                        var.Value.Right.cam.farClipPlane);
                 }
 
             }

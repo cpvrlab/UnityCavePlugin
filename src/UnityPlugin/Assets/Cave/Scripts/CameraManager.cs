@@ -16,6 +16,7 @@ namespace Cave
         {
             public Camera cam;
             public Camera camGUI;
+            public Camera camCursor;
             public Vector3 offset;
         }
 
@@ -28,7 +29,7 @@ namespace Cave
 
         public struct CAVEPlanesettings
         {
-            public string name;
+            public BasicSettings.Sides name;
             public float width;
             public float height;
             public Vector3 center;
@@ -59,17 +60,21 @@ namespace Cave
         private Dictionary<int, ViewInfo> _viewInfo;
 
         private Camera _cameraLeftLeft = null;
-        private Camera _cameraFrontLeft = null;
-        private Camera _cameraRightLeft = null;
-        private Camera _cameraBottomLeft = null;
         private Camera _cameraLeftRight = null;
+
+        private Camera _cameraFrontLeft = null;
         private Camera _cameraFrontRight = null;
+
+        private Camera _cameraRightLeft = null;
         private Camera _cameraRightRight = null;
+
+        private Camera _cameraBottomLeft = null;
         private Camera _cameraBottomRight = null;
 
         private Camera _cameraWithCursor;
 
         private List<Canvas> _rootCanvas;
+        private BasicSettings.Sides _wandCaveIntersection = BasicSettings.Sides.None;
         
 #endregion
         
@@ -159,12 +164,15 @@ namespace Cave
         private void FetchCameras()
         {
             _cameraLeftLeft = GameObject.Find("CameraLeftLeft").GetComponent<Camera>();
-            _cameraFrontLeft = GameObject.Find("CameraFrontLeft").GetComponent<Camera>();
-            _cameraRightLeft = GameObject.Find("CameraRightLeft").GetComponent<Camera>();
-            _cameraBottomLeft = GameObject.Find("CameraBottomLeft").GetComponent<Camera>();
             _cameraLeftRight = GameObject.Find("CameraLeftRight").GetComponent<Camera>();
+
+            _cameraFrontLeft = GameObject.Find("CameraFrontLeft").GetComponent<Camera>();
             _cameraFrontRight = GameObject.Find("CameraFrontRight").GetComponent<Camera>();
+
+            _cameraRightLeft = GameObject.Find("CameraRightLeft").GetComponent<Camera>();
             _cameraRightRight = GameObject.Find("CameraRightRight").GetComponent<Camera>();
+
+            _cameraBottomLeft = GameObject.Find("CameraBottomLeft").GetComponent<Camera>();
             _cameraBottomRight = GameObject.Find("CameraBottomRight").GetComponent<Camera>();
         }
 
@@ -185,11 +193,12 @@ namespace Cave
                 {
                     cam = _cameraLeftRight,
                     camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Left ? Instantiate(_cameraLeftRight) : null,
+                    camCursor = Instantiate(_cameraLeftRight),
                     offset = new Vector3(0f, 0f, +(API.Instance.Cave.EyeDistance / 2))
                 },
                 CAVESide = new CAVEPlanesettings
                 {
-                    name = "left",
+                    name = BasicSettings.Sides.Left,
                     width = API.Instance.Cave.CAVELeft.transform.localScale.z * 10f,
                     height = API.Instance.Cave.CAVELeft.transform.localScale.x * 10f,
                     center = new Vector3(API.Instance.Cave.CAVELeft.transform.localScale.x * 10f / 2, 0f, 0f),
@@ -219,11 +228,12 @@ namespace Cave
                 {
                     cam = _cameraFrontRight,
                     camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Front ? Instantiate(_cameraFrontRight) : null,
+                    camCursor = Instantiate(_cameraFrontRight),
                     offset = new Vector3(+(API.Instance.Cave.EyeDistance / 2), 0f, 0f)
                 },
                 CAVESide = new CAVEPlanesettings
                 {
-                    name = "front",
+                    name = BasicSettings.Sides.Front,
                     width = API.Instance.Cave.CAVEFront.transform.localScale.z * 10f,
                     height = API.Instance.Cave.CAVEFront.transform.localScale.x * 10f,
                     center = new Vector3(0f, 0f, API.Instance.Cave.CAVEFront.transform.localScale.z * 10f / 2),
@@ -253,11 +263,12 @@ namespace Cave
                 {
                     cam = _cameraRightRight,
                     camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Right ? Instantiate(_cameraRightRight) : null,
+                    camCursor = Instantiate(_cameraRightRight),
                     offset = new Vector3(0f, 0f, -(API.Instance.Cave.EyeDistance / 2))
                 },
                 CAVESide = new CAVEPlanesettings
                 {
-                    name = "right",
+                    name = BasicSettings.Sides.Right,
                     width = API.Instance.Cave.CAVERight.transform.localScale.z * 10f,
                     height = API.Instance.Cave.CAVERight.transform.localScale.x * 10f,
                     center = new Vector3(API.Instance.Cave.CAVERight.transform.localScale.x * 10f / 2, 0f, 0f),
@@ -288,11 +299,12 @@ namespace Cave
                 {
                     cam = _cameraBottomRight,
                     camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Bottom ? Instantiate(_cameraBottomRight) : null,
+                    camCursor = Instantiate(_cameraBottomRight),
                     offset = new Vector3(+(API.Instance.Cave.EyeDistance / 2), 0f, 0f)
                 },
                 CAVESide = new CAVEPlanesettings
                 {
-                    name = "bottom",
+                    name = BasicSettings.Sides.Bottom,
                     width = API.Instance.Cave.CAVEBottom.transform.localScale.z * 10f,
                     height = API.Instance.Cave.CAVEBottom.transform.localScale.x * 10f,
                     center = new Vector3(0f, API.Instance.Cave.CAVEBottom.transform.localScale.x * 10f, 0f),
@@ -383,6 +395,9 @@ namespace Cave
                 {
                     vi.Left.cam.enabled = true;
                     vi.Right.cam.enabled = true;
+
+                    // adjust cursor cams
+                    ConfigureCamCursor(vi.Right.camCursor, vi.Right.cam, vi.CAVESide.name);
                 }
             };
         }
@@ -455,24 +470,41 @@ namespace Cave
             camGUI.name = isEyeLeft ? "CameraGUILeft" : "CameraGUIRight";
             camGUI.clearFlags = CameraClearFlags.Depth;
             camGUI.transform.SetParent(cam.transform.parent);
-            camGUI.depth = 2;
+            camGUI.depth = 3;
         }
 
-        List<GameObject> GetAllUIElements()
+        private void ConfigureCamCursor(Camera camCursor, Camera cam, BasicSettings.Sides caveSide)
         {
-            int layerUI = LayerMask.NameToLayer("UI");
-            List<GameObject> uiElements = new List<GameObject>();
-            GameObject[] allElements = FindObjectsOfType<GameObject>();
+            camCursor.CopyFrom(cam);
+            camCursor.cullingMask = LayerMask.GetMask("UI");
 
-            foreach (var go in allElements)
+            camCursor.name = "CameraCursor" + caveSide.ToString();
+            camCursor.clearFlags = CameraClearFlags.Depth;
+            camCursor.transform.SetParent(cam.transform.parent);
+            camCursor.depth = 3;
+            camCursor.enabled = false;
+        }
+
+        public void AdjustCamCursor(BasicSettings.Sides caveSide)
+        {
+            if(_wandCaveIntersection != caveSide)
             {
-                if (go.layer == layerUI)
+                _wandCaveIntersection = caveSide;
+
+                // Deactivate all Cursor Cams
+                foreach (var fvi in FullViewInfo)
                 {
-                    uiElements.Add(go);
+                    fvi.Value.Right.camCursor.enabled = false;
+                }
+
+                // Get Cam
+                var camCursor = FullViewInfo.FirstOrDefault(x => x.Value.CAVESide.name == caveSide).Value.Right.camCursor;
+
+                if (camCursor != null && API.Instance.Cave.GUILocation != caveSide)
+                {
+                    camCursor.enabled = true;
                 }
             }
-
-            return uiElements;
         }
     }
 }
