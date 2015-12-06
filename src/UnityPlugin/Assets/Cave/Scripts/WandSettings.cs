@@ -28,6 +28,10 @@ namespace Cave
         public string WorldVizObjectButtons = "PPT_WAND1";
         public int Channel = 0;
         public int Port = 8945;
+
+        [Header("Custom Mouse Cursor")]
+        [Tooltip("Add custom MouseCursor (Texture2D) here. Make sure Texture Type is \"Cursor\"")]
+        public Texture2D Cursor;
     }
 
     //todo, editor stuff

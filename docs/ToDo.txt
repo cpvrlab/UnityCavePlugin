@@ -48,7 +48,7 @@ Julien:
 -	OK - Joystick Buttonmapping: Mit Enums erledigt!
 - 	OK - ShootingGallery: Schiessen mit Enter / Space
 - 	OK - Joystick Analog Stick: Eventsystem mit delegates
-- MouseCursor Texturen (falls Custom) duplizieren -> wohl nicht möglich
+- 	OK - MouseCursor Texturen (falls Custom) duplizieren -> wohl einfach so nicht möglich. Darum im Inspector Property, um die eigene Texture2D zu setzen.
 - 	OK - MouseCursor: Setzen allgemein noch buggy -> Eine MouseCursor Kamera erstellen und auf die vom Wand bestrahlte CAVE-Wand ausrichten. Und auf dieser Cam nur den Cursor rendern.
 - 	OK - Sekundäre Kameras
 - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...

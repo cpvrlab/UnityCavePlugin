@@ -1449,14 +1449,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: CameraSettings.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: SecondaryCameraSettings.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 438420, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1490,71 +1482,9 @@ Prefab:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: ShowCave
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11497658, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: JoystickAnalogDebugX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22330636, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: WandSettings.TrackPosition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: WandSettings.TrackRotation
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: CameraSettings.Array.data[0].Camera
-      value: 
-      objectReference: {fileID: 1306395736}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: CameraSettings.Array.data[1].Camera
-      value: 
-      objectReference: {fileID: 1306395736}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: CameraSettings.Array.data[0].Side
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: SystemSettings.CameraContainerPrefab
-      value: 
-      objectReference: {fileID: 132108, guid: d60238788ebea804eb97f2b4fe276066, type: 2}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: SystemSettings.ShowCave
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: SystemSettings.CameraManagerPrefab
-      value: 
-      objectReference: {fileID: 11439038, guid: 54c3efade4d157f4483aa38b4f7073ec,
-        type: 2}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: SystemSettings.FrustumManagerPrefab
-      value: 
-      objectReference: {fileID: 11463222, guid: 3bb9b9e40fa70364cb0be3d445c9d73f,
-        type: 2}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: SecondaryCameraSettings.Array.data[0].Camera
       value: 
       objectReference: {fileID: 1306395736}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: SecondaryCameraSettings.Array.data[0].Side
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: SecondaryCameraSettings.Array.data[0].ViewportRect.width
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: SecondaryCameraSettings.Array.data[0].ViewportRect.height
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
   m_IsPrefabParent: 0

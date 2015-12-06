@@ -525,6 +525,7 @@ namespace Cave
             {
                 var canvasRectTransform = c.GetComponent<RectTransform>();
 
+                c.renderMode = RenderMode.ScreenSpaceOverlay; // To avoid bug
                 c.renderMode = RenderMode.WorldSpace;
                 canvasRectTransform.sizeDelta = new Vector2(caveSide.transform.localScale.z * 1000f, caveSide.transform.localScale.x * 1000f);
                 canvasRectTransform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
