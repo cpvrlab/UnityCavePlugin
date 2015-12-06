@@ -47,6 +47,15 @@ namespace Cave
             public Vector3 bottomright;
         }
 
+        public enum CameraDepths
+        {
+            Disabled = -1,
+            Main = 1,
+            Secondary = 2,
+            GUI = 3,
+            Cursor = 4
+        }
+
         #endregion
 
         #region "public properties"
@@ -92,6 +101,7 @@ namespace Cave
             FetchCameras();
             CreateSettings();
             AdjustCameras();
+            AdjustSecondaryCameras();
             PlaceUIElements();
         }
 
@@ -104,9 +114,9 @@ namespace Cave
 
 
 #if UNITY_EDITOR
-            int divisorX = 2;
+            int divisorX = 4;
             int divisorY = 2;
-            if (API.Instance.Cave.CAVEMode == CAVEMode.FourScreenStereo) { divisorX = 4; }
+            //if (API.Instance.Cave.CAVEMode == CAVEMode.FourScreenStereo) { divisorX = 4; }
 
             camIndexX = Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / Convert.ToInt32(API.GetMainGameViewSize()[0] / divisorX)));
             camIndexY = Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.y) / Convert.ToInt32(API.GetMainGameViewSize()[1] / divisorY)));
@@ -126,12 +136,14 @@ namespace Cave
                     _cameraWithCursor = _viewInfo[0].Left.cam;
                     break;
                 case 10:
-                    if(API.Instance.Cave.CAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[3].Left.cam; }
-                    else { _cameraWithCursor = _viewInfo[2].Right.cam; }
+                    //if(API.Instance.Cave.CAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[3].Left.cam; }
+                    //else { _cameraWithCursor = _viewInfo[2].Right.cam; }
+                    _cameraWithCursor = _viewInfo[2].Right.cam;
                     break;
                 case 11:
-                    if (API.Instance.Cave.CAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[1].Left.cam; }
-                    else { _cameraWithCursor = _viewInfo[0].Right.cam; }
+                    //if (API.Instance.Cave.CAVEMode == CAVEMode.FourScreen) { _cameraWithCursor = _viewInfo[1].Left.cam; }
+                    //else { _cameraWithCursor = _viewInfo[0].Right.cam; }
+                    _cameraWithCursor = _viewInfo[0].Right.cam;
                     break;
                 case 20:
                      _cameraWithCursor = _viewInfo[3].Left.cam; 
@@ -332,18 +344,18 @@ namespace Cave
 
                 // initially deactivate all cams
                 vi.Left.cam.enabled = false;
-                vi.Left.cam.depth = 1;
+                vi.Left.cam.depth = (int)CameraDepths.Main;
                 vi.Left.cam.fieldOfView = 90;
 
                 vi.Right.cam.enabled = false;
-                vi.Right.cam.depth = 1;
+                vi.Right.cam.depth = (int)CameraDepths.Main;
                 vi.Right.cam.fieldOfView = 90;
 
                 vi.Left.cam.transform.localPosition = vi.Left.offset;
                 vi.Right.cam.transform.localPosition = vi.Right.offset;
             }
 
-            Camera.main.depth = -1;
+            Camera.main.depth = (int)CameraDepths.Disabled;
 
             _cameraLeftLeft.transform.Rotate(new Vector3(0f, 270f, 0f));
             _cameraLeftRight.transform.Rotate(new Vector3(0f, 270f, 0f));
@@ -365,41 +377,102 @@ namespace Cave
             //_cameraBottomLeft.transform.position.Set(-(_main.EyeDistance / 2), 0f, 0f);
             //_cameraBottomRight.transform.position.Set(_main.EyeDistance / 2, 0f, 0f);
 
-            if (API.Instance.Cave.CAVEMode == CAVEMode.FourScreen)
-            {
-                _cameraLeftLeft.rect = new Rect(new Vector2(0f, 0.5f), new Vector2(0.5f, 0.5f));
-                _cameraFrontLeft.rect = new Rect(new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
-                _cameraRightLeft.rect = new Rect(new Vector2(0f, 0f), new Vector2(0.5f, 0.5f));
-                _cameraBottomLeft.rect = new Rect(new Vector2(0.5f, 0f), new Vector2(0.5f, 0.5f));
+            //if (API.Instance.Cave.CAVEMode == CAVEMode.FourScreen)
+            //{
+            //    _cameraLeftLeft.rect = new Rect(new Vector2(0f, 0.5f), new Vector2(0.5f, 0.5f));
+            //    _cameraFrontLeft.rect = new Rect(new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
+            //    _cameraRightLeft.rect = new Rect(new Vector2(0f, 0f), new Vector2(0.5f, 0.5f));
+            //    _cameraBottomLeft.rect = new Rect(new Vector2(0.5f, 0f), new Vector2(0.5f, 0.5f));
 
-                foreach (var vi in _viewInfo.Values)
-                {
-                    vi.Left.cam.enabled = true;
-                    vi.Right.cam.enabled = false;
-                }
+            //    foreach (var vi in _viewInfo.Values)
+            //    {
+            //        vi.Left.cam.enabled = true;
+            //        vi.Right.cam.enabled = false;
+            //    }
+            //}
+            //else if (API.Instance.Cave.CAVEMode == CAVEMode.FourScreenStereo)
+            //{
+
+            _cameraLeftLeft.rect = new Rect(new Vector2(0f, 0.5f), new Vector2(0.25f, 0.5f));
+            _cameraFrontLeft.rect = new Rect(new Vector2(0.5f, 0.5f), new Vector2(0.25f, 0.5f));
+            _cameraRightLeft.rect = new Rect(new Vector2(0f, 0f), new Vector2(0.25f, 0.5f));
+            _cameraBottomLeft.rect = new Rect(new Vector2(0.5f, 0f), new Vector2(0.25f, 0.5f));
+
+            _cameraLeftRight.rect = new Rect(new Vector2(0.25f, 0.5f), new Vector2(0.25f, 0.5f));
+            _cameraFrontRight.rect = new Rect(new Vector2(0.75f, 0.5f), new Vector2(0.25f, 0.5f));
+            _cameraRightRight.rect = new Rect(new Vector2(0.25f, 0f), new Vector2(0.25f, 0.5f));
+            _cameraBottomRight.rect = new Rect(new Vector2(0.75f, 0f), new Vector2(0.25f, 0.5f));
+
+            foreach (var vi in _viewInfo.Values)
+            {
+                vi.Left.cam.enabled = true;
+                vi.Right.cam.enabled = true;
+
+                // adjust cursor cams
+                ConfigureCamCursor(vi.Right.camCursor, vi.Right.cam, vi.CAVESide.name);
             }
-            else if (API.Instance.Cave.CAVEMode == CAVEMode.FourScreenStereo)
+            //};
+        }
+
+        public void AdjustSecondaryCameras()
+        {
+            foreach(var c in API.Instance.Cave.SecondaryCameraSettings)
             {
+                c.Camera.depth = (int)CameraDepths.Secondary;
 
-                _cameraLeftLeft.rect = new Rect(new Vector2(0f, 0.5f), new Vector2(0.25f, 0.5f));
-                _cameraFrontLeft.rect = new Rect(new Vector2(0.5f, 0.5f), new Vector2(0.25f, 0.5f));
-                _cameraRightLeft.rect = new Rect(new Vector2(0f, 0f), new Vector2(0.25f, 0.5f));
-                _cameraBottomLeft.rect = new Rect(new Vector2(0.5f, 0f), new Vector2(0.25f, 0.5f));
+                // dont render ui elements
+                int layerUI = LayerMask.NameToLayer("UI");
+                c.Camera.cullingMask = ~(1 << layerUI);
 
-                _cameraLeftRight.rect = new Rect(new Vector2(0.25f, 0.5f), new Vector2(0.25f, 0.5f));
-                _cameraFrontRight.rect = new Rect(new Vector2(0.75f, 0.5f), new Vector2(0.25f, 0.5f));
-                _cameraRightRight.rect = new Rect(new Vector2(0.25f, 0f), new Vector2(0.25f, 0.5f));
-                _cameraBottomRight.rect = new Rect(new Vector2(0.75f, 0f), new Vector2(0.25f, 0.5f));
+                var rect = c.Camera.rect;
+                rect.width /= 4;
+                rect.height /= 2;
 
-                foreach (var vi in _viewInfo.Values)
+                float posX = rect.x;
+                float posY = rect.y;
+
+                float addedX = 0f;
+                float addedY = 0f;
+
+                switch (c.Side)
                 {
-                    vi.Left.cam.enabled = true;
-                    vi.Right.cam.enabled = true;
+                    case BasicSettings.Sides.Left:
+                        addedX = 0f;
+                        addedY = 0.5f;
+                        break;
 
-                    // adjust cursor cams
-                    ConfigureCamCursor(vi.Right.camCursor, vi.Right.cam, vi.CAVESide.name);
+                    case BasicSettings.Sides.Front:
+                        addedX = 0.5f;
+                        addedY = 0.5f;
+                        break;
+
+                    case BasicSettings.Sides.Right:
+                        addedX = 0f;
+                        addedY = 0f;
+                        break;
+
+                    case BasicSettings.Sides.Bottom:
+                        addedX = 0.5f;
+                        addedY = 0f;
+                        break;
                 }
-            };
+
+                posX = addedX + 0.25f * rect.x;
+                posY = addedY + 0.5f * rect.y;
+
+                rect.x = posX;
+                rect.y = posY;
+
+                c.Camera.rect = rect;
+
+                // Duplicate camera for right eye
+                var camDuplicateRight = Instantiate(c.Camera);
+                var rectCamRight = rect;
+                rectCamRight.x += 0.25f;
+                c.Camera.rect = rectCamRight;
+                camDuplicateRight.name = c.Camera.name + "Right";
+                camDuplicateRight.transform.SetParent(c.Camera.transform.parent);
+            }
         }
 
         public void PlaceUIElements()
@@ -470,7 +543,7 @@ namespace Cave
             camGUI.name = isEyeLeft ? "CameraGUILeft" : "CameraGUIRight";
             camGUI.clearFlags = CameraClearFlags.Depth;
             camGUI.transform.SetParent(cam.transform.parent);
-            camGUI.depth = 3;
+            camGUI.depth = (int)CameraDepths.GUI;
         }
 
         private void ConfigureCamCursor(Camera camCursor, Camera cam, BasicSettings.Sides caveSide)
@@ -481,7 +554,7 @@ namespace Cave
             camCursor.name = "CameraCursor" + caveSide.ToString();
             camCursor.clearFlags = CameraClearFlags.Depth;
             camCursor.transform.SetParent(cam.transform.parent);
-            camCursor.depth = 3;
+            camCursor.depth = (int)CameraDepths.Cursor;
             camCursor.enabled = false;
         }
 

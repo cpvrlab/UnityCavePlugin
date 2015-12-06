@@ -50,7 +50,7 @@ Julien:
 - 	OK - Joystick Analog Stick: Eventsystem mit delegates
 - MouseCursor Texturen (falls Custom) duplizieren -> wohl nicht möglich
 - 	OK - MouseCursor: Setzen allgemein noch buggy -> Eine MouseCursor Kamera erstellen und auf die vom Wand bestrahlte CAVE-Wand ausrichten. Und auf dieser Cam nur den Cursor rendern.
-- Sekundäre Kameras
+- 	OK - Sekundäre Kameras
 - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - Doku Device Wand
 - Video vom CAVE?
