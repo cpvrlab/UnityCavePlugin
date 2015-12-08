@@ -13,7 +13,7 @@ namespace Cave
 
     public enum FrustumMode
     {
-        CAVEXXL, OffAxis
+        CAVEXXL, OffAxis, GeneralProjectionMatrix, AusdruckKuenzler
     };
 
     public enum TrackedObject
