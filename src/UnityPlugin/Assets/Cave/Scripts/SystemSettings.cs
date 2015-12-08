@@ -10,5 +10,6 @@ namespace Cave
         public FrustumManager FrustumManagerPrefab;
         public GameObject CameraContainerPrefab;
         public bool ShowCave = false;
+        public bool SetMouseCursor = true;
     }
 }

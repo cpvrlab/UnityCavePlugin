@@ -139,6 +139,9 @@ namespace Cave
                 {
                     w.GetComponent<Renderer>().enabled = false;
                 }
+
+                API.Instance.Wand.DisableRenderer();
+                API.Instance.Eyes.DisableRenderer();
             }
 
             //_eyes = GameObject.FindWithTag("Eyes").GetComponent<Eyes>();
