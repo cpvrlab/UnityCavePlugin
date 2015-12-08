@@ -29,29 +29,74 @@ namespace Cave
         public int Channel = 0;
         public int Port = 8945;
 
-        //public enum MyCustomClassEnum
-        //{
-        //    OptionOne,
-        //    OptionTwo,
-        //    OptionThree,
-        //};
-        //public string stringField;
-        //public MyCustomClassEnum enumField;
-        //public int intField;
+        [Header("Custom Mouse Cursor")]
+        [Tooltip("Add custom MouseCursor (Texture2D) here. Make sure Texture Type is \"Cursor\"")]
+        public Texture2D Cursor;
     }
-
-
 
     //todo, editor stuff
     [System.Serializable]
     public class WandSettingsButtons
     {
-        public int Back = (int)WindowsInput.VirtualKeyCode.VK_A;
-        public int Joystick = (int)WindowsInput.VirtualKeyCode.VK_A;
-        public int TopLeft = (int)WindowsInput.VirtualKeyCode.VK_A;
-        public int TopRight = (int)WindowsInput.VirtualKeyCode.VK_A;
-        public int BottomLeft = (int)WindowsInput.VirtualKeyCode.VK_A;
-        public int BottomRight = (int)WindowsInput.VirtualKeyCode.VK_A;
+        public CaveInput Back = CaveInput.Return;
+        public CaveInput Joystick = CaveInput.Space;
+        public CaveInput TopLeft = CaveInput.Control;
+        public CaveInput TopRight = CaveInput.Shift;
+        public CaveInput BottomLeft = CaveInput.Number_0;
+        public CaveInput BottomRight = CaveInput.Number_1;
+    }
+
+    public enum CaveInput
+    {
+        A = WindowsInput.VirtualKeyCode.VK_A,
+        B = WindowsInput.VirtualKeyCode.VK_B,
+        C = WindowsInput.VirtualKeyCode.VK_C,
+        D = WindowsInput.VirtualKeyCode.VK_D,
+        E = WindowsInput.VirtualKeyCode.VK_E,
+        F = WindowsInput.VirtualKeyCode.VK_F,
+        G = WindowsInput.VirtualKeyCode.VK_G,
+        H = WindowsInput.VirtualKeyCode.VK_H,
+        I = WindowsInput.VirtualKeyCode.VK_I,
+        J = WindowsInput.VirtualKeyCode.VK_J,
+        K = WindowsInput.VirtualKeyCode.VK_K,
+        L = WindowsInput.VirtualKeyCode.VK_L,
+        M = WindowsInput.VirtualKeyCode.VK_M,
+        N = WindowsInput.VirtualKeyCode.VK_N,
+        O = WindowsInput.VirtualKeyCode.VK_O,
+        P = WindowsInput.VirtualKeyCode.VK_P,
+        Q = WindowsInput.VirtualKeyCode.VK_Q,
+        R = WindowsInput.VirtualKeyCode.VK_R,
+        S = WindowsInput.VirtualKeyCode.VK_S,
+        T = WindowsInput.VirtualKeyCode.VK_T,
+        U = WindowsInput.VirtualKeyCode.VK_U,
+        V = WindowsInput.VirtualKeyCode.VK_V,
+        W = WindowsInput.VirtualKeyCode.VK_W,
+        X = WindowsInput.VirtualKeyCode.VK_X,
+        Y = WindowsInput.VirtualKeyCode.VK_Y,
+        Z = WindowsInput.VirtualKeyCode.VK_Z,
+        Number_0 = WindowsInput.VirtualKeyCode.VK_0,
+        Number_1 = WindowsInput.VirtualKeyCode.VK_1,
+        Number_2 = WindowsInput.VirtualKeyCode.VK_2,
+        Number_3 = WindowsInput.VirtualKeyCode.VK_3,
+        Number_4 = WindowsInput.VirtualKeyCode.VK_4,
+        Number_5 = WindowsInput.VirtualKeyCode.VK_5,
+        Number_6 = WindowsInput.VirtualKeyCode.VK_6,
+        Number_7 = WindowsInput.VirtualKeyCode.VK_7,
+        Number_8 = WindowsInput.VirtualKeyCode.VK_8,
+        Number_9 = WindowsInput.VirtualKeyCode.VK_9,
+        Escape = WindowsInput.VirtualKeyCode.ESCAPE,
+        Shift = WindowsInput.VirtualKeyCode.SHIFT,
+        Control = WindowsInput.VirtualKeyCode.CONTROL,
+        Space = WindowsInput.VirtualKeyCode.SPACE,
+        Return = WindowsInput.VirtualKeyCode.RETURN,
+        Back = WindowsInput.VirtualKeyCode.BACK,
+        Delete = WindowsInput.VirtualKeyCode.DELETE,
+        Left = WindowsInput.VirtualKeyCode.LEFT,
+        Right = WindowsInput.VirtualKeyCode.RIGHT,
+        Up = WindowsInput.VirtualKeyCode.UP,
+        Down = WindowsInput.VirtualKeyCode.DOWN,
+        Add = WindowsInput.VirtualKeyCode.ADD,
+        Subtract = WindowsInput.VirtualKeyCode.SUBTRACT
     }
 
     //[CustomPropertyDrawer(typeof(WandSettings))]

@@ -22,25 +22,44 @@ Julien:
 - 	OK - UnityPlugin: Cave-Prefab automatisch mit Position Gamecamera abgleichen
 -	OK - Fixed error CameraContainer Translation
 -	OK - In API nur berechnete Werte, keine Gameobjects mehr
-- UnityPlugin: Wand-RaycastALL machen (auf Distanz beschränken und auf CAVE-Leinwand prüfen) -> Layer "CAVE" dynamisch erzeugen und zuweisen. Wird nicht beim Assets importieren übernommen.
 - 	OK - API: API runtime objekt suchen gehen (CameraManager, FrustumManager, ...) und zwischenspeichern falls bereits mal geholt
 - 	OK - Wand Mousecursor korrekt setzen
 -	OK - MouseCursor: auf Kameras fürs rechte Auge duplizieren
-- GUI: GUI-Elemente auf andere Cams mappen / z-transformieren
+- 	OK - GUI: GUI-Elemente auf andere Cams mappen / z-transformieren
 	1) Canvas mit bereits existierendem Script auf andere Kamera projizieren (Screen Space - Camera) -> Frustum Transformation stört dabei
 	2) Grösse / Position Canvas ändern -> Nur mit Modus "World Space" möglich
 	3) Neues Canvas erstellen und Unterelemente reinladen
 
 	-> finally: Canvas Wokrld Space, exact same position as caveXXL, width: 1000fache der breite des caveXXL, scaleX 0.01
 	-> TODO find Canvas
+	-> Zusätzliche Kamera, die nur UI-Layer rendert. Diese dann darüber legen. Somit können UI-Elemente nicht verdeckt werden, yeahi...
+	-> DONE :D
 
-- Joystick
+04.12.2015 - Julien:
+- 	OK - UnityPlugin: Wand-RaycastALL machen (auf Distanz beschränken und auf CAVE-Leinwand prüfen) -> Layer "CAVE" dynamisch erzeugen und zuweisen. Wird nicht beim Assets importieren übernommen.
+		-> Dynamisch erzeugen nicht möglich. Darum nun RaycastAll und auf Tag prüfen.
+- 	OK - MouseCursor: Falls nicht sichtbar im Game, Duplikat auch deaktivieren
+- 	OK - GUI: Canvas dynamisch holen gehen, nicht wie anhin einfach mit dem Namen "Canvas"
+- 	OK - PPT Studio korrektes Setting
+- ShootingGallery: Gewehr macht random Rotationen... -> Liegt am Übergang. Werden die Eyes schön horizontal gehalten sind sie grad an einem kritischen Punkt. YAW: Nach links schauen 270°, front 360°, rechts: 90°. Wichtig, nur bei "Assume looking forward" ausgeschaltet. Klar gibts da also Hüpfer mit dem Smoothing. der Will von 259° auf 0 interpolieren! Also Smoothing deaktivieren und Roll Constraint rein.
+
+
+05.12.2015 - Julien:
+-	OK - Joystick Buttonmapping: Mit Enums erledigt!
+- 	OK - ShootingGallery: Schiessen mit Enter / Space
+- 	OK - Joystick Analog Stick: Eventsystem mit delegates
+- 	OK - MouseCursor Texturen (falls Custom) duplizieren -> wohl einfach so nicht möglich. Darum im Inspector Property, um die eigene Texture2D zu setzen.
+- 	OK - MouseCursor: Setzen allgemein noch buggy -> Eine MouseCursor Kamera erstellen und auf die vom Wand bestrahlte CAVE-Wand ausrichten. Und auf dieser Cam nur den Cursor rendern.
+- 	OK - Sekundäre Kameras
 - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - Doku Device Wand
+- Video vom CAVE?
 
 Daniiiee:
 - 	OK - Eyes / Wand Lerping
 - Künzler-Frustum Transformation
-- Joystick
+- Joystick (Simulieren möglich?)
+- ModelViewer App
+- Warping
 - Doku VRPN
 - Doku Frustumtransformation

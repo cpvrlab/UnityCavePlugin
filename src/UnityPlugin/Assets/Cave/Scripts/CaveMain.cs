@@ -2,14 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Text;
+using System.Windows.Forms;
+using UnityEngine.UI;
 
 namespace Cave
 {
     #region "enum"
-    public enum CAVEMode
-    {
-        FourScreen, FourScreenStereo
-    };
 
     public enum FrustumMode
     {
@@ -31,7 +30,6 @@ namespace Cave
         public int BeamerResolutionWidth = 1280;
         public int BeamerResolutionHeight = 960;
         public string Host = "192.168.0.201";
-        public CAVEMode CAVEMode = CAVEMode.FourScreenStereo;
         public FrustumMode FrustumMode = FrustumMode.CAVEXXL;
         public BasicSettings.Sides GUILocation = BasicSettings.Sides.Front;
         public float EyeDistance = 0.07f;
@@ -48,6 +46,12 @@ namespace Cave
 
         [Header("Gamepad")]
         public GamepadSettings GamepadSettings;
+
+        [Header("Secondary Cameras")]
+        public SecondaryCameraSettings[] SecondaryCameraSettings;
+
+        [Header("System")]
+        public SystemSettings SystemSettings;
         #endregion
 
         #region "public properties"
@@ -68,11 +72,6 @@ namespace Cave
         //public FrustumManager FrustumManager { get { return _frustumManager; } }
         //public GameObject CameraContainer { get { return _cameraContainer; } }
 
-        [Header("System")]
-        public CameraManager CameraManagerPrefab;
-        public FrustumManager FrustumManagerPrefab;
-        public GameObject CameraContainerPrefab;
-        public bool ShowCave = false;
 
         //public Vector3 currentTrackedObject { get { return _TrackedObject; } }
 
@@ -106,9 +105,9 @@ namespace Cave
 
         void Awake()
         {
-            Instantiate(CameraManagerPrefab);
-            Instantiate(FrustumManagerPrefab);
-            Instantiate(CameraContainerPrefab);
+            Instantiate(SystemSettings.CameraManagerPrefab);
+            Instantiate(SystemSettings.FrustumManagerPrefab);
+            Instantiate(SystemSettings.CameraContainerPrefab);
         }
 
         // Use this for initialization
@@ -129,7 +128,7 @@ namespace Cave
             _wallsXXL.Add(_CAVERightXXL = GameObject.FindWithTag("CaveRightXXL").GetComponent<Transform>());
             _wallsXXL.Add(_CAVEBottomXXL = GameObject.FindWithTag("CaveBottomXXL").GetComponent<Transform>());
 
-            if (!ShowCave)
+            if (!SystemSettings.ShowCave)
             {
                 foreach (var w in _walls)
                 {
@@ -149,11 +148,9 @@ namespace Cave
             //_frustumManager = GameObject.FindWithTag("FrustumManager").GetComponent<FrustumManager>();
             //_cameraContainer = GameObject.FindWithTag("CameraContainer");
 
-            if (CAVEMode == CAVEMode.FourScreen) EyeDistance = 0f;
+            //if (CAVEMode == CAVEMode.FourScreen) EyeDistance = 0f;
 
             ToggleColliders(false);
-
-            PlaceUIElements();
 
             // expand playersettings for mobile ionput, so that we have access to the virtualAxis from wand
             //String scriptDefineSymbols = UnityEditor.PlayerSettings.GetScriptingDefineSymbolsForGroup(UnityEditor.BuildTargetGroup.Standalone);
@@ -170,11 +167,6 @@ namespace Cave
             transform.rotation = Camera.main.transform.rotation;
         }
 
-        private void SetCameraTag()
-        {
-
-        }
-
         public void ToggleColliders(bool status)
         {
             foreach (var w in _walls)
@@ -186,65 +178,6 @@ namespace Cave
             {
                 w.GetComponent<Collider>().enabled = status;
             }
-        }
-
-        private void PlaceUIElements()
-        {
-            Transform caveSide;
-            Vector2 rot = Vector2.zero;
-
-            switch (GUILocation)
-            {
-                case BasicSettings.Sides.Left:
-                    caveSide = API.Instance.Cave.CAVELeftXXL;
-                    rot.x = 0f;
-                    rot.y = 270f;
-                    break;
-
-                case BasicSettings.Sides.Right:
-                    caveSide = API.Instance.Cave.CAVERightXXL;
-                    rot.x = 0f;
-                    rot.y = 90;
-                    break;
-
-                case BasicSettings.Sides.Bottom:
-                    caveSide = API.Instance.Cave.CAVEBottomXXL;
-                    rot.x = 90f;
-                    rot.y = 0f;
-                    break;
-
-                default:
-                    caveSide = API.Instance.Cave.CAVEFrontXXL;
-                    break;
-                }
-
-            var canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-            var canvasRectTransform = GameObject.Find("Canvas").GetComponent<RectTransform>();
-
-            canvas.renderMode = RenderMode.WorldSpace;
-            canvasRectTransform.sizeDelta = new Vector2(caveSide.transform.localScale.z * 1000f, caveSide.transform.localScale.x * 1000f);
-            canvasRectTransform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-            canvasRectTransform.SetParent(API.Instance.Cave.transform);
-            //canvasRectTransform.transform.parent = API.Instance.Cave.transform;
-            canvasRectTransform.localPosition = caveSide.transform.localPosition;
-            canvasRectTransform.eulerAngles = new Vector3(rot.x, rot.y, 0f);
-        }
-
-        List<GameObject> GetAllUIElements()
-        {
-            int layerUI = LayerMask.NameToLayer("UI");
-            List<GameObject> uiElements = new List<GameObject>();
-            GameObject[] allElements = FindObjectsOfType<GameObject>();
-
-            foreach (var go in allElements)
-            {
-                if (go.layer == layerUI)
-                {
-                    uiElements.Add(go);
-                }
-            }
-
-            return uiElements;
         }
     }
 }
