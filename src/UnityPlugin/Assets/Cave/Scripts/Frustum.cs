@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Frustum : MonoBehaviour {
 
@@ -195,6 +196,42 @@ public class Frustum : MonoBehaviour {
 
     }
 
+
+
+    public static void GPM(ref Camera c)
+    {
+        if (c.transform.position.z - 1.27f < 0) return;
+
+        Matrix4x4 m = new Matrix4x4();
+        // line one
+        m[0, 0] = 1f;
+        m[0, 1] = 0f;
+        m[0, 2] = 0f;
+        m[0, 3] = 0f;
+
+        //line two
+        m[1, 0] = 0f;
+        m[1, 1] = 1f;
+        m[1, 2] = 0f;
+        m[1, 3] = 0f;
+
+        //line 3
+        m[2, 0] = -(c.transform.position.x / (c.transform.position.z - 1.27f));
+        m[2, 1] = -(c.transform.position.y / (c.transform.position.z - 1.27f));
+        m[2, 2] = 1f;
+        m[2, 3] = -(1f / (c.transform.position.z - 1.27f));
+
+        // line 4
+        m[3, 0] = ((c.transform.position.x * 1.27f) / (c.transform.position.z - 1.27f));
+        m[3, 1] = ((c.transform.position.y * 1.27f) / (c.transform.position.z - 1.27f));
+        m[3, 2] = 0f;
+        m[3, 3] = ((c.transform.position.y) / (c.transform.position.z - 1.27f));
+
+        c.projectionMatrix = m;
+        //c.worldToCameraMatrix = Matrix4x4.identity;
+
+    }
+
     //static Matrix4x4 getWorldToCameraMatrix(ref Camera c, Vector3 bottomLeft, Vector3 bottomRight, Vector3 topLeft, Vector3 headTrackerLocation, float near, float far)
     //{
     //    //Fill in the transform matrix
@@ -272,7 +309,289 @@ public class Frustum : MonoBehaviour {
 
 
 
-    public static void OffAxisProjection(ref Camera c , Vector3 bottomLeft, Vector3 bottomRight, Vector3 topLeft, Vector3 headTrackerLocation, float near, float far) {
+    public static void OffAxisProjection(ref Camera c , Vector3 bottomLeft, Vector3 bottomRight, Vector3 topLeft, Vector3 headTrackerLocation, float near, float far,Vector3 up ) {
+        // This script should be attached to a Camera object 
+        // in Unity. Once a Plane object is specified as the 
+        // "projectionScreen", the script computes a suitable
+        // view and projection matrix for the camera.
+        // The code is based on Robert Kooima's publication  
+        // "Generalized Perspective Projection," 2009, 
+        // http://csc.lsu.edu/~kooima/pdfs/gen-perspective.pdf 
+
+        //c.ResetAspect();
+        //c.ResetProjectionMatrix();
+        //c.ResetWorldToCameraMatrix();
+
+        Vector3 pa = bottomLeft;
+        // lower left corner in world coordinates
+        Vector3 pb = bottomRight;
+        // lower right corner
+        Vector3 pc = topLeft;
+        // upper left corner
+        Vector3 pe = headTrackerLocation;
+        // eye position
+        float n = near;
+        // distance of near clipping plane
+        float f = far;
+        // distance of far clipping plane
+
+        Vector3 va; // from pe to pa
+        Vector3 vb; // from pe to pb
+        Vector3 vc; // from pe to pc
+        Vector3 vr; // right axis of screen
+        Vector3 vu; // up axis of screen
+        Vector3 vn; // normal vector of screen
+
+        float l; // distance to left screen edge
+        float r; // distance to right screen edge
+        float b; // distance to bottom screen edge
+        float t; // distance to top screen edge
+        float d; // distance from eye to screen 
+
+        vr = pb - pa;
+        vu = pc - pa;
+        vr.Normalize();
+        vu.Normalize();
+        vn = -Vector3.Cross(vr, vu);
+        // we need the minus sign because Unity 
+        // uses a left-handed coordinate system
+        vn.Normalize();
+
+        va = pa - pe;
+        vb = pb - pe;
+        vc = pc - pe;
+
+        d = -Vector3.Dot(va, vn);
+        l = Vector3.Dot(vr, va) * n / d;
+        r = Vector3.Dot(vr, vb) * n / d;
+        b = Vector3.Dot(vu, va) * n / d;
+        t = Vector3.Dot(vu, vc) * n / d;
+
+        Matrix4x4 p = new Matrix4x4(); // projection matrix 
+        p[0, 0] = 2.0f * n / (r - l);
+        p[0, 1] = 0.0f;
+        p[0, 2] = (r + l) / (r - l);
+        p[0, 3] = 0.0f;
+
+        p[1, 0] = 0.0f;
+        p[1, 1] = 2.0f * n / (t - b);
+        p[1, 2] = (t + b) / (t - b);
+        p[1, 3] = 0.0f;
+
+        p[2, 0] = 0.0f;
+        p[2, 1] = 0.0f;
+        p[2, 2] = (f + n) / (n - f);
+        p[2, 3] = 2.0f * f * n / (n - f);
+
+        p[3, 0] = 0.0f;
+        p[3, 1] = 0.0f;
+        p[3, 2] = -1.0f;
+        p[3, 3] = 0.0f;
+
+        Matrix4x4 rm = new Matrix4x4(); // rotation matrix;
+        rm[0, 0] = vr.x;
+        rm[0, 1] = vr.y;
+        rm[0, 2] = vr.z;
+        rm[0, 3] = 0.0f;
+
+        rm[1, 0] = vu.x;
+        rm[1, 1] = vu.y;
+        rm[1, 2] = vu.z;
+        rm[1, 3] = 0.0f;
+
+        rm[2, 0] = vn.x;
+        rm[2, 1] = vn.y;
+        rm[2, 2] = vn.z;
+        rm[2, 3] = 0.0f;
+
+        rm[3, 0] = 0.0f;
+        rm[3, 1] = 0.0f;
+        rm[3, 2] = 0.0f;
+        rm[3, 3] = 1.0f;
+
+        Matrix4x4 tm = new Matrix4x4(); // translation matrix;
+        tm[0, 0] = 1.0f;
+        tm[0, 1] = 0.0f;
+        tm[0, 2] = 0.0f;
+        tm[0, 3] = -pe.x;
+
+        tm[1, 0] = 0.0f;
+        tm[1, 1] = 1.0f;
+        tm[1, 2] = 0.0f;
+        tm[1, 3] = -pe.y;
+
+        tm[2, 0] = 0.0f;
+        tm[2, 1] = 0.0f;
+        tm[2, 2] = 1.0f;
+        tm[2, 3] = -pe.z;
+
+        tm[3, 0] = 0.0f;
+        tm[3, 1] = 0.0f;
+        tm[3, 2] = 0.0f;
+        tm[3, 3] = 1.0f;
+
+        c.projectionMatrix = p;
+
+        c.worldToCameraMatrix = rm * tm;
+
+       // Matrix4x4.TRS()
+        // The original paper puts everything into the projection 
+        // matrix (i.e. sets it to p * rm * tm and the other 
+        // matrix to the identity), but this doesn't appear to 
+        // work with Unity's shadow maps.
+
+        //if (c.name =="CameraFrontLeft")
+        //{
+
+            Debug.Log(String.Format("one {0}", c.fieldOfView));
+            Quaternion q = new Quaternion();
+            //look at the center of the screen
+            q.SetLookRotation((0.5f * (pb + pc) - pe), Vector3.up);
+            //apply rotation
+            c.transform.rotation = q;
+            Debug.Log(string.Format("aspect: {0}", c.aspect));
+
+            //set fieldOfview to a conservative estimate
+            if (c.aspect >= 1.0f)
+            {
+                c.fieldOfView = Mathf.Rad2Deg * Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude) / va.magnitude);
+            }
+            else
+            {
+                // take the camera aspect into account to make the frustum wide enough
+                c.fieldOfView = Mathf.Rad2Deg / c.aspect * Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude) / va.magnitude);
+            }
+            Debug.Log(String.Format("two {0}", c.fieldOfView));
+        //}
+        //if(c.name == "CameraFrontRight")
+        //{
+        //    Debug.Log(String.Format("three {0}", c.fieldOfView));
+        //}
+        ////  if (d < 0.01f) return;
+
+
+        //float d2 = 0f;
+        //Plane p2 = new Plane(bottomLeft, bottomRight, topLeft);
+        //d2 = p2.GetDistanceToPoint(headTrackerLocation);
+        //float aspect = 0.8f; // rotate camera to screen for culling to work
+        //Quaternion q = new Quaternion();
+        //q.SetLookRotation((0.5f * (pb + pc) - pe), vu);
+
+        //c.transform.rotation = q;
+
+        //q.SetLookRotation(new Vector3(1f, 1f, 1f), Vector3.up);
+
+        // look at center of screen
+        //c.transform.rotation.SetEulerAngles(0f, 0f, 0f); //= q;
+
+        // set fieldOfView to a conservative estimate 
+        // to make frustum tall enough
+
+        //if (c.name == "CameraFrontLeft")
+        //{
+        //    Matrix4x4 mat = c.projectionMatrix;
+
+        //    float xa = mat[0];
+        //    float xb = mat[5];
+        //    float xc = mat[10];
+        //    float xd = mat[14];
+
+        //    float aspect_ratio = xb / xa;
+        //   // Debug.Log(c.aspect);
+
+        //    float k = (xc - 1.0f) / (xc + 1.0f);
+        //    float clip_min = (xd * (1.0f - k)) / (2.0f * k);
+        //    float clip_max = k * clip_min;
+
+        //    float RAD2DEG = 180.0f / 3.14159265358979323846f;
+        //    float fov = RAD2DEG * (2.0f * (float)Math.Atan(1.0f / xb));
+
+        //    Debug.Log(String.Format("Cam Values:    {0}, {1}", c.aspect, GetHorizontalFOV(ref c)));
+        //    Debug.Log(String.Format("recalc values: {0}, {1}, {2}, {3}, {4}", aspect_ratio, k, clip_min, clip_max, fov));
+
+        //    float currentFOVVertical = fov;
+        //    float currentFOVHorizontal = Mathf.Rad2Deg * 2 * Mathf.Atan(Mathf.Tan((currentFOVVertical * Mathf.Deg2Rad) / 2f) / aspect_ratio);
+        //    Debug.Log(string.Format("fov V: {0}, fov H: {1}", currentFOVHorizontal, currentFOVVertical));
+
+
+
+        //    //if (HelperDistance <= 0.3f)
+        //{
+        //    c.fieldOfView = Mathf.Rad2Deg / (HelperDistance / 0.3f) *
+        //        Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude)
+        //        / va.magnitude);
+        //}
+        //if (HelperDistance >= 2f)
+        //{
+        //    c.fieldOfView = Mathf.Rad2Deg *
+        //    Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude)
+        //    / va.magnitude);
+        //}
+
+        /*
+        Plane HelperPlane = new Plane(bottomRight, bottomLeft, topLeft);
+        float HelperDistance = HelperPlane.GetDistanceToPoint(headTrackerLocation);
+
+
+
+        float oldAspectCamera = c.aspect;
+
+
+        float newAspectCamera = c.aspect;
+        Debug.Log(string.Format("Distance to Plane: {0}", HelperDistance));
+        Debug.Log(string.Format("Aspect {0}", c.aspect));
+
+        float MainAspect = 2.54f / 2.02f;
+        float HelperAspect = 2.54f / (2f * HelperDistance);
+
+        float currentCameraAspect = c.aspect;
+        float currentFOVVertical = c.fieldOfView;
+        float currentFOVHorizontal = Mathf.Rad2Deg * 2 * Mathf.Atan(Mathf.Tan((currentFOVVertical * Mathf.Deg2Rad) / 2f) / currentCameraAspect);
+        Debug.Log(String.Format("HelperDistance = {0}, FOV V {1} , FOV H {2}", HelperDistance, currentFOVVertical, currentFOVHorizontal));
+
+
+        if(HelperDistance <= 0.3f)
+        {
+            c.fieldOfView = Mathf.Rad2Deg / (HelperDistance/0.3f) *
+                Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude)
+                / va.magnitude);
+        }
+        if (HelperDistance >= 2f)
+        {
+            c.fieldOfView = Mathf.Rad2Deg *
+            Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude)
+            / va.magnitude);
+        }
+
+
+*/
+        //    if (HelperAspect >= 1f)
+        //{
+        //    c.fieldOfView = Mathf.Rad2Deg *
+        //        Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude)
+        //        / va.magnitude);
+        //    Debug.Log(string.Format("a: {0} {1} {2}",c.name, c.aspect, Mathf.Rad2Deg *
+        //        Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude)
+        //        / va.magnitude)));
+        //}
+        //else
+        //{
+        //    // take the camera aspect into account to 
+        //    // make the frustum wide enough 
+
+        //    Debug.Log(string.Format("b: {0} {1} {2} ",c.name, c.aspect, Mathf.Rad2Deg / HelperAspect *
+        //        Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude)
+        //        / va.magnitude)));
+        //    c.fieldOfView = Mathf.Rad2Deg / c.aspect *
+        //        Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude)
+        //        / va.magnitude);
+
+        //}
+        // }
+    }
+
+    public static void AusdruckKuenzler(ref Camera c, Vector3 bottomLeft, Vector3 bottomRight, Vector3 topLeft, Vector3 headTrackerLocation, float near, float far, Vector3 up)
+    {
         // This script should be attached to a Camera object 
         // in Unity. Once a Plane object is specified as the 
         // "projectionScreen", the script computes a suitable
@@ -398,35 +717,50 @@ public class Frustum : MonoBehaviour {
         // because our "viewing matrix" might look at a  
         // point that is off the screen.
 
-        if (true)
-        {
-            // rotate camera to screen for culling to work
-            Quaternion q = new Quaternion();
-            q.SetLookRotation((0.5f * (pb + pc) - pe), vu);
-            // look at center of screen
-            c.transform.rotation = q;
+        if (d < 0.01f) return;
 
-            // set fieldOfView to a conservative estimate 
-            // to make frustum tall enough
-            if (c.aspect >= 1.0f)
-            {
-                c.fieldOfView = Mathf.Rad2Deg *
-                    Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude)
-                    / va.magnitude);
-            }
-            else
-            {
-                // take the camera aspect into account to 
-                // make the frustum wide enough 
-                c.fieldOfView =
-                    Mathf.Rad2Deg / c.aspect *
-                    Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude)
-                    / va.magnitude);
-            }
+
+        Debug.Log(String.Format("before: c.aspect: {0}, c.transform.rotation: {1}", c.aspect, c.transform.rotation));
+
+        Quaternion q = new Quaternion();
+        
+        q.SetLookRotation((0.5f * (pb + pc) - pe));
+        // look at center of screen
+        c.transform.rotation = q;
+
+
+        Debug.Log(String.Format("after: c.aspect: {0}, c.transform.rotation: {1}",c.aspect,c.transform.rotation));
+        // set fieldOfView to a conservative estimate 
+        // to make frustum tall enough
+        if (c.aspect >= 1.0)
+        {
+            c.fieldOfView = Mathf.Rad2Deg *
+               Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude)
+               / va.magnitude);
         }
+        else
+        {
+            // take the camera aspect into account to 
+            // make the frustum wide enough 
+            c.fieldOfView =
+               Mathf.Rad2Deg / c.aspect *
+               Mathf.Atan(((pb - pa).magnitude + (pc - pa).magnitude)
+               / va.magnitude);
+        }
+
     }
-    
-    
+
+    public static float GetHorizontalFOV(ref Camera c )
+    {
+        float vFOVrad = c.fieldOfView * Mathf.Deg2Rad;
+        float cameraHeightAt1 = Mathf.Tan(vFOVrad * 0.5f);
+        float hFOVrad = Mathf.Atan(cameraHeightAt1 * c.aspect) * 2;
+
+        return hFOVrad * Mathf.Rad2Deg;
+    }
+
+
+
     #endregion
 
 }
