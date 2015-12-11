@@ -199,6 +199,7 @@ namespace Cave
                 {
                     cam = _cameraLeftLeft,
                     camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Left ? Instantiate(_cameraLeftLeft) : null,
+                    camCursor = Instantiate(_cameraLeftLeft),
                     offset = new Vector3(0f, 0f, -(API.Instance.Cave.EyeDistance / 2))
                 },
                 Right = new CameraInfo
@@ -234,6 +235,7 @@ namespace Cave
                 {
                     cam = _cameraFrontLeft,
                     camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Front ? Instantiate(_cameraFrontLeft) : null,
+                    camCursor = Instantiate(_cameraFrontLeft),
                     offset = new Vector3(-(API.Instance.Cave.EyeDistance / 2), 0f, 0f)
                 },
                 Right = new CameraInfo
@@ -269,6 +271,7 @@ namespace Cave
                 {
                     cam = _cameraRightLeft,
                     camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Right ? Instantiate(_cameraRightLeft) : null,
+                    camCursor = Instantiate(_cameraRightLeft),
                     offset = new Vector3(0f, 0f, +(API.Instance.Cave.EyeDistance / 2))
                 },
                 Right = new CameraInfo
@@ -305,6 +308,7 @@ namespace Cave
                 {
                     cam = _cameraBottomLeft,
                     camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Bottom ? Instantiate(_cameraBottomLeft) : null,
+                    camCursor = Instantiate(_cameraBottomLeft),
                     offset = new Vector3(-(API.Instance.Cave.EyeDistance / 2), 0f, 0f)
                 },
                 Right = new CameraInfo
@@ -409,7 +413,8 @@ namespace Cave
                 vi.Right.cam.enabled = true;
 
                 // adjust cursor cams
-                ConfigureCamCursor(vi.Right.camCursor, vi.Right.cam, vi.CAVESide.name);
+                ConfigureCamCursor(vi.Left.camCursor, vi.Left.cam, vi.CAVESide.name, true);
+                ConfigureCamCursor(vi.Right.camCursor, vi.Right.cam, vi.CAVESide.name, false);
             }
             //};
         }
@@ -549,12 +554,12 @@ namespace Cave
             camGUI.depth = (int)CameraDepths.GUI;
         }
 
-        private void ConfigureCamCursor(Camera camCursor, Camera cam, BasicSettings.Sides caveSide)
+        private void ConfigureCamCursor(Camera camCursor, Camera cam, BasicSettings.Sides caveSide, bool isEyeLeft = true)
         {
             camCursor.CopyFrom(cam);
             camCursor.cullingMask = LayerMask.GetMask("UI");
 
-            camCursor.name = "CameraCursor" + caveSide.ToString();
+            camCursor.name = "CameraCursor" + caveSide.ToString() + (isEyeLeft ? "Left" : "Right");
             camCursor.clearFlags = CameraClearFlags.Depth;
             camCursor.transform.SetParent(cam.transform.parent);
             camCursor.depth = (int)CameraDepths.Cursor;
@@ -572,15 +577,17 @@ namespace Cave
                 // Deactivate all Cursor Cams
                 foreach (var fvi in FullViewInfo)
                 {
+                    fvi.Value.Left.camCursor.enabled = false;
                     fvi.Value.Right.camCursor.enabled = false;
                 }
 
                 // Get Cam
-                var camCursor = FullViewInfo.FirstOrDefault(x => x.Value.CAVESide.name == caveSide).Value.Right.camCursor;
+                var camCursorLeft = FullViewInfo.FirstOrDefault(x => x.Value.CAVESide.name == caveSide).Value.Left.camCursor;
+                var camCursorRight = FullViewInfo.FirstOrDefault(x => x.Value.CAVESide.name == caveSide).Value.Right.camCursor;
 
-                if (camCursor != null && API.Instance.Cave.GUILocation != caveSide)
+                if (camCursorLeft != null && API.Instance.Cave.GUILocation != caveSide)
                 {
-                    camCursor.enabled = true;
+                    camCursorLeft.enabled = camCursorRight.enabled = true;
                 }
 
                 // Adjust MouseCanvas

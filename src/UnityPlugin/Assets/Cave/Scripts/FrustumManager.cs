@@ -32,7 +32,8 @@ public class FrustumManager : MonoBehaviour
             Camera cRight = var.Value.Right.cam;
             Camera cLeftGUI = var.Value.Left.camGUI;
             Camera cRightGUI = var.Value.Right.camGUI;
-            Camera cCursor = var.Value.Right.camCursor;
+            Camera cCursorLeft = var.Value.Left.camCursor;
+            Camera cCursorRight = var.Value.Right.camCursor;
 
             //cLeft.ResetWorldToCameraMatrix();
             //cRight.ResetWorldToCameraMatrix();
@@ -122,9 +123,19 @@ public class FrustumManager : MonoBehaviour
                                                         var.Value.Right.camGUI.farClipPlane);
                 }
 
-                if(cCursor != null && cCursor.enabled)
+                if (cCursorLeft != null && cCursorLeft.enabled)
                 {
-                    Frustum.GeneralizedPerspectiveProjection(ref cCursor, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomleft),
+                    Frustum.GeneralizedPerspectiveProjection(ref cCursorLeft, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomleft),
+                                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomright),
+                                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.topleft),
+                                                        var.Value.Left.cam.transform.position,
+                                                        var.Value.Left.cam.nearClipPlane,
+                                                        var.Value.Left.cam.farClipPlane);
+                }
+
+                if (cCursorRight != null && cCursorRight.enabled)
+                {
+                    Frustum.GeneralizedPerspectiveProjection(ref cCursorRight, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomleft),
                                                         var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomright),
                                                         var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.topleft),
                                                         var.Value.Right.cam.transform.position,
@@ -135,18 +146,18 @@ public class FrustumManager : MonoBehaviour
             }
             else
             {
-                Frustum.OffAxisProjection(ref cLeft, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomleft),
-                                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomright),
-                                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.topleft),
-                                                        var.Value.Left.cam.transform.position,
-                                                        var.Value.Left.cam.nearClipPlane,
-                                                        var.Value.Left.cam.farClipPlane);
-                Frustum.OffAxisProjection(ref cRight, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomleft),
-                                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomright),
-                                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.topleft),
-                                                        var.Value.Right.cam.transform.position,
-                                                        var.Value.Right.cam.nearClipPlane,
-                                                        var.Value.Right.cam.farClipPlane);
+                //Frustum.OffAxisProjection(ref cLeft, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomleft),
+                //                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomright),
+                //                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.topleft),
+                //                                        var.Value.Left.cam.transform.position,
+                //                                        var.Value.Left.cam.nearClipPlane,
+                //                                        var.Value.Left.cam.farClipPlane);
+                //Frustum.OffAxisProjection(ref cRight, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomleft),
+                //                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomright),
+                //                                        var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.topleft),
+                //                                        var.Value.Right.cam.transform.position,
+                //                                        var.Value.Right.cam.nearClipPlane,
+                //                                        var.Value.Right.cam.farClipPlane);
             }
         }
 

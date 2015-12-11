@@ -1487,7 +1487,7 @@ Prefab:
       objectReference: {fileID: 1306395736}
     - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: SystemSettings.SetMouseCursor
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: SystemSettings.ShowCave
