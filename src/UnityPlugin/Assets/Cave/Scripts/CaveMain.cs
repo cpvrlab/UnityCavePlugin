@@ -12,7 +12,7 @@ namespace Cave
 
     public enum FrustumMode
     {
-        CAVEXXL, GPP_Kooima
+        CAVEXXL, OffAxis, GeneralProjectionMatrix, AusdruckKuenzler
     };
 
     public enum TrackedObject
