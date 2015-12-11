@@ -53,7 +53,7 @@ Julien:
 - 	OK - Sekundäre Kameras
 - ShootingGallery: Menu, das mit Wand gesteuert werden kann
 - ShootingGallery: Alles ein wenig nach unten setzen + jump!
-- MouseCursor: Nie direkt als Cursor-Icon setzen, sondern für beide Augen auf den Canvas berechnen. Weil aktuell hat es einen Versatz zwischen beiden Bildern. Würde auch die Kollision mit dem GUI-Canvas beheben.
+- 	OK - MouseCursor: Nie direkt als Cursor-Icon setzen, sondern für beide Augen auf den Canvas berechnen. Weil aktuell hat es einen Versatz zwischen beiden Bildern. Würde auch die Kollision mit dem GUI-Canvas beheben.
 - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - Doku Device Wand
 - Video vom CAVE?

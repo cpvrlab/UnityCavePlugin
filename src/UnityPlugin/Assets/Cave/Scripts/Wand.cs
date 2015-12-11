@@ -314,6 +314,11 @@ namespace Cave
                 {
                     Cursor.visible = true;
                 }
+
+                if (API.Instance.Cave.SystemSettings.ForceShowMouseCursor)
+                {
+                    Cursor.visible = true;
+                }
             }
 
             API.Instance.Cave.ToggleColliders(false);
