@@ -3,6 +3,7 @@ using System.Collections;
 using System.Drawing;
 using System;
 using UnityStandardAssets.CrossPlatformInput;
+using System.Runtime.InteropServices;
 
 namespace Cave
 {
@@ -45,6 +46,14 @@ namespace Cave
 
         [Range(-1f, 1f)]
         public float JoystickAnalogDebugY;
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
+
+        private const int MOUSEEVENTF_LEFTDOWN = 0x02;
+        private const int MOUSEEVENTF_LEFTUP = 0x04;
+        private const int MOUSEEVENTF_RIGHTDOWN = 0x08;
+        private const int MOUSEEVENTF_RIGHTUP = 0x10;
 
         // Use this for initialization
         void Start()
@@ -167,6 +176,9 @@ namespace Cave
             vCurr.x = (float)VRPN.vrpnAnalog(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 0);
             vCurr.y = (float)VRPN.vrpnAnalog(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 1);
 
+            if (Mathf.Abs(vCurr.x) < 0.01f) vCurr.x = 0f;
+            if (Mathf.Abs(vCurr.y) < 0.01f) vCurr.y = 0f;
+
             if(JoystickAnalogDebugX != 0)
             {
                 vCurr.x = JoystickAnalogDebugX;
@@ -202,8 +214,18 @@ namespace Cave
             if (_bottomLeft) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.BottomLeft);
             if (_bottomRight) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.BottomRight);
             if (_joystickPress) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.Joystick);
-            if (_buttonBack) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.Back);
+            if (_buttonBack) {
 
+                if(API.Instance.Cave.WandSettings.ButtonMapping.Back == CaveInput.MouseLeft)
+                {
+                    mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)System.Windows.Forms.Cursor.Position.X, (uint)System.Windows.Forms.Cursor.Position.Y, 0, 0);
+                }
+                else
+                {
+                    WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.Back);
+                }
+            }
+            
             //System.Windows.Forms.SendKeys.Send("a"); // Funzt nicht
 
             //KeyCode keycode = (KeyCode)System.Enum.Parse(typeof(KeyCode), "S"); // funzt so. aber keycode bringt noch nichts

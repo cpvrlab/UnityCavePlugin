@@ -52,8 +52,9 @@ Julien:
 - 	OK - MouseCursor: Setzen allgemein noch buggy -> Eine MouseCursor Kamera erstellen und auf die vom Wand bestrahlte CAVE-Wand ausrichten. Und auf dieser Cam nur den Cursor rendern.
 - 	OK - Sekundäre Kameras
 - ShootingGallery: Menu, das mit Wand gesteuert werden kann
-- ShootingGallery: Alles ein wenig nach unten setzen + jump!
+- 	OK - ShootingGallery: Alles ein wenig nach unten setzen + jump!
 - 	OK - MouseCursor: Nie direkt als Cursor-Icon setzen, sondern für beide Augen auf den Canvas berechnen. Weil aktuell hat es einen Versatz zwischen beiden Bildern. Würde auch die Kollision mit dem GUI-Canvas beheben.
+- MouseClick simulieren -> versch. Mausbuttons mappen und in der Wand-Klasse prüfen
 - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - Doku Device Wand
 - Video vom CAVE?

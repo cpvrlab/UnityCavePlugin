@@ -423,6 +423,8 @@ namespace Cave
         {
             foreach(var c in API.Instance.Cave.SecondaryCameraSettings)
             {
+                if (c.Camera == null) break;
+
                 c.Camera.depth = (int)CameraDepths.Secondary;
 
                 // dont render ui elements
