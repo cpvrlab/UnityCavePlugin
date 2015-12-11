@@ -572,7 +572,7 @@ namespace Cave
             {
                 _wandCaveIntersection = caveSide;
 
-                Debug.Log("AdjustCamCursor, new side: " + caveSide);
+                //Debug.Log("AdjustCamCursor, new side: " + caveSide);
 
                 // Deactivate all Cursor Cams
                 foreach (var fvi in FullViewInfo)
