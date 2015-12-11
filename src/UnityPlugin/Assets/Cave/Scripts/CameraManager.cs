@@ -523,16 +523,18 @@ namespace Cave
 
             foreach(var c in _rootCanvas)
             {
-                var canvasRectTransform = c.GetComponent<RectTransform>();
+                if (c.name != "CanvasMouseCursorDuplicate")
+                {
+                    var canvasRectTransform = c.GetComponent<RectTransform>();
 
-                c.renderMode = RenderMode.ScreenSpaceOverlay; // To avoid bug
-                c.renderMode = RenderMode.WorldSpace;
-                canvasRectTransform.sizeDelta = new Vector2(caveSide.transform.localScale.z * 1000f, caveSide.transform.localScale.x * 1000f);
-                canvasRectTransform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-                if (c.name != "CanvasMouseCursorDuplicate") canvasRectTransform.SetParent(API.Instance.Cave.transform);
-                //canvasRectTransform.transform.parent = API.Instance.Cave.transform;
-                canvasRectTransform.localPosition = caveSide.transform.localPosition;
-                canvasRectTransform.eulerAngles = new Vector3(rot.x, rot.y, 0f);
+                    c.renderMode = RenderMode.ScreenSpaceOverlay; // To avoid bug
+                    c.renderMode = RenderMode.WorldSpace;
+                    canvasRectTransform.sizeDelta = new Vector2(caveSide.transform.localScale.z * 1000f, caveSide.transform.localScale.x * 1000f);
+                    canvasRectTransform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                    canvasRectTransform.SetParent(API.Instance.Cave.transform);
+                    canvasRectTransform.localPosition = caveSide.transform.localPosition;
+                    canvasRectTransform.eulerAngles = new Vector3(rot.x, rot.y, 0f);
+                }
             }
         }
 
@@ -565,6 +567,8 @@ namespace Cave
             {
                 _wandCaveIntersection = caveSide;
 
+                Debug.Log("AdjustCamCursor, new side: " + caveSide);
+
                 // Deactivate all Cursor Cams
                 foreach (var fvi in FullViewInfo)
                 {
@@ -578,7 +582,53 @@ namespace Cave
                 {
                     camCursor.enabled = true;
                 }
+
+                // Adjust MouseCanvas
+                AdjustMouseCursorCanvas(caveSide);
             }
+        }
+
+        private void AdjustMouseCursorCanvas(BasicSettings.Sides side)
+        {
+            var c = GameObject.Find("CanvasMouseCursorDuplicate").GetComponent<Canvas>();
+
+            Transform caveSide;
+            Vector2 rot = Vector2.zero;
+
+            switch (side)
+            {
+                case BasicSettings.Sides.Left:
+                    caveSide = API.Instance.Cave.CAVELeftXXL;
+                    rot.x = 0f;
+                    rot.y = 270f;
+                    break;
+
+                case BasicSettings.Sides.Right:
+                    caveSide = API.Instance.Cave.CAVERightXXL;
+                    rot.x = 0f;
+                    rot.y = 90;
+                    break;
+
+                case BasicSettings.Sides.Bottom:
+                    caveSide = API.Instance.Cave.CAVEBottomXXL;
+                    rot.x = 90f;
+                    rot.y = 0f;
+                    break;
+
+                default:
+                    caveSide = API.Instance.Cave.CAVEFrontXXL;
+                    break;
+            }
+
+            var canvasRectTransform = c.GetComponent<RectTransform>();
+
+            c.renderMode = RenderMode.ScreenSpaceOverlay; // To avoid bug
+            c.renderMode = RenderMode.WorldSpace;
+            canvasRectTransform.sizeDelta = new Vector2(caveSide.transform.localScale.z * 1000f, caveSide.transform.localScale.x * 1000f);
+            canvasRectTransform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            canvasRectTransform.SetParent(API.Instance.Cave.transform);
+            canvasRectTransform.localPosition = caveSide.transform.localPosition;
+            canvasRectTransform.eulerAngles = new Vector3(rot.x, rot.y, 0f);
         }
     }
 }

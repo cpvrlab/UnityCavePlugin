@@ -101,7 +101,7 @@ namespace Cave
 
             if(API.Instance.Cave.WandSettings.Cursor != null)
             {
-                Canvas canvasMouseCursorDuplicate = GameObject.Find("CanvasMouseCursorDuplicate").GetComponent<Canvas>();
+                //Canvas canvasMouseCursorDuplicate = GameObject.Find("CanvasMouseCursorDuplicate").GetComponent<Canvas>();
                 Rect rect = new Rect(0, 0, API.Instance.Cave.WandSettings.Cursor.width, API.Instance.Cave.WandSettings.Cursor.height);
                 
                 Sprite cursorSprite = Sprite.Create(API.Instance.Cave.WandSettings.Cursor, rect, Vector2.zero);
@@ -183,7 +183,7 @@ namespace Cave
             {
                 OnJoystickAnalogUpdate(vCurr.x, vCurr.y);
             }
-            
+
             //_joystickPos = vCurr;
         }
 
@@ -298,13 +298,18 @@ namespace Cave
                 float posCaveX = posCaveSideX + _multiplierX * API.Instance.Cave.BeamerResolutionWidth;
                 float posCaveY = posCaveSideY + _multiplierY * API.Instance.Cave.BeamerResolutionHeight;
 
-                float posCaveDuplicateX = posCaveX + API.Instance.Cave.BeamerResolutionWidth;
-                float posCaveDuplicateY = -(posCaveY - _caveCursorRect.sizeDelta.y);
+                //float posCaveDuplicateX = posCaveX + API.Instance.Cave.BeamerResolutionWidth;
+                //float posCaveDuplicateY = -(posCaveY - _caveCursorRect.sizeDelta.y);
+                float posCaveDuplicateX = posCaveSideX;
+                float posCaveDuplicateY = -(posCaveSideY - _caveCursorRect.sizeDelta.y);
 
                 //Debug.Log("posCaveDuplicateX: " + posCaveDuplicateX);
                 //Debug.Log("posCaveDuplicateY: " + posCaveDuplicateY);
 
-                //System.Windows.Forms.Cursor.Position = new Point(Convert.ToInt32(posCaveX), Convert.ToInt32(posCaveY));
+                if (API.Instance.Cave.SystemSettings.SetMouseCursor)
+                {
+                    System.Windows.Forms.Cursor.Position = new Point(Convert.ToInt32(posCaveX), Convert.ToInt32(posCaveY));
+                }
 
                 // Set Position Duplicate
                 if (Cursor.visible)
@@ -315,6 +320,11 @@ namespace Cave
             }
 
             API.Instance.Cave.ToggleColliders(false);
+        }
+
+        public void DisableRenderer()
+        {
+            GetComponent<Renderer>().enabled = false;
         }
 
         //private void OnDisable()

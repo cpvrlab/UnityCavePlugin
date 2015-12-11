@@ -100,5 +100,10 @@ namespace Cave
                 transform.rotation = rot;
             }
         }
+
+        public void DisableRenderer()
+        {
+            GetComponent<Renderer>().enabled = false;
+        }
     }
 }
