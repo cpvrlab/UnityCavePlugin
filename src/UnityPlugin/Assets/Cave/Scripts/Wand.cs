@@ -99,7 +99,7 @@ namespace Cave
             _caveCursorRect = GameObject.FindWithTag("CaveCursor").GetComponent<RectTransform>();
             _caveCursorImage = GameObject.FindWithTag("CaveCursor").GetComponent< UnityEngine.UI.Image >();
 
-            if(API.Instance.Cave.WandSettings.Cursor != null)
+            if (API.Instance.Cave.WandSettings.Cursor != null)
             {
                 //Canvas canvasMouseCursorDuplicate = GameObject.Find("CanvasMouseCursorDuplicate").GetComponent<Canvas>();
                 Rect rect = new Rect(0, 0, API.Instance.Cave.WandSettings.Cursor.width, API.Instance.Cave.WandSettings.Cursor.height);
@@ -109,8 +109,6 @@ namespace Cave
                 _caveCursorImage.sprite = cursorSprite;
                 _caveCursorRect.pivot = new Vector2(0.5f, 0.5f);
                 _caveCursorRect.sizeDelta = new Vector2(API.Instance.Cave.WandSettings.Cursor.width, API.Instance.Cave.WandSettings.Cursor.height);
-
-                Cursor.SetCursor(API.Instance.Cave.WandSettings.Cursor, Vector2.zero, CursorMode.Auto);
             }
         }
 
@@ -298,11 +296,6 @@ namespace Cave
                 float posCaveX = posCaveSideX + _multiplierX * API.Instance.Cave.BeamerResolutionWidth;
                 float posCaveY = posCaveSideY + _multiplierY * API.Instance.Cave.BeamerResolutionHeight;
 
-                //float posCaveDuplicateX = posCaveX + API.Instance.Cave.BeamerResolutionWidth;
-                //float posCaveDuplicateY = -(posCaveY - _caveCursorRect.sizeDelta.y);
-                float posCaveDuplicateX = posCaveSideX;
-                float posCaveDuplicateY = -(posCaveSideY - _caveCursorRect.sizeDelta.y);
-
                 //Debug.Log("posCaveDuplicateX: " + posCaveDuplicateX);
                 //Debug.Log("posCaveDuplicateY: " + posCaveDuplicateY);
 
@@ -312,10 +305,19 @@ namespace Cave
                 }
 
                 // Set Position Duplicate
-                if (Cursor.visible)
+                if (API.Instance.Cave.WandSettings.Cursor != null)
                 {
-                    Vector2 v2 = new Vector2(posCaveDuplicateX, posCaveDuplicateY);
-                    _caveCursorRect.anchoredPosition = v2;
+                    _caveCursorRect.anchoredPosition = new Vector2(posCaveSideX, -posCaveSideY);
+                    Cursor.visible = false;
+                }
+                else
+                {
+                    Cursor.visible = true;
+                }
+
+                if (API.Instance.Cave.SystemSettings.ForceShowMouseCursor)
+                {
+                    Cursor.visible = true;
                 }
             }
 
