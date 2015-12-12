@@ -35,6 +35,8 @@ namespace Cave
         private bool _joystickPress;
         private bool _buttonBack;
 
+        private int _pressedKeycode;
+
         private RectTransform _caveCursorRect;
         private UnityEngine.UI.Image _caveCursorImage;
 
@@ -209,22 +211,12 @@ namespace Cave
             _joystickPress = VRPN.vrpnButton(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 4);
             _buttonBack = VRPN.vrpnButton(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 5);
 
-            if (_topLeft) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.TopLeft);
-            if (_topRight) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.TopRight);
-            if (_bottomLeft) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.BottomLeft);
-            if (_bottomRight) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.BottomRight);
-            if (_joystickPress) WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.Joystick);
-            if (_buttonBack) {
-
-                if(API.Instance.Cave.WandSettings.ButtonMapping.Back == CaveInput.MouseLeft)
-                {
-                    mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)System.Windows.Forms.Cursor.Position.X, (uint)System.Windows.Forms.Cursor.Position.Y, 0, 0);
-                }
-                else
-                {
-                    WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)API.Instance.Cave.WandSettings.ButtonMapping.Back);
-                }
-            }
+            if (_topLeft) PressButton(API.Instance.Cave.WandSettings.ButtonMapping.TopLeft);
+            if (_topRight) PressButton(API.Instance.Cave.WandSettings.ButtonMapping.TopRight);
+            if (_bottomLeft) PressButton(API.Instance.Cave.WandSettings.ButtonMapping.BottomLeft);
+            if (_bottomRight) PressButton(API.Instance.Cave.WandSettings.ButtonMapping.BottomRight);
+            if (_joystickPress) PressButton(API.Instance.Cave.WandSettings.ButtonMapping.Joystick);
+            if (_buttonBack) PressButton(API.Instance.Cave.WandSettings.ButtonMapping.Back);
             
             //System.Windows.Forms.SendKeys.Send("a"); // Funzt nicht
 
@@ -247,6 +239,36 @@ namespace Cave
             //Debug.Log("Button Back: " + VRPN.vrpnButton(API.Instance.Cave.WandSettings.WorldVizObjectButtons + "@" + API.Instance.Cave.Host + ":" + API.Instance.Cave.WandSettings.Port, 5));
 
             //Debug.Log("------------------");
+        }
+
+        private void PressButton(CaveInput caveInput)
+        {
+            if (_pressedKeycode == (int)caveInput) return;
+
+            if (caveInput == CaveInput.MouseLeft)
+            {
+                mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)System.Windows.Forms.Cursor.Position.X, (uint)System.Windows.Forms.Cursor.Position.Y, 0, 0);
+            }
+            else if(caveInput == CaveInput.MouseRight)
+            {
+                mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, (uint)System.Windows.Forms.Cursor.Position.X, (uint)System.Windows.Forms.Cursor.Position.Y, 0, 0);
+            }
+            else
+            {
+                WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)caveInput);
+            }
+
+            _pressedKeycode = (int)caveInput;
+
+            StopCoroutine(ClearPressedKey());
+            StartCoroutine(ClearPressedKey());
+        }
+
+        IEnumerator ClearPressedKey()
+        {
+            yield return new WaitForSeconds(1f);
+            
+            _pressedKeycode = -1;
         }
 
         private void SetCursor()

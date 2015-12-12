@@ -97,7 +97,8 @@ namespace Cave
         Down = WindowsInput.VirtualKeyCode.DOWN,
         Add = WindowsInput.VirtualKeyCode.ADD,
         Subtract = WindowsInput.VirtualKeyCode.SUBTRACT,
-        MouseLeft = 333
+        MouseLeft = 500,
+        MouseRight = 501
     }
 
     //[CustomPropertyDrawer(typeof(WandSettings))]
