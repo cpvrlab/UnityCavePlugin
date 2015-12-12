@@ -85,7 +85,7 @@ namespace Cave
         //private FrustumManager _frustumManager;
         //private GameObject _cameraContainer;
 
-        private List<Camera> _secondaryCameras = new List<Camera>();
+        //private List<Camera> _secondaryCameras = new List<Camera>();
         private List<Transform> _walls = new List<Transform>();
         private List<Transform> _wallsXXL = new List<Transform>();
 
@@ -101,10 +101,10 @@ namespace Cave
         // Use this for initialization
         void Start()
         {
-            foreach (Camera c in Camera.allCameras)
-            {
-                if (c != Camera.main) { _secondaryCameras.Add(c); }
-            };
+            //foreach (Camera c in Camera.allCameras)
+            //{
+            //    if (c != Camera.main) { _secondaryCameras.Add(c); }
+            //};
 
             _walls.Add(_CAVELeft = GameObject.FindWithTag("CaveLeft").GetComponent<Transform>());
             _walls.Add(_CAVEFront = GameObject.FindWithTag("CaveFront").GetComponent<Transform>());
