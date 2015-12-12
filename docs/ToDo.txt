@@ -54,9 +54,12 @@ Julien:
 - ShootingGallery: Menu, das mit Wand gesteuert werden kann
 - 	OK - ShootingGallery: Alles ein wenig nach unten setzen + jump!
 - 	OK - MouseCursor: Nie direkt als Cursor-Icon setzen, sondern für beide Augen auf den Canvas berechnen. Weil aktuell hat es einen Versatz zwischen beiden Bildern. Würde auch die Kollision mit dem GUI-Canvas beheben.
-- MouseClick simulieren -> versch. Mausbuttons mappen und in der Wand-Klasse prüfen
+- 	OK - MouseClick simulieren -> versch. Mausbuttons mappen und in der Wand-Klasse prüfen
 - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - Doku Device Wand
+	- MouseCursor
+	- Buttons
+	- 
 - Video vom CAVE?
 
 Daniiiee:
