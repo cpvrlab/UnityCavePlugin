@@ -7,13 +7,13 @@ using Cave;
 public class FrustumManager : MonoBehaviour
 {
     #region "private vars"
-    private FrustumMode _myMode;
+    private FrustumMode _frustumMode;
     #endregion
 
     void Awake()
     {
         transform.parent = API.Instance.Cave.gameObject.transform;
-        _myMode = API.Instance.Cave.FrustumMode;
+        _frustumMode = API.Instance.Cave.CaveSettings.FrustumMode;
     }
 
     void Start () {
@@ -36,7 +36,7 @@ public class FrustumManager : MonoBehaviour
             Camera cCursorRight = var.Value.Right.camCursor;
 
    
-            if (_myMode == FrustumMode.CAVEXXL)
+            if (_frustumMode == FrustumMode.CAVEXXL)
             {
                 Frustum.GeneralizedPerspectiveProjection(ref cLeft, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomleft),
                                                         var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.corners.bottomright),

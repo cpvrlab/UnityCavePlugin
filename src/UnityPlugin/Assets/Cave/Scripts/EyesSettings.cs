@@ -10,12 +10,12 @@ namespace Cave
         public bool TrackPosition = true;
         public AxisSensivity MovementSensivity;
         public BlockPositionAxis PositionAxisConstraints;
-        public MovementSmoothing PositionMovementConstraints;
+        public MovementSmoothing PositionSmoothing;
 
         [Header("Rotation")]
         public bool TrackRotation = true;
         public BlockRotationAxisEyes RotationAxisConstraints;
-        public MovementSmoothing RotationMovementConstraints;
+        public MovementSmoothing RotationSmoothing;
 
         [Header("VRPN")]
         public string WorldVizObject = "PPT0";

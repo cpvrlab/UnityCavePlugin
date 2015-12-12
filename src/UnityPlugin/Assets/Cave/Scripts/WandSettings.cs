@@ -9,15 +9,14 @@ namespace Cave
     {
         [Header("Position")]
         public bool TrackPosition = true;
-        [Range(0.0f, 1.0f)]
-        public float MovementSensivity;
+        public AxisSensivity MovementSensivity;
         public BlockPositionAxis PositionAxisConstraints;
-        public MovementSmoothing PositionMovementConstraints;
+        public MovementSmoothing PositionSmoothing;
 
         [Header("Rotation")]
         public bool TrackRotation = true;
         public BlockRotationAxisWand RotationAxisConstraints;
-        public MovementSmoothing RotationMovementConstraints;
+        public MovementSmoothing RotationSmoothing;
 
         [Header("Inputs")]
         public bool allowJoystick = true;

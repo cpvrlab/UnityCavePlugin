@@ -18,14 +18,14 @@ namespace Cave
         // Use this for initialization
         void Start()
         {
-            _usePositionSmoothing = API.Instance.Cave.EyesSettings.PositionMovementConstraints.useOneEuroSmoothing;
-            _useRotationSmoothing = API.Instance.Cave.EyesSettings.RotationMovementConstraints.useOneEuroSmoothing;
+            _usePositionSmoothing = API.Instance.Cave.EyesSettings.PositionSmoothing.EnableOneEuroSmoothing;
+            _useRotationSmoothing = API.Instance.Cave.EyesSettings.RotationSmoothing.EnableOneEuroSmoothing;
 
-            _rotJitterReduction = API.Instance.Cave.EyesSettings.RotationMovementConstraints.jitterReduction;
-            _rotLagReduction = API.Instance.Cave.EyesSettings.RotationMovementConstraints.lagReduction;
+            _rotJitterReduction = API.Instance.Cave.EyesSettings.RotationSmoothing.jitterReduction;
+            _rotLagReduction = API.Instance.Cave.EyesSettings.RotationSmoothing.lagReduction;
 
-            _posJitterReduction = API.Instance.Cave.EyesSettings.PositionMovementConstraints.jitterReduction;
-            _posLagReduction = API.Instance.Cave.EyesSettings.PositionMovementConstraints.lagReduction;
+            _posJitterReduction = API.Instance.Cave.EyesSettings.PositionSmoothing.jitterReduction;
+            _posLagReduction = API.Instance.Cave.EyesSettings.PositionSmoothing.lagReduction;
 
         }
 
@@ -44,7 +44,7 @@ namespace Cave
             {
                 // Position
                 var posOri = transform.localPosition;
-                var pos = VRPN.vrpnTrackerPos(API.Instance.Cave.EyesSettings.WorldVizObject + "@" + API.Instance.Cave.Host, API.Instance.Cave.EyesSettings.Channel);
+                var pos = VRPN.vrpnTrackerPos(API.Instance.Cave.EyesSettings.WorldVizObject + "@" + API.Instance.Cave.CaveSettings.Host, API.Instance.Cave.EyesSettings.Channel);
                 if (_usePositionSmoothing)
                 {
                     Vector3 filteredPos = Vector3.zero;
@@ -58,9 +58,8 @@ namespace Cave
                 if (API.Instance.Cave.EyesSettings.PositionAxisConstraints.Y) pos.x = posOri.z;
                 if (API.Instance.Cave.EyesSettings.PositionAxisConstraints.Z) pos.x = posOri.z;
 
-                //Camera.main.transform.position = pos;
-                //API.Instance.Cave.CameraContainer.transform.position = pos;
-                //API.Instance.Cave.CameraContainer.transform.localPosition = pos;
+                // TODO Sensibility
+
                 transform.localPosition = pos;
             }
         }
@@ -70,7 +69,7 @@ namespace Cave
             if (API.Instance.Cave.EyesSettings.TrackRotation)
             {
                 Vector3 rotOri = transform.rotation.eulerAngles;
-                var rot = VRPN.vrpnTrackerQuat(API.Instance.Cave.EyesSettings.WorldVizObject + "@" + API.Instance.Cave.Host, API.Instance.Cave.EyesSettings.Channel);
+                var rot = VRPN.vrpnTrackerQuat(API.Instance.Cave.EyesSettings.WorldVizObject + "@" + API.Instance.Cave.CaveSettings.Host, API.Instance.Cave.EyesSettings.Channel);
 
                 //Debug.Log("eyes vrpn rot: " + rot.eulerAngles);
 
@@ -91,11 +90,9 @@ namespace Cave
                 Vector3 eulerAnglesNew = rot.eulerAngles;
                 eulerAnglesNew.x = rotOri.x; // x (Pitch) not possible with eyes
                 if (API.Instance.Cave.EyesSettings.RotationAxisConstraints.Yaw) eulerAnglesNew.y = rotOri.y;
-                if (API.Instance.Cave.EyesSettings.RotationAxisConstraints.Yaw) eulerAnglesNew.z = rotOri.z;
+                if (API.Instance.Cave.EyesSettings.RotationAxisConstraints.Roll) eulerAnglesNew.z = rotOri.z;
 
                 rot.eulerAngles = eulerAnglesNew;
-
-                //Debug.Log("eyes rotation: " + rot.eulerAngles);
 
                 transform.rotation = rot;
             }

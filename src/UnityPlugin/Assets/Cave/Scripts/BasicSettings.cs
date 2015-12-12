@@ -43,7 +43,7 @@ namespace Cave
         [System.Serializable]
         public class MovementSmoothing
         {
-            public bool useOneEuroSmoothing = true;
+            public bool EnableOneEuroSmoothing = true;
             [Range(0.0f, 1.0f)]
             public float jitterReduction = 1f;
             [Range(0.0f, 1.0f)]

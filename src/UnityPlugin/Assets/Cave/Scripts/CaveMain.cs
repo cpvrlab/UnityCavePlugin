@@ -25,30 +25,18 @@ namespace Cave
     public class CaveMain : MonoBehaviour
     {
         #region "settings"
-
-        [Header("Main")]
-        public int BeamerResolutionWidth = 1280;
-        public int BeamerResolutionHeight = 1024;
-        public string Host = "192.168.0.201";
-        public FrustumMode FrustumMode = FrustumMode.CAVEXXL;
-        public BasicSettings.Sides GUILocation = BasicSettings.Sides.Front;
-        public float EyeDistance = 0.07f;
-        //public TrackedObject myTrackingMode = TrackedObject.Eyes;
-        //public bool rotateCave = true;
-        //this is used to calc the frustum
-        //public CAVEDimensions CaveDimensions;
-
+        
         [Header("Wand")]
         public WandSettings WandSettings;
 
         [Header("Eyes")]
         public EyesSettings EyesSettings;
 
-        [Header("Gamepad")]
-        public GamepadSettings GamepadSettings;
-
         [Header("Secondary Cameras")]
         public SecondaryCameraSettings[] SecondaryCameraSettings;
+        
+        [Header("Cave Settings")]
+        public CaveSettings CaveSettings;
 
         [Header("System")]
         public SystemSettings SystemSettings;
@@ -97,7 +85,7 @@ namespace Cave
         //private FrustumManager _frustumManager;
         //private GameObject _cameraContainer;
 
-        private List<Camera> mySecondaryCameras = new List<Camera>();
+        private List<Camera> _secondaryCameras = new List<Camera>();
         private List<Transform> _walls = new List<Transform>();
         private List<Transform> _wallsXXL = new List<Transform>();
 
@@ -115,7 +103,7 @@ namespace Cave
         {
             foreach (Camera c in Camera.allCameras)
             {
-                if (c != Camera.main) { mySecondaryCameras.Add(c); }
+                if (c != Camera.main) { _secondaryCameras.Add(c); }
             };
 
             _walls.Add(_CAVELeft = GameObject.FindWithTag("CaveLeft").GetComponent<Transform>());
@@ -128,7 +116,7 @@ namespace Cave
             _wallsXXL.Add(_CAVERightXXL = GameObject.FindWithTag("CaveRightXXL").GetComponent<Transform>());
             _wallsXXL.Add(_CAVEBottomXXL = GameObject.FindWithTag("CaveBottomXXL").GetComponent<Transform>());
 
-            if (!SystemSettings.ShowCave)
+            if (!CaveSettings.ShowCave)
             {
                 foreach (var w in _walls)
                 {

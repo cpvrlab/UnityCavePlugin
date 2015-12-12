@@ -198,16 +198,16 @@ namespace Cave
                 Left = new CameraInfo
                 {
                     cam = _cameraLeftLeft,
-                    camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Left ? Instantiate(_cameraLeftLeft) : null,
+                    camGUI = API.Instance.Cave.CaveSettings.GUILocation == BasicSettings.Sides.Left ? Instantiate(_cameraLeftLeft) : null,
                     camCursor = Instantiate(_cameraLeftLeft),
-                    offset = new Vector3(0f, 0f, -(API.Instance.Cave.EyeDistance / 2))
+                    offset = new Vector3(0f, 0f, -(API.Instance.Cave.CaveSettings.EyeDistance / 2))
                 },
                 Right = new CameraInfo
                 {
                     cam = _cameraLeftRight,
-                    camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Left ? Instantiate(_cameraLeftRight) : null,
+                    camGUI = API.Instance.Cave.CaveSettings.GUILocation == BasicSettings.Sides.Left ? Instantiate(_cameraLeftRight) : null,
                     camCursor = Instantiate(_cameraLeftRight),
-                    offset = new Vector3(0f, 0f, +(API.Instance.Cave.EyeDistance / 2))
+                    offset = new Vector3(0f, 0f, +(API.Instance.Cave.CaveSettings.EyeDistance / 2))
                 },
                 CAVESide = new CAVEPlanesettings
                 {
@@ -234,16 +234,16 @@ namespace Cave
                 Left = new CameraInfo
                 {
                     cam = _cameraFrontLeft,
-                    camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Front ? Instantiate(_cameraFrontLeft) : null,
+                    camGUI = API.Instance.Cave.CaveSettings.GUILocation == BasicSettings.Sides.Front ? Instantiate(_cameraFrontLeft) : null,
                     camCursor = Instantiate(_cameraFrontLeft),
-                    offset = new Vector3(-(API.Instance.Cave.EyeDistance / 2), 0f, 0f)
+                    offset = new Vector3(-(API.Instance.Cave.CaveSettings.EyeDistance / 2), 0f, 0f)
                 },
                 Right = new CameraInfo
                 {
                     cam = _cameraFrontRight,
-                    camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Front ? Instantiate(_cameraFrontRight) : null,
+                    camGUI = API.Instance.Cave.CaveSettings.GUILocation == BasicSettings.Sides.Front ? Instantiate(_cameraFrontRight) : null,
                     camCursor = Instantiate(_cameraFrontRight),
-                    offset = new Vector3(+(API.Instance.Cave.EyeDistance / 2), 0f, 0f)
+                    offset = new Vector3(+(API.Instance.Cave.CaveSettings.EyeDistance / 2), 0f, 0f)
                 },
                 CAVESide = new CAVEPlanesettings
                 {
@@ -270,16 +270,16 @@ namespace Cave
                 Left = new CameraInfo
                 {
                     cam = _cameraRightLeft,
-                    camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Right ? Instantiate(_cameraRightLeft) : null,
+                    camGUI = API.Instance.Cave.CaveSettings.GUILocation == BasicSettings.Sides.Right ? Instantiate(_cameraRightLeft) : null,
                     camCursor = Instantiate(_cameraRightLeft),
-                    offset = new Vector3(0f, 0f, +(API.Instance.Cave.EyeDistance / 2))
+                    offset = new Vector3(0f, 0f, +(API.Instance.Cave.CaveSettings.EyeDistance / 2))
                 },
                 Right = new CameraInfo
                 {
                     cam = _cameraRightRight,
-                    camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Right ? Instantiate(_cameraRightRight) : null,
+                    camGUI = API.Instance.Cave.CaveSettings.GUILocation == BasicSettings.Sides.Right ? Instantiate(_cameraRightRight) : null,
                     camCursor = Instantiate(_cameraRightRight),
-                    offset = new Vector3(0f, 0f, -(API.Instance.Cave.EyeDistance / 2))
+                    offset = new Vector3(0f, 0f, -(API.Instance.Cave.CaveSettings.EyeDistance / 2))
                 },
                 CAVESide = new CAVEPlanesettings
                 {
@@ -307,16 +307,16 @@ namespace Cave
                 Left = new CameraInfo
                 {
                     cam = _cameraBottomLeft,
-                    camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Bottom ? Instantiate(_cameraBottomLeft) : null,
+                    camGUI = API.Instance.Cave.CaveSettings.GUILocation == BasicSettings.Sides.Bottom ? Instantiate(_cameraBottomLeft) : null,
                     camCursor = Instantiate(_cameraBottomLeft),
-                    offset = new Vector3(-(API.Instance.Cave.EyeDistance / 2), 0f, 0f)
+                    offset = new Vector3(-(API.Instance.Cave.CaveSettings.EyeDistance / 2), 0f, 0f)
                 },
                 Right = new CameraInfo
                 {
                     cam = _cameraBottomRight,
-                    camGUI = API.Instance.Cave.GUILocation == BasicSettings.Sides.Bottom ? Instantiate(_cameraBottomRight) : null,
+                    camGUI = API.Instance.Cave.CaveSettings.GUILocation == BasicSettings.Sides.Bottom ? Instantiate(_cameraBottomRight) : null,
                     camCursor = Instantiate(_cameraBottomRight),
-                    offset = new Vector3(+(API.Instance.Cave.EyeDistance / 2), 0f, 0f)
+                    offset = new Vector3(+(API.Instance.Cave.CaveSettings.EyeDistance / 2), 0f, 0f)
                 },
                 CAVESide = new CAVEPlanesettings
                 {
@@ -489,7 +489,7 @@ namespace Cave
 
             int settingsIndex = 0;
 
-            switch (API.Instance.Cave.GUILocation)
+            switch (API.Instance.Cave.CaveSettings.GUILocation)
             {
                 case BasicSettings.Sides.Left:
                     caveSide = API.Instance.Cave.CAVELeftXXL;
@@ -587,7 +587,7 @@ namespace Cave
                 var camCursorLeft = FullViewInfo.FirstOrDefault(x => x.Value.CAVESide.name == caveSide).Value.Left.camCursor;
                 var camCursorRight = FullViewInfo.FirstOrDefault(x => x.Value.CAVESide.name == caveSide).Value.Right.camCursor;
 
-                if (camCursorLeft != null && API.Instance.Cave.GUILocation != caveSide)
+                if (camCursorLeft != null && API.Instance.Cave.CaveSettings.GUILocation != caveSide)
                 {
                     camCursorLeft.enabled = camCursorRight.enabled = true;
                 }
