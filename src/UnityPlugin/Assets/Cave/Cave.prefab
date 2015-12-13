@@ -85,7 +85,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &125974
 GameObject:
   m_ObjectHideFlags: 1
@@ -1043,21 +1043,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de4af5b4c8fa8e4fa2a4504da8a49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BeamerResolutionWidth: 1280
-  BeamerResolutionHeight: 1024
-  Host: 192.168.0.201
-  FrustumMode: 0
-  GUILocation: 1
-  EyeDistance: .0700000003
   WandSettings:
     TrackPosition: 1
-    MovementSensivity: 1
     PositionAxisConstraints:
       X: 0
       Y: 0
       Z: 0
-    PositionMovementConstraints:
-      useOneEuroSmoothing: 0
+    PositionSmoothing:
+      EnableOneEuroSmoothing: 1
       jitterReduction: 1
       lagReduction: 1
     TrackRotation: 1
@@ -1065,13 +1058,13 @@ MonoBehaviour:
       Yaw: 0
       Pitch: 0
       Roll: 0
-    RotationMovementConstraints:
-      useOneEuroSmoothing: 0
+    RotationSmoothing:
+      EnableOneEuroSmoothing: 1
       jitterReduction: 1
       lagReduction: 1
     allowJoystick: 1
     ButtonMapping:
-      Back: 13
+      Back: 500
       Joystick: 32
       TopLeft: 17
       TopRight: 16
@@ -1092,23 +1085,31 @@ MonoBehaviour:
       X: 0
       Y: 0
       Z: 0
-    PositionMovementConstraints:
-      useOneEuroSmoothing: 0
+    PositionSmoothing:
+      EnableOneEuroSmoothing: 1
       jitterReduction: 1
       lagReduction: 1
     TrackRotation: 1
     RotationAxisConstraints:
       Yaw: 0
       Roll: 0
-    RotationMovementConstraints:
-      useOneEuroSmoothing: 0
+    RotationSmoothing:
+      EnableOneEuroSmoothing: 1
       jitterReduction: 1
       lagReduction: 1
     WorldVizObject: PPT0
     Channel: 0
-  SecondaryCameraSettings:
-  - Camera: {fileID: 0}
-    Side: 2
+  SecondaryCameraSettings: []
+  CaveSettings:
+    ShowCave: 1
+    SetMouseCursor: 1
+    ForceShowMouseCursor: 0
+    BeamerResolutionWidth: 1280
+    BeamerResolutionHeight: 1024
+    Host: 192.168.0.201
+    FrustumMode: 0
+    GUILocation: 2
+    EyeDistance: .0700000003
   SystemSettings:
     CameraManagerPrefab: {fileID: 11439038, guid: 54c3efade4d157f4483aa38b4f7073ec,
       type: 2}
@@ -1116,9 +1117,6 @@ MonoBehaviour:
       type: 2}
     CameraContainerPrefab: {fileID: 132108, guid: d60238788ebea804eb97f2b4fe276066,
       type: 2}
-    ShowCave: 1
-    SetMouseCursor: 1
-    ForceShowMouseCursor: 0
 --- !u!114 &11497658
 MonoBehaviour:
   m_ObjectHideFlags: 1

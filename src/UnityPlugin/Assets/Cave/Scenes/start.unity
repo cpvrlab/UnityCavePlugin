@@ -1449,6 +1449,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: SecondaryCameraSettings.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 438420, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1486,28 +1490,8 @@ Prefab:
       value: 
       objectReference: {fileID: 1306395736}
     - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: WandSettings.ButtonMapping.Back
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: SystemSettings.SetMouseCursor
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: SystemSettings.ForceShowMouseCursor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: EyesSettings.TrackPosition
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: CaveSettings.ShowCave
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 124586, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: SecondaryCameraSettings.Array.data[0].Side
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}

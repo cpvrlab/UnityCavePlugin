@@ -9,7 +9,7 @@ namespace Cave
     {
         [Header("Position")]
         public bool TrackPosition = true;
-        public AxisSensivity MovementSensivity;
+        //public AxisSensivity MovementSensivity;
         public BlockPositionAxis PositionAxisConstraints;
         public MovementSmoothing PositionSmoothing;
 

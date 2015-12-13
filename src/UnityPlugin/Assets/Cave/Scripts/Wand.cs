@@ -146,8 +146,6 @@ namespace Cave
                 if (API.Instance.Cave.WandSettings.PositionAxisConstraints.Y) pos.x = posOri.z;
                 if (API.Instance.Cave.WandSettings.PositionAxisConstraints.Z) pos.x = posOri.z;
 
-                // TODO Sensibility
-
                 transform.localPosition = pos;
             }
         }

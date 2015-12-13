@@ -58,8 +58,6 @@ namespace Cave
                 if (API.Instance.Cave.EyesSettings.PositionAxisConstraints.Y) pos.x = posOri.z;
                 if (API.Instance.Cave.EyesSettings.PositionAxisConstraints.Z) pos.x = posOri.z;
 
-                // TODO Sensibility
-
                 transform.localPosition = pos;
             }
         }

@@ -5,11 +5,11 @@ using Cave;
 public class CameraContainer : MonoBehaviour {
 
     private int _lastMaincameraID = 0;
-    private Vector3 posWithSensitity;
+    private Vector3 _posWithSensitity;
 
     // Use this for initialization
     void Start () {
-        posWithSensitity = new Vector3(API.Instance.Cave.EyesSettings.MovementSensivity.x, API.Instance.Cave.EyesSettings.MovementSensivity.y, API.Instance.Cave.EyesSettings.MovementSensivity.z);
+        _posWithSensitity = new Vector3(API.Instance.Cave.EyesSettings.MovementSensivity.x, API.Instance.Cave.EyesSettings.MovementSensivity.y, API.Instance.Cave.EyesSettings.MovementSensivity.z);
     }
 	
 	// Update is called once per frame
@@ -22,6 +22,6 @@ public class CameraContainer : MonoBehaviour {
             transform.localPosition = Vector3.zero;
         }
     
-        transform.localPosition = Vector3.Scale(API.Instance.Eyes.transform.localPosition, posWithSensitity);
+        transform.localPosition = Vector3.Scale(API.Instance.Eyes.transform.localPosition, _posWithSensitity);
 	}
 }
