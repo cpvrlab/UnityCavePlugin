@@ -15,10 +15,7 @@ namespace Cave
         CAVEXXL, GPP_Kooima
     };
 
-    public enum TrackedObject
-    {
-        Eyes, Wand, Nothing
-    };
+
 
     #endregion
 
@@ -53,16 +50,7 @@ namespace Cave
         public Transform CAVERightXXL { get { return _CAVERightXXL; } }
         public Transform CAVEBottomXXL { get { return _CAVEBottomXXL; } }
 
-        //public Eyes Eyes { get { return _eyes; } }
-        //public Wand Wand { get { return _wand; } }
-
-        //public CameraManager CameraManager { get { return _cameraManager; } }
-        //public FrustumManager FrustumManager { get { return _frustumManager; } }
-        //public GameObject CameraContainer { get { return _cameraContainer; } }
-
-
-        //public Vector3 currentTrackedObject { get { return _TrackedObject; } }
-
+    
         #endregion
 
 

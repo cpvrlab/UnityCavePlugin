@@ -12,6 +12,7 @@ namespace Cave
 
 #region "structs"
 
+        // all cameras for one eye&cave side grouped
         public struct CameraInfo
         {
             public Camera Cam;
@@ -29,15 +30,15 @@ namespace Cave
 
         public struct CAVEPlanesettings
         {
-            public BasicSettings.Sides Name;
-            public float Width;
-            public float Height;
-            public Vector3 Center;
-            public Vector3 Normal;
-            public Transform Transform;
-            public Transform TransformXXL;
-            public Vector3 Up;
-            public Corners Corners;
+            public BasicSettings.Sides Name; //name
+            public float Width; //dimensions
+            public float Height; //dimensions
+            public Vector3 Center; //center of the plane
+            public Vector3 Normal; //normal of the plane
+            public Transform Transform; //wall regular cave
+            public Transform TransformXXL; //wall imaginary xxl cave
+            public Vector3 Up; //up plane
+            public Corners Corners; //corners of the plane
         }
 
         public struct Corners
