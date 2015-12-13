@@ -55,9 +55,10 @@ Julien:
 - 	OK - ShootingGallery: Alles ein wenig nach unten setzen + jump!
 - 	OK - MouseCursor: Nie direkt als Cursor-Icon setzen, sondern für beide Augen auf den Canvas berechnen. Weil aktuell hat es einen Versatz zwischen beiden Bildern. Würde auch die Kollision mit dem GUI-Canvas beheben.
 - 	OK - MouseClick simulieren -> versch. Mausbuttons mappen und in der Wand-Klasse prüfen
-- Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
+- 	OK - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - 	OK - Doku Device Wand
 - 	OK - Doku Device Eyes
+- Doku: Stereoskopie
 - Video vom CAVE?
 
 Daniiiee:
@@ -72,5 +73,5 @@ Daniiiee:
 
 
 Whoever:
-- Wand / Eyes Movement Sensivity
+- 	OK - Wand / Eyes Movement Sensivity
 - 
