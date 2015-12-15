@@ -1449,10 +1449,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: SecondaryCameraSettings.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 438420, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1484,18 +1480,6 @@ Prefab:
     - target: {fileID: 438420, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: SecondaryCameraSettings.Array.data[0].Camera
-      value: 
-      objectReference: {fileID: 1306395736}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: SecondaryCameraSettings.Array.data[0].Side
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
-      propertyPath: EyesSettings.TrackPosition
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
@@ -1665,7 +1649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2042017813
 Transform:
   m_ObjectHideFlags: 0

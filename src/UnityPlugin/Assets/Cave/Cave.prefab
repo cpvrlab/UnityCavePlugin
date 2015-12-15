@@ -27,7 +27,7 @@ GameObject:
   - 64: {fileID: 6450962}
   - 23: {fileID: 2355682}
   m_Layer: 0
-  m_Name: front
+  m_Name: CaveFront
   m_TagString: CaveFront
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ GameObject:
   - 64: {fileID: 6408108}
   - 23: {fileID: 2343052}
   m_Layer: 0
-  m_Name: left
+  m_Name: CaveLeft
   m_TagString: CaveLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ GameObject:
   - 64: {fileID: 6413122}
   - 23: {fileID: 2340060}
   m_Layer: 0
-  m_Name: front
+  m_Name: CaveFrontXXL
   m_TagString: CaveFrontXXL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ GameObject:
   - 64: {fileID: 6456316}
   - 23: {fileID: 2399806}
   m_Layer: 0
-  m_Name: left
+  m_Name: CaveLeftXXL
   m_TagString: CaveLeftXXL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ GameObject:
   - 64: {fileID: 6438990}
   - 23: {fileID: 2330584}
   m_Layer: 0
-  m_Name: bottom
+  m_Name: CaveBottom
   m_TagString: CaveBottom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ GameObject:
   - 222: {fileID: 22254368}
   - 114: {fileID: 11409608}
   m_Layer: 5
-  m_Name: Cursor
+  m_Name: CaveCursor
   m_TagString: CaveCursor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +185,7 @@ GameObject:
   - 64: {fileID: 6425894}
   - 23: {fileID: 2303408}
   m_Layer: 0
-  m_Name: right
+  m_Name: CaveRight
   m_TagString: CaveRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ GameObject:
   - 64: {fileID: 6401088}
   - 23: {fileID: 2306286}
   m_Layer: 0
-  m_Name: right
+  m_Name: CaveRightXXL
   m_TagString: CaveRightXXL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +239,7 @@ GameObject:
   - 114: {fileID: 11434776}
   - 114: {fileID: 11469844}
   m_Layer: 0
-  m_Name: Eyes
+  m_Name: WorldVizEyes
   m_TagString: Eyes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,7 +259,7 @@ GameObject:
   - 114: {fileID: 11497658}
   - 114: {fileID: 11458988}
   m_Layer: 0
-  m_Name: Wand
+  m_Name: WorldVizWand
   m_TagString: Wand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,7 +277,7 @@ GameObject:
   - 64: {fileID: 6406276}
   - 23: {fileID: 2308460}
   m_Layer: 0
-  m_Name: bottom
+  m_Name: CaveBottomXXL
   m_TagString: CaveBottomXXL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

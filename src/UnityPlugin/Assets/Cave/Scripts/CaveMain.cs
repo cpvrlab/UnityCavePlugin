@@ -81,9 +81,9 @@ namespace Cave
 
         void Awake()
         {
-            Instantiate(SystemSettings.CameraManagerPrefab);
-            Instantiate(SystemSettings.FrustumManagerPrefab);
-            Instantiate(SystemSettings.CameraContainerPrefab);
+            Instantiate(SystemSettings.CameraManagerPrefab).name = "CameraManager";
+            Instantiate(SystemSettings.FrustumManagerPrefab).name = "FrustumManager";
+            Instantiate(SystemSettings.CameraContainerPrefab).name = "CameraContainer";
         }
 
         // Use this for initialization
@@ -94,15 +94,15 @@ namespace Cave
             //    if (c != Camera.main) { _secondaryCameras.Add(c); }
             //};
 
-            _walls.Add(_CAVELeft = GameObject.FindWithTag("CaveLeft").GetComponent<Transform>());
-            _walls.Add(_CAVEFront = GameObject.FindWithTag("CaveFront").GetComponent<Transform>());
-            _walls.Add(_CAVERight = GameObject.FindWithTag("CaveRight").GetComponent<Transform>());
-            _walls.Add(_CAVEBottom = GameObject.FindWithTag("CaveBottom").GetComponent<Transform>());
+            _walls.Add(_CAVELeft = GameObject.Find("CaveLeft").GetComponent<Transform>());
+            _walls.Add(_CAVEFront = GameObject.Find("CaveFront").GetComponent<Transform>());
+            _walls.Add(_CAVERight = GameObject.Find("CaveRight").GetComponent<Transform>());
+            _walls.Add(_CAVEBottom = GameObject.Find("CaveBottom").GetComponent<Transform>());
 
-            _wallsXXL.Add(_CAVELeftXXL = GameObject.FindWithTag("CaveLeftXXL").GetComponent<Transform>());
-            _wallsXXL.Add(_CAVEFrontXXL = GameObject.FindWithTag("CaveFrontXXL").GetComponent<Transform>());
-            _wallsXXL.Add(_CAVERightXXL = GameObject.FindWithTag("CaveRightXXL").GetComponent<Transform>());
-            _wallsXXL.Add(_CAVEBottomXXL = GameObject.FindWithTag("CaveBottomXXL").GetComponent<Transform>());
+            _wallsXXL.Add(_CAVELeftXXL = GameObject.Find("CaveLeftXXL").GetComponent<Transform>());
+            _wallsXXL.Add(_CAVEFrontXXL = GameObject.Find("CaveFrontXXL").GetComponent<Transform>());
+            _wallsXXL.Add(_CAVERightXXL = GameObject.Find("CaveRightXXL").GetComponent<Transform>());
+            _wallsXXL.Add(_CAVEBottomXXL = GameObject.Find("CaveBottomXXL").GetComponent<Transform>());
 
             if (!CaveSettings.ShowCave)
             {
@@ -120,23 +120,7 @@ namespace Cave
                 API.Instance.Eyes.DisableRenderer();
             }
 
-            //_eyes = GameObject.FindWithTag("Eyes").GetComponent<Eyes>();
-            //_wand = GameObject.FindWithTag("Wand").GetComponent<Wand>();
-
-            //_cameraManager = GameObject.FindWithTag("CameraManager").GetComponent<CameraManager>();
-            //_frustumManager = GameObject.FindWithTag("FrustumManager").GetComponent<FrustumManager>();
-            //_cameraContainer = GameObject.FindWithTag("CameraContainer");
-
-            //if (CAVEMode == CAVEMode.FourScreen) EyeDistance = 0f;
-
             ToggleColliders(false);
-
-            // expand playersettings for mobile ionput, so that we have access to the virtualAxis from wand
-            //String scriptDefineSymbols = UnityEditor.PlayerSettings.GetScriptingDefineSymbolsForGroup(UnityEditor.BuildTargetGroup.Standalone);
-            //if (scriptDefineSymbols.IndexOf("MOBILE_INPUT") < 0)
-            //{
-            //    UnityEditor.PlayerSettings.SetScriptingDefineSymbolsForGroup(UnityEditor.BuildTargetGroup.Standalone, scriptDefineSymbols + "; MOBILE_INPUT");
-            //}
         }
 
         // Update is called once per frame

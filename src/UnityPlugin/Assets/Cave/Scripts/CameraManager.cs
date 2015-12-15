@@ -121,11 +121,13 @@ namespace Cave
 
             camIndexX = Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / Convert.ToInt32(API.GetMainGameViewSize()[0] / divisorX)));
             camIndexY = Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.y) / Convert.ToInt32(API.GetMainGameViewSize()[1] / divisorY)));
-            
+
 #else
-            camIndexX = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / API.Instance.Cave.BeamerResolutionWidth)), 0);
-            camIndexY = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.y) / API.Instance.Cave.BeamerResolutionHeight)), 0);
+            camIndexX = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.x) / API.Instance.Cave.CaveSettings.BeamerResolutionWidth)), 0);
+            camIndexY = Math.Max(Convert.ToInt32(Mathf.Floor(Convert.ToInt32(Input.mousePosition.y) / API.Instance.Cave.CaveSettings.BeamerResolutionHeight)), 0);
 #endif
+
+
 
             // Get Camera based on cursor position
             switch ((camIndexX*10)+camIndexY)

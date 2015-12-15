@@ -107,8 +107,8 @@ namespace Cave
 
         private void SetCustomCursor()
         {
-            _caveCursorRect = GameObject.FindWithTag("CaveCursor").GetComponent<RectTransform>();
-            _caveCursorImage = GameObject.FindWithTag("CaveCursor").GetComponent< UnityEngine.UI.Image >();
+            _caveCursorRect = GameObject.Find("CaveCursor").GetComponent<RectTransform>();
+            _caveCursorImage = GameObject.Find("CaveCursor").GetComponent< UnityEngine.UI.Image >();
 
             if (API.Instance.Cave.WandSettings.Cursor != null)
             {
@@ -301,9 +301,10 @@ namespace Cave
             {
                 _caveHit = true;
 
-                //Debug.Log(String.Format("Wand Raycast hits: {0}", hit.collider.name));
+                //Debug.Log(String.Format("Wand Raycast hits: {0}", h.transform.name));
 
-                switch (h.transform.tag)
+                //switch (h.transform.tag)
+                switch (h.transform.name)
                 {
                     case "CaveLeft":
                         _multiplierX = 0;

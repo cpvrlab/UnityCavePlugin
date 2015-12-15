@@ -74,4 +74,8 @@ Daniiiee:
 
 Whoever:
 - 	OK - Wand / Eyes Movement Sensivity
-- 
+- Gameobjekte unique benennen
+- Doku: Export:
+	1) PlayerSettings API Compatibility level .NET 2.0 (NOT SUBSET)
+	2) Externe dlls für win32/64 export aktivieren
+	3) 

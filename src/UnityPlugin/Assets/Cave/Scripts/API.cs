@@ -27,7 +27,7 @@ namespace Cave
             {
                 if(_eyes == null)
                 {
-                    return _eyes = GameObject.Find("Eyes").GetComponent<Eyes>();
+                    return _eyes = GameObject.Find("WorldVizEyes").GetComponent<Eyes>();
                 }
 
                 return _eyes;
@@ -40,7 +40,7 @@ namespace Cave
             {
                 if (_wand == null)
                 {
-                    return _wand = GameObject.Find("Wand").GetComponent<Wand>();
+                    return _wand = GameObject.Find("WorldVizWand").GetComponent<Wand>();
                 }
 
                 return _wand;
@@ -53,7 +53,7 @@ namespace Cave
             {
                 if(_cameraManager == null)
                 {
-                    return _cameraManager = GameObject.FindWithTag("CameraManager").GetComponent<CameraManager>();
+                    return _cameraManager = GameObject.Find("CameraManager").GetComponent<CameraManager>();
                 }
 
                 return _cameraManager;
@@ -66,7 +66,7 @@ namespace Cave
             {
                 if (_frustumManager == null)
                 {
-                    return _frustumManager = GameObject.FindWithTag("FrustumManager").GetComponent<FrustumManager>();
+                    return _frustumManager = GameObject.Find("FrustumManager").GetComponent<FrustumManager>();
                 }
 
                 return _frustumManager;
@@ -79,7 +79,7 @@ namespace Cave
             {
                 if (_cameraContainer == null)
                 {
-                    return _cameraContainer = GameObject.FindWithTag("CameraContainer");
+                    return _cameraContainer = GameObject.Find("CameraContainer");
                 }
 
                 return _cameraContainer;
