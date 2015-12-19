@@ -59,7 +59,7 @@ Julien:
 - 	OK - Doku Device Wand
 - 	OK - Doku Device Eyes
 - Doku: Stereoskopie
-- Video vom CAVE?
+- Video vom CAVE? -> ch.bfh.bti7534pAdvancedGameDevelopment\4 Advanced Visual Effects als Beispielprojekt!
 
 Daniiiee:
 - Eyes / Wand Lerping Bug (Sprung zwischen 359° und 0°)
