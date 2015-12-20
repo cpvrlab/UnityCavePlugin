@@ -51,15 +51,16 @@ Julien:
 - 	OK - MouseCursor Texturen (falls Custom) duplizieren -> wohl einfach so nicht möglich. Darum im Inspector Property, um die eigene Texture2D zu setzen.
 - 	OK - MouseCursor: Setzen allgemein noch buggy -> Eine MouseCursor Kamera erstellen und auf die vom Wand bestrahlte CAVE-Wand ausrichten. Und auf dieser Cam nur den Cursor rendern.
 - 	OK - Sekundäre Kameras
-- ShootingGallery: Menu, das mit Wand gesteuert werden kann
 - 	OK - ShootingGallery: Alles ein wenig nach unten setzen + jump!
 - 	OK - MouseCursor: Nie direkt als Cursor-Icon setzen, sondern für beide Augen auf den Canvas berechnen. Weil aktuell hat es einen Versatz zwischen beiden Bildern. Würde auch die Kollision mit dem GUI-Canvas beheben.
 - 	OK - MouseClick simulieren -> versch. Mausbuttons mappen und in der Wand-Klasse prüfen
 - 	OK - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - 	OK - Doku Device Wand
 - 	OK - Doku Device Eyes
-- Doku: Stereoskopie
-- Video vom CAVE? -> ch.bfh.bti7534pAdvancedGameDevelopment\4 Advanced Visual Effects als Beispielprojekt!
+- ShootingGallery: Menu, das mit Wand gesteuert werden kann
+- Video vom CAVE
+	-> ch.bfh.bti7534pAdvancedGameDevelopment\4 Advanced Visual Effects als Beispielprojekt!
+	-> Test zu Hause, 2mal das Beispielprojekt aufnehmen und Versatz angucken
 
 Daniiiee:
 - Eyes / Wand Lerping Bug (Sprung zwischen 359° und 0°)
@@ -77,6 +78,6 @@ Whoever:
 - 	OK - Gameobjekte unique benennen
 - Doku: Export:
 	1) PlayerSettings API Compatibility level .NET 2.0 (NOT SUBSET)
-	2) Externe dlls für win32/64 export aktivieren
+	2) Externe dlls für win32/64 export aktivieren (notwendig? -> Gucken bei Visual Effects Beispielprojekt)
 	3) 
 - Benutzerhandbuch
