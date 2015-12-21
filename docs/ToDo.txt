@@ -82,3 +82,4 @@ Whoever:
 	3) 
 - Benutzerhandbuch
 - 	OK - Bug: Eye-Camera Offset wird nicht in jeder App korrekt gesetzt. Beispiel: Advanced visual effects
+- Viking Village: Download Project, add Camera_loop_001, add UnityPlugin, add mainCamera tag to CameraHigh
