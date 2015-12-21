@@ -81,3 +81,4 @@ Whoever:
 	2) Externe dlls für win32/64 export aktivieren (notwendig? -> Gucken bei Visual Effects Beispielprojekt)
 	3) 
 - Benutzerhandbuch
+- 	OK - Bug: Eye-Camera Offset wird nicht in jeder App korrekt gesetzt. Beispiel: Advanced visual effects

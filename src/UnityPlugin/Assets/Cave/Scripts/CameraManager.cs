@@ -364,14 +364,29 @@ namespace Cave
 
             Camera.main.depth = (int)CameraDepths.Disabled;
 
-            _cameraLeftLeft.transform.Rotate(new Vector3(0f, 270f, 0f));
-            _cameraLeftRight.transform.Rotate(new Vector3(0f, 270f, 0f));
+            _cameraLeftLeft.transform.localRotation = Quaternion.Euler(new Vector3(0f, 270f, 0f));
+            _cameraLeftLeft.transform.localRotation = Quaternion.Euler(new Vector3(0f, 270f, 0f));
 
-            _cameraRightLeft.transform.Rotate(new Vector3(0f, 90f, 0f));
-            _cameraRightRight.transform.Rotate(new Vector3(0f, 90f, 0f));
+            _cameraFrontLeft.transform.localRotation = Quaternion.Euler(new Vector3(0f, 0, 0f));
+            _cameraFrontRight.transform.localRotation = Quaternion.Euler(new Vector3(0f, 0, 0f));
 
-            _cameraBottomLeft.transform.Rotate(new Vector3(90f, 0f, 0f));
-            _cameraBottomRight.transform.Rotate(new Vector3(90f, 0f, 0f));
+            _cameraRightLeft.transform.localRotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
+            _cameraRightRight.transform.localRotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
+
+            _cameraBottomLeft.transform.localRotation = Quaternion.Euler(new Vector3(90f, 0f, 0f));
+            _cameraBottomRight.transform.localRotation = Quaternion.Euler(new Vector3(90f, 0f, 0f));
+
+            //_cameraLeftLeft.transform.Rotate(new Vector3(0f, 270f, 0f));
+            //_cameraLeftRight.transform.Rotate(new Vector3(0f, 270f, 0f));
+
+            //_cameraRightLeft.transform.Rotate(new Vector3(0f, 90f, 0f));
+            //_cameraRightRight.transform.Rotate(new Vector3(0f, 90f, 0f));
+
+            //_cameraBottomLeft.transform.Rotate(new Vector3(90f, 0f, 0f));
+            //_cameraBottomRight.transform.Rotate(new Vector3(90f, 0f, 0f));
+
+
+
 
             //_cameraLeftLeft.transform.localPosition = new Vector3(-(_main.EyeDistance / 2), 0f, 0f);
             //_cameraLeftRight.transform.position.Set(_main.EyeDistance / 2, 0f, 0f);

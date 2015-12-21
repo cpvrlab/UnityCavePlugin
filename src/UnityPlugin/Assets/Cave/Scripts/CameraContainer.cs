@@ -23,5 +23,6 @@ public class CameraContainer : MonoBehaviour {
         }
     
         transform.localPosition = Vector3.Scale(API.Instance.Eyes.transform.localPosition, _posWithSensitity);
-	}
+        transform.localRotation = Quaternion.Euler(Vector3.zero);
+    }
 }
