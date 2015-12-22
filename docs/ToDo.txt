@@ -57,29 +57,35 @@ Julien:
 - 	OK - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - 	OK - Doku Device Wand
 - 	OK - Doku Device Eyes
+- 	OK - Video vom CAVE
+		-> ch.bfh.bti7534pAdvancedGameDevelopment\4 Advanced Visual Effects als Beispielprojekt!
+		-> Test zu Hause, 2mal das Beispielprojekt aufnehmen und Versatz angucken
+- Bug: Bei einigen Apps wird, obwohl bei der Kamera die Culling-Mask "UI" gesetzt ist, trotzdem alles gerendert (Beispiele: SpaceStation / VikingVillage)
+- 3D Model des CAVEs für Titelblatt
+- Benutzerhandbuch
 - ShootingGallery: Menu, das mit Wand gesteuert werden kann
-- Video vom CAVE
-	-> ch.bfh.bti7534pAdvancedGameDevelopment\4 Advanced Visual Effects als Beispielprojekt!
-	-> Test zu Hause, 2mal das Beispielprojekt aufnehmen und Versatz angucken
+- Video (VikingVillage / Space) zusammenschnippseln
+- Doku Übersicht der Komponenten
+- Doku App Drittpartei
 
 Daniiiee:
+- 	OK - Künzler-Frustum Transformation
+- 	OK - Joystick (Simulieren möglich?)
+- 	OK - Doku VRPN
 - Eyes / Wand Lerping Bug (Sprung zwischen 359° und 0°)
-- Künzler-Frustum Transformation
-- Joystick (Simulieren möglich?)
 - ModelViewer App
-- Warping
-- Doku VRPN
+- Doku ModelViewerApp
+- Doku Warping
 - Doku Frustumtransformation
-
-
+- Doku Testcases
 
 Whoever:
 - 	OK - Wand / Eyes Movement Sensivity
 - 	OK - Gameobjekte unique benennen
-- Doku: Export:
-	1) PlayerSettings API Compatibility level .NET 2.0 (NOT SUBSET)
-	2) Externe dlls für win32/64 export aktivieren (notwendig? -> Gucken bei Visual Effects Beispielprojekt)
-	3) 
-- Benutzerhandbuch
+- 	OK - Doku: Export: PlayerSettings API Compatibility level .NET 2.0 (NOT SUBSET)
 - 	OK - Bug: Eye-Camera Offset wird nicht in jeder App korrekt gesetzt. Beispiel: Advanced visual effects
-- Viking Village: Download Project, add Camera_loop_001, add UnityPlugin, add mainCamera tag to CameraHigh
+- 	OK - Viking Village: Download Project, add Camera_loop_001, add UnityPlugin, add mainCamera tag to CameraHigh
+- Buch-Eintrag
+- Plakat
+- Video CPVR
+- Bowlinggame
