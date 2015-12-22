@@ -60,11 +60,13 @@ Julien:
 - 	OK - Video vom CAVE
 		-> ch.bfh.bti7534pAdvancedGameDevelopment\4 Advanced Visual Effects als Beispielprojekt!
 		-> Test zu Hause, 2mal das Beispielprojekt aufnehmen und Versatz angucken
-- Bug: Bei einigen Apps wird, obwohl bei der Kamera die Culling-Mask "UI" gesetzt ist, trotzdem alles gerendert (Beispiele: SpaceStation / VikingVillage)
+- 	WAYNE - Bug: Bei einigen Apps wird, obwohl bei der Kamera die Culling-Mask "UI" gesetzt ist, trotzdem alles gerendert (Beispiele: SpaceStation / VikingVillage)
 - 3D Model des CAVEs für Titelblatt
 - Benutzerhandbuch
+	-> Screenshots / Fotos machen
 - ShootingGallery: Menu, das mit Wand gesteuert werden kann
-- Video (VikingVillage / Space) zusammenschnippseln
+	-> Testen ob der GUI-Button klickbar ist
+- 	OK - Video (VikingVillage / Space) zusammenschnippseln
 - Doku Übersicht der Komponenten
 - Doku App Drittpartei
 
