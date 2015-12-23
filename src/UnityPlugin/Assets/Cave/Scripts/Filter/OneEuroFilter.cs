@@ -8,6 +8,8 @@ using UnityEngine;
 public class OneEuroFilter  {
 
 
+    static float ROUND = 360f;
+
 
     public static void ApplyOneEuroFilter(  Vector3 currentPosition, Vector3 currentVelocity,
                                             Vector3 oldPosition, Vector3 oldVelocity,
@@ -56,11 +58,23 @@ public class OneEuroFilter  {
         return new Vector3(alphaX, alphaY,alphaZ );
     }
 
+    public static T Iif<T>(bool cond, T left, T right)
+    {
+        return cond ? left : right;
+    }
+
     public static  Vector3 Filter(Vector3 current, Vector3 previous, Vector3 alpha)
     {
+        if (Mathf.Abs(current.x - previous.x) > 300) if(current.x > previous.x) { previous.x += ROUND; } else { current.x = +ROUND; }
+        if (Mathf.Abs(current.y - previous.y) > 300) if (current.y > previous.y) { previous.y += ROUND; } else { current.y = +ROUND; }
+        if (Mathf.Abs(current.z - previous.z) > 300) if (current.z > previous.z) { previous.z += ROUND; } else { current.z = +ROUND; }
+
         float x = alpha.x * current.x + (1 - alpha.x) * previous.x;
         float y = alpha.y * current.y + (1 - alpha.y) * previous.y;
         float z = alpha.z * current.z + (1 - alpha.z) * previous.z;
-        return new Vector3(x, y,z);
+
+        //Debug.Log(string.Format("old x: {0} y: {1} z: {2} new x: {3} y: {4} z: {5}",previous.x,previous.y,previous.z,x,y,z));
+
+        return new Vector3(x % ROUND , y % ROUND, z % ROUND);
     }
 }

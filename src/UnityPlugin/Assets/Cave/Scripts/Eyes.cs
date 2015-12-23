@@ -47,7 +47,7 @@ namespace Cave
                 var pos = VRPN.vrpnTrackerPos(API.Instance.Cave.EyesSettings.WorldVizObject + "@" + API.Instance.Cave.CaveSettings.Host, API.Instance.Cave.EyesSettings.Channel);
                 if (_usePositionSmoothing)
                 {
-                    Vector3 filteredPos = Vector3.zero;
+                    Vector3 filteredPos = pos;
                     Vector3 filteredVelocity = Vector3.zero;
                     OneEuroFilter.ApplyOneEuroFilter(pos, Vector3.zero, posOri, Vector3.zero, ref filteredPos, ref filteredVelocity, _posJitterReduction, _posLagReduction);
                     pos = filteredPos;
@@ -79,7 +79,7 @@ namespace Cave
 
                 if (_useRotationSmoothing)
                 {
-                    Vector3 filteredRot = Vector3.zero;
+                    Vector3 filteredRot = rot.eulerAngles;
                     Vector3 filteredVelocity = Vector3.zero;
                     OneEuroFilter.ApplyOneEuroFilter(rot.eulerAngles , Vector3.zero, rotOri, Vector3.zero, ref filteredRot, ref filteredVelocity, _rotJitterReduction, _rotLagReduction);
                     rot.eulerAngles  = filteredRot;
