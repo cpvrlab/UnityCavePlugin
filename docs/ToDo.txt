@@ -41,7 +41,7 @@ Julien:
 - 	OK - MouseCursor: Falls nicht sichtbar im Game, Duplikat auch deaktivieren
 - 	OK - GUI: Canvas dynamisch holen gehen, nicht wie anhin einfach mit dem Namen "Canvas"
 - 	OK - PPT Studio korrektes Setting
-- ShootingGallery: Gewehr macht random Rotationen... -> Liegt am Übergang. Werden die Eyes schön horizontal gehalten sind sie grad an einem kritischen Punkt. YAW: Nach links schauen 270°, front 360°, rechts: 90°. Wichtig, nur bei "Assume looking forward" ausgeschaltet. Klar gibts da also Hüpfer mit dem Smoothing. der Will von 259° auf 0 interpolieren! Also Smoothing deaktivieren und Roll Constraint rein.
+- 	OK - ShootingGallery: Gewehr macht random Rotationen... -> Liegt am Übergang. Werden die Eyes schön horizontal gehalten sind sie grad an einem kritischen Punkt. YAW: Nach links schauen 270°, front 360°, rechts: 90°. Wichtig, nur bei "Assume looking forward" ausgeschaltet. Klar gibts da also Hüpfer mit dem Smoothing. der Will von 259° auf 0 interpolieren! Also Smoothing deaktivieren und Roll Constraint rein.
 
 
 05.12.2015 - Julien:
@@ -52,7 +52,7 @@ Julien:
 - 	OK - MouseCursor: Setzen allgemein noch buggy -> Eine MouseCursor Kamera erstellen und auf die vom Wand bestrahlte CAVE-Wand ausrichten. Und auf dieser Cam nur den Cursor rendern.
 - 	OK - Sekundäre Kameras
 - 	OK - ShootingGallery: Alles ein wenig nach unten setzen + jump!
-- 	OK - MouseCursor: Nie direkt als Cursor-Icon setzen, sondern für beide Augen auf den Canvas berechnen. Weil aktuell hat es einen Versatz zwischen beiden Bildern. Würde auch die Kollision mit dem GUI-Canvas beheben.
+- 	OK - MouseCursor: Nie direkt als Cursor-Icon setzen, sondern für beide Augen auf den Canvas berechnen. Weil aktuell hat es einen Versatz zwischen beiden Bildern.
 - 	OK - MouseClick simulieren -> versch. Mausbuttons mappen und in der Wand-Klasse prüfen
 - 	OK - Doku UnityPackage -> Künzler fragen, inwiefern weitere Erklärungen der Klassen? -> Jede Klasse kurz beschreiben (Hauptfunktion, Abhängigkeiten), aber nicht jedes Property...
 - 	OK - Doku Device Wand
@@ -61,14 +61,17 @@ Julien:
 		-> ch.bfh.bti7534pAdvancedGameDevelopment\4 Advanced Visual Effects als Beispielprojekt!
 		-> Test zu Hause, 2mal das Beispielprojekt aufnehmen und Versatz angucken
 - 	WAYNE - Bug: Bei einigen Apps wird, obwohl bei der Kamera die Culling-Mask "UI" gesetzt ist, trotzdem alles gerendert (Beispiele: SpaceStation / VikingVillage)
-- 3D Model des CAVEs für Titelblatt
+- 3D Model des CAVEs für Titelblatt (Ente im CAVE)
 - Benutzerhandbuch
-	-> Screenshots / Fotos machen
-- ShootingGallery: Menu, das mit Wand gesteuert werden kann
-	-> Testen ob der GUI-Button klickbar ist
+		OK -> Screenshots / Fotos machen
+	-> cpvr Benutzer anlegen + PW setzen
+	-> Projekt ablegen
+- 	OK - ShootingGallery: Menu, das mit Wand gesteuert werden kann
+		-> Testen ob der GUI-Button klickbar ist
 - 	OK - Video (VikingVillage / Space) zusammenschnippseln
 - Doku Übersicht der Komponenten
 - Doku App Drittpartei
+- 	OK - ShootingGallery: Enten fallen immer runter...
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
