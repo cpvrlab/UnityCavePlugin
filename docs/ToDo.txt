@@ -61,17 +61,17 @@ Julien:
 		-> ch.bfh.bti7534pAdvancedGameDevelopment\4 Advanced Visual Effects als Beispielprojekt!
 		-> Test zu Hause, 2mal das Beispielprojekt aufnehmen und Versatz angucken
 - 	WAYNE - Bug: Bei einigen Apps wird, obwohl bei der Kamera die Culling-Mask "UI" gesetzt ist, trotzdem alles gerendert (Beispiele: SpaceStation / VikingVillage)
-- 3D Model des CAVEs für Titelblatt (Ente im CAVE)
+- 	OK - 3D Model des CAVEs für Titelblatt (Ente im CAVE)
+- 	OK - ShootingGallery: Enten fallen immer runter...
+- 	OK - ShootingGallery: Menu, das mit Wand gesteuert werden kann
+		-> Testen ob der GUI-Button klickbar ist
+- 	OK - Video (VikingVillage / Space) zusammenschnippseln
 - Benutzerhandbuch
 		OK -> Screenshots / Fotos machen
 	-> cpvr Benutzer anlegen + PW setzen
 	-> Projekt ablegen
-- 	OK - ShootingGallery: Menu, das mit Wand gesteuert werden kann
-		-> Testen ob der GUI-Button klickbar ist
-- 	OK - Video (VikingVillage / Space) zusammenschnippseln
 - Doku Übersicht der Komponenten
-- Doku App Drittpartei
-- 	OK - ShootingGallery: Enten fallen immer runter...
+- 	OK - Doku App Drittpartei
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
@@ -94,3 +94,5 @@ Whoever:
 - Plakat
 - Video CPVR
 - Bowlinggame
+- Überarbeitung Management Summary
+- Bei Komponentenübersicht Legenden ev. unter das Bild?
