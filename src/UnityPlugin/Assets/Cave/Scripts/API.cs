@@ -117,13 +117,14 @@ namespace Cave
             System.Object Res = GetSizeOfMainGameView.Invoke(null, null);
             return (Vector2)Res;
         }
-
-        //public static UnityEditor.EditorWindow GetEditorWindow()
-        //{
-        //    System.Reflection.Assembly assembly = typeof(UnityEditor.EditorWindow).Assembly;
-        //    System.Type type = assembly.GetType("UnityEditor.GameView");
-        //    UnityEditor.EditorWindow gameview = UnityEditor.EditorWindow.GetWindow(type);
-        //    return gameview;
-        //}
+#if UNITY_EDITOR
+        public static UnityEditor.EditorWindow GetEditorWindow()
+        {
+            System.Reflection.Assembly assembly = typeof(UnityEditor.EditorWindow).Assembly;
+            System.Type type = assembly.GetType("UnityEditor.GameView");
+            UnityEditor.EditorWindow gameview = UnityEditor.EditorWindow.GetWindow(type);
+            return gameview;
+        }
+#endif
     }
 }
