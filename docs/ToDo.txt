@@ -70,9 +70,8 @@ Julien:
 		OK -> Screenshots / Fotos machen
 	-> cpvr Benutzer anlegen + PW setzen
 	-> Projekt ablegen
-	-> Als 64 Bit App exportieren anwählen
 - Doku Übersicht der Komponenten
-- Doku App Drittpartei
+- 	OK - Doku App Drittpartei
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
@@ -95,3 +94,5 @@ Whoever:
 - Plakat
 - Video CPVR
 - Bowlinggame
+- Überarbeitung Management Summary
+- Bei Komponentenübersicht Legenden ev. unter das Bild?
