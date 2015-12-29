@@ -67,7 +67,7 @@ Julien:
 - 	OK - Video (VikingVillage / Space) zusammenschnippseln
 - 	OK - Doku App Drittpartei
 - Shooting Gallery Belichtung
-- Doku Übersicht der Komponenten
+- 	OK - Doku Übersicht der Komponenten
 - 	OK - Doku einfügen Warping / Testcases
 - Doku Bei Komponentenübersichtsgrafik Legenden ev. unter das Bild?
 - Korretkuren / Styling Doku
