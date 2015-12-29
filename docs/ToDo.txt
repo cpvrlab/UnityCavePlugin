@@ -9,7 +9,6 @@
 
 14.11.2015:
 - 	OK - Rotation Gewehr (anhand Wand / Eyes)
-- Belichtung
 - 	OK - Gewehr Animation
 -	OK - Smoke Gewehr
 - 	OK - Abmessungen CAVE aus Mesh auslesen
@@ -66,33 +65,47 @@ Julien:
 - 	OK - ShootingGallery: Menu, das mit Wand gesteuert werden kann
 		-> Testen ob der GUI-Button klickbar ist
 - 	OK - Video (VikingVillage / Space) zusammenschnippseln
-- Benutzerhandbuch
-		OK -> Screenshots / Fotos machen
-	-> cpvr Benutzer anlegen + PW setzen
-	-> Projekt ablegen
-- Doku Übersicht der Komponenten
 - 	OK - Doku App Drittpartei
+- Shooting Gallery Belichtung
+- Doku Übersicht der Komponenten
+- 	OK - Doku einfügen Warping / Testcases
+- Doku Bei Komponentenübersichtsgrafik Legenden ev. unter das Bild?
+- Korretkuren / Styling Doku
+- Plakat
+	-> Vorschlag Layout
+	-> ev. Textvorschläge
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
 - 	OK - Joystick (Simulieren möglich?)
 - 	OK - Doku VRPN
-- Eyes / Wand Lerping Bug (Sprung zwischen 359° und 0°)
+- 	OK - Eyes / Wand Lerping Bug (Sprung zwischen 359° und 0°)
+- 	OK - Doku ModelViewerApp
+- 	OK - Doku Warping
+- 	OK - Doku Frustumtransformation
+- 	OK - Doku Testcases
 - ModelViewer App
-- Doku ModelViewerApp
-- Doku Warping
-- Doku Frustumtransformation
 - Doku Testcases
+	-> Debugszene Unity (Frustum, Inputsimulation, UI-Elemente, Mouseposition)
+- Bowlinggame
+	-> Reset Jitter Bug (Fixed Joint)
+	-> Sounds
+	-> Multiplayer Punktesystem
+- Buch-Eintrag
+	-> Grundsetting
 
 Whoever:
 - 	OK - Wand / Eyes Movement Sensivity
 - 	OK - Gameobjekte unique benennen
 - 	OK - Doku: Export: PlayerSettings API Compatibility level .NET 2.0 (NOT SUBSET)
 - 	OK - Bug: Eye-Camera Offset wird nicht in jeder App korrekt gesetzt. Beispiel: Advanced visual effects
-- 	OK - Viking Village: Download Project, add Camera_loop_001, add UnityPlugin, add mainCamera tag to CameraHigh
-- Buch-Eintrag
-- Plakat
+- 	OK - Viking Village: Download Project, add Camera_loop_001, add UnityPlugin, add mainCamera tag to CameraHigh- Benutzerhandbuch
+		OK -> Screenshots / Fotos machen
+		OK -> cpvr Benutzer anlegen + PW setzen
+	-> Projekt ablegen
 - Video CPVR
-- Bowlinggame
+	-> Storyboard entwerfen
 - Überarbeitung Management Summary
-- Bei Komponentenübersicht Legenden ev. unter das Bild?
+- UnityPlugin Performance verbessern
+- Doku Quellenangaben
+- Doku Fussnoten
