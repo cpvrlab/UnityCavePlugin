@@ -30,7 +30,8 @@ namespace Cave
         }
 
         // Update is called once per frame
-        void Update()
+        //void Update()
+        void FixedUpdate()
         {
             if (!useDebugMover) {
                 HandlePosition();

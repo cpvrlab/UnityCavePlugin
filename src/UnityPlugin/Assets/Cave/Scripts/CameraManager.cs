@@ -85,9 +85,11 @@ namespace Cave
 
         private List<Canvas> _rootCanvas;
         private BasicSettings.Sides _wandCaveIntersection = BasicSettings.Sides.None;
-        
-#endregion
-        
+        private Canvas _canvasMouseCursorDuplicate;
+        private RectTransform _canvasMouseCursorDuplicateRectTransform;
+
+        #endregion
+
         void Awake()
         {
             transform.parent = API.Instance.Cave.gameObject.transform;
@@ -98,12 +100,21 @@ namespace Cave
             // Disable UI Layer for Maincamera, leave others as-is
             int layerUI = LayerMask.NameToLayer("UI");
             Camera.main.cullingMask = ~(1 << layerUI);
-            
+
+            _canvasMouseCursorDuplicate = GameObject.Find("CanvasMouseCursorDuplicate").GetComponent<Canvas>();
+            _canvasMouseCursorDuplicateRectTransform = _canvasMouseCursorDuplicate.GetComponent<RectTransform>();
+
             FetchCameras();
             CreateSettings();
             AdjustCameras();
             AdjustSecondaryCameras();
             PlaceUIElements();
+
+            // After configuring alle cameras, don't render anything with obsolete Main-Camera in order to gain better performance
+            Camera.main.cullingMask = 0;
+            Camera.main.clearFlags = CameraClearFlags.Color;
+            Camera.main.farClipPlane = 1.01f;
+            Camera.main.nearClipPlane = 1f;
         }
 
         void Update()
@@ -575,6 +586,9 @@ namespace Cave
             camGUI.clearFlags = CameraClearFlags.Depth;
             camGUI.transform.SetParent(cam.transform.parent);
             camGUI.depth = (int)CameraDepths.GUI;
+            camGUI.orthographic = true;
+            camGUI.farClipPlane = 10f;
+            camGUI.nearClipPlane = 5f;
         }
 
         private void ConfigureCamCursor(Camera camCursor, Camera cam, BasicSettings.Sides caveSide, bool isEyeLeft = true)
@@ -587,6 +601,9 @@ namespace Cave
             camCursor.transform.SetParent(cam.transform.parent);
             camCursor.depth = (int)CameraDepths.Cursor;
             camCursor.enabled = false;
+            camCursor.orthographic = true;
+            camCursor.farClipPlane = 10f;
+            camCursor.nearClipPlane = 5f;
         }
 
         public void AdjustCamCursor(BasicSettings.Sides caveSide)
@@ -620,8 +637,6 @@ namespace Cave
 
         private void AdjustMouseCursorCanvas(BasicSettings.Sides side)
         {
-            var c = GameObject.Find("CanvasMouseCursorDuplicate").GetComponent<Canvas>();
-
             Transform caveSide;
             Vector2 rot = Vector2.zero;
 
@@ -649,16 +664,14 @@ namespace Cave
                     caveSide = API.Instance.Cave.CAVEFrontXXL;
                     break;
             }
-
-            var canvasRectTransform = c.GetComponent<RectTransform>();
-
-            c.renderMode = RenderMode.ScreenSpaceOverlay; // To avoid bug
-            c.renderMode = RenderMode.WorldSpace;
-            canvasRectTransform.sizeDelta = new Vector2(caveSide.transform.localScale.z * 1000f, caveSide.transform.localScale.x * 1000f);
-            canvasRectTransform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-            canvasRectTransform.SetParent(API.Instance.Cave.transform);
-            canvasRectTransform.localPosition = caveSide.transform.localPosition;
-            canvasRectTransform.eulerAngles = new Vector3(rot.x, rot.y, 0f);
+            
+            _canvasMouseCursorDuplicate.renderMode = RenderMode.ScreenSpaceOverlay; // To avoid bug
+            _canvasMouseCursorDuplicate.renderMode = RenderMode.WorldSpace;
+            _canvasMouseCursorDuplicateRectTransform.sizeDelta = new Vector2(caveSide.transform.localScale.z * 1000f, caveSide.transform.localScale.x * 1000f);
+            _canvasMouseCursorDuplicateRectTransform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            _canvasMouseCursorDuplicateRectTransform.SetParent(API.Instance.Cave.transform);
+            _canvasMouseCursorDuplicateRectTransform.localPosition = caveSide.transform.localPosition;
+            _canvasMouseCursorDuplicateRectTransform.eulerAngles = new Vector3(rot.x, rot.y, 0f);
         }
     }
 }

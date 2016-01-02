@@ -301,7 +301,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192292}
-  m_LocalRotation: {x: .222573191, y: -.648051381, z: .206510365, w: .698458433}
+  m_LocalRotation: {x: .00867633428, y: -.680111945, z: .00805018563, w: .733012795}
   m_LocalPosition: {x: .689999998, y: .310000002, z: -.600000024}
   m_LocalScale: {x: .100000001, y: .100000001, z: .5}
   m_Children: []
@@ -1101,7 +1101,7 @@ MonoBehaviour:
     Channel: 0
   SecondaryCameraSettings: []
   CaveSettings:
-    ShowCave: 1
+    ShowCave: 0
     SetMouseCursor: 1
     ForceShowMouseCursor: 0
     BeamerResolutionWidth: 1280

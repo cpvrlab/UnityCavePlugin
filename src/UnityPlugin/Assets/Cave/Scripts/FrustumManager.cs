@@ -21,7 +21,8 @@ public class FrustumManager : MonoBehaviour
 
     }
 
-    void Update () {
+    //void Update() {
+    void FixedUpdate() {
 
         if (API.Instance.Cave == null) return;
         
@@ -51,7 +52,7 @@ public class FrustumManager : MonoBehaviour
                                                         var.Value.Right.Cam.transform.position,
                                                         var.Value.Right.Cam.nearClipPlane,
                                                         var.Value.Right.Cam.farClipPlane);
-                if(cLeftGUI != null)
+                if(cLeftGUI != null && cLeftGUI.enabled)
                 {
                     Frustum.GeneralizedPerspectiveProjection(ref cLeftGUI, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.Corners.Bottomleft),
                                                         var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.Corners.Bottomright),
@@ -61,7 +62,7 @@ public class FrustumManager : MonoBehaviour
                                                         var.Value.Left.CamGUI.farClipPlane);
                 }
 
-                if (cRightGUI != null)
+                if (cRightGUI != null && cRightGUI.enabled)
                 {
                     Frustum.GeneralizedPerspectiveProjection(ref cRightGUI, var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.Corners.Bottomleft),
                                                         var.Value.CAVESide.TransformXXL.TransformPoint(var.Value.CAVESide.Corners.Bottomright),
@@ -110,7 +111,5 @@ public class FrustumManager : MonoBehaviour
                                                         var.Value.CAVESide.Up);
             }
         }
-
-
     }
 }

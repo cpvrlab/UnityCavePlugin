@@ -1487,10 +1487,42 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: EyesSettings.TrackRotation
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
       propertyPath: CaveSettings.ShowCave
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: CaveSettings.SetMouseCursor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: WandSettings.TrackPosition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: WandSettings.TrackRotation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 412266, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: .00867633428
+      objectReference: {fileID: 0}
+    - target: {fileID: 412266, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -.680111945
+      objectReference: {fileID: 0}
+    - target: {fileID: 412266, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .00805018563
+      objectReference: {fileID: 0}
+    - target: {fileID: 412266, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .733012795
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477412, guid: e53c6602a5e003d438a946cd758b0c80, type: 2}
+      propertyPath: CaveSettings.ForceShowMouseCursor
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

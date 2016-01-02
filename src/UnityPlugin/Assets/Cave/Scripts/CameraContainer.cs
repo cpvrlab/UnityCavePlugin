@@ -14,14 +14,14 @@ public class CameraContainer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    
-        if(Camera.main.gameObject.GetInstanceID() != _lastMaincameraID)
+
+        if (Camera.main.gameObject.GetInstanceID() != _lastMaincameraID)
         {
             _lastMaincameraID = Camera.main.gameObject.GetInstanceID();
             transform.parent = Camera.main.transform;
             transform.localPosition = Vector3.zero;
         }
-    
+
         transform.localPosition = Vector3.Scale(API.Instance.Eyes.transform.localPosition, _posWithSensitity);
         transform.localRotation = Quaternion.Euler(Vector3.zero);
     }

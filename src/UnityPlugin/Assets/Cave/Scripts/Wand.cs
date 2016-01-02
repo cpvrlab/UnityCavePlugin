@@ -98,7 +98,8 @@ namespace Cave
         }
 
         // Update is called once per frame
-        void Update()
+        //void Update()
+        void FixedUpdate()
         {
             HandlePosition();
             HandleRotation();
@@ -310,7 +311,7 @@ namespace Cave
             // NOTE layers are not exported with assets
             //var mask = LayerMask.GetMask("CAVE");
 
-            var raycast = Physics.RaycastAll(ray, 10f);
+            var raycast = Physics.RaycastAll(ray, 5f);
 
             foreach (var h in raycast)
             {
