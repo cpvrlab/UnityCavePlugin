@@ -77,7 +77,7 @@ Julien:
 - 	OK - UnityPlugin Performance verbessern
 - 	OK - Doku Performance optimization
 - 	OK - Doku Prinzip der GUI-Kameras / Cursor-Kameras
-- 	OK - Ersetzen UnityPlugin mit Unity-Plugin
+- 	OK - Ersetzen UnityPlugin mit Unity Plugin
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
