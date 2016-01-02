@@ -69,11 +69,14 @@ Julien:
 - Shooting Gallery Belichtung
 - 	OK - Doku Übersicht der Komponenten
 - 	OK - Doku einfügen Warping / Testcases
-- Doku Bei Komponentenübersichtsgrafik Legenden ev. unter das Bild?
+- 	OK - Doku Bei Komponentenübersichtsgrafik Legenden ev. unter das Bild?
 - Korretkuren / Styling Doku
 - Plakat
 	-> Vorschlag Layout
 	-> ev. Textvorschläge
+- 	OK - UnityPlugin Performance verbessern
+- 	OK - Doku Performance optimization
+- 	OK - Doku Prinzip der GUI-Kameras / Cursor-Kameras
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
@@ -106,6 +109,5 @@ Whoever:
 - Video CPVR
 	-> Storyboard entwerfen
 - Überarbeitung Management Summary
-- UnityPlugin Performance verbessern
 - Doku Quellenangaben
 - Doku Fussnoten
