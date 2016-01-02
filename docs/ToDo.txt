@@ -74,9 +74,9 @@ Julien:
 - Plakat
 	-> Vorschlag Layout
 	-> ev. Textvorschläge
-- UnityPlugin Performance verbessern
-- Doku Performance optimization
-- Doku Prinzip der GUI-Kameras / Cursor-Kameras
+- 	OK - UnityPlugin Performance verbessern
+- 	OK - Doku Performance optimization
+- 	OK - Doku Prinzip der GUI-Kameras / Cursor-Kameras
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
