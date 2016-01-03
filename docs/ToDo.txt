@@ -71,13 +71,15 @@ Julien:
 - 	OK - Doku einfügen Warping / Testcases
 - 	OK - Doku Bei Komponentenübersichtsgrafik Legenden ev. unter das Bild?
 - Korretkuren / Styling Doku
-- Plakat
-	-> Vorschlag Layout
-	-> ev. Textvorschläge
+- 	OK - Plakat
+		-> Vorschlag Layout
+		-> ev. Textvorschläge
 - 	OK - UnityPlugin Performance verbessern
 - 	OK - Doku Performance optimization
 - 	OK - Doku Prinzip der GUI-Kameras / Cursor-Kameras
 - 	OK - Ersetzen UnityPlugin mit Unity Plugin
+- Bucheintrag Texte überarbeiten
+- Überarbeitung Management Summary
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
@@ -95,8 +97,8 @@ Daniiiee:
 	-> Reset Jitter Bug (Fixed Joint)
 	-> Sounds
 	-> Multiplayer Punktesystem
-- Buch-Eintrag
-	-> Grundsetting
+- 	OK - Buch-Eintrag
+		-> Grundsetting
 
 Whoever:
 - 	OK - Wand / Eyes Movement Sensivity
@@ -109,6 +111,5 @@ Whoever:
 	-> Projekt ablegen
 - Video CPVR
 	-> Storyboard entwerfen
-- Überarbeitung Management Summary
 - Doku Quellenangaben
 - Doku Fussnoten
