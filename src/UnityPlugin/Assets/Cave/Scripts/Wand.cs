@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Drawing;
 using System;
-using UnityStandardAssets.CrossPlatformInput;
 using System.Runtime.InteropServices;
 
 namespace Cave
