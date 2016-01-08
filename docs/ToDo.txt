@@ -66,11 +66,9 @@ Julien:
 		-> Testen ob der GUI-Button klickbar ist
 - 	OK - Video (VikingVillage / Space) zusammenschnippseln
 - 	OK - Doku App Drittpartei
-- Shooting Gallery Belichtung
 - 	OK - Doku Übersicht der Komponenten
 - 	OK - Doku einfügen Warping / Testcases
 - 	OK - Doku Bei Komponentenübersichtsgrafik Legenden ev. unter das Bild?
-- Korretkuren / Styling Doku
 - 	OK - Plakat
 		-> Vorschlag Layout
 		-> ev. Textvorschläge
@@ -78,9 +76,13 @@ Julien:
 - 	OK - Doku Performance optimization
 - 	OK - Doku Prinzip der GUI-Kameras / Cursor-Kameras
 - 	OK - Ersetzen UnityPlugin mit Unity Plugin
+- Shooting Gallery Belichtung
 - Bucheintrag Texte überarbeiten
 - Überarbeitung Management Summary
 - Bucheintrag Grafik nur virtual CAVE (ohne XXL), damit Grafik über 2 Spalten ganz unten passt
+- Korretkuren / Styling Doku
+- Doku Einstellungsmöglichkeiten über API
+- Präsi
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
@@ -91,15 +93,18 @@ Daniiiee:
 - 	OK - Doku Warping
 - 	OK - Doku Frustumtransformation
 - 	OK - Doku Testcases
+- 	OK - Buch-Eintrag
+		-> Grundsetting
+- 	OK - Doku Testcases
+		-> Debugszene Unity (Frustum, Inputsimulation, UI-Elemente, Mouseposition)
 - ModelViewer App
-- Doku Testcases
-	-> Debugszene Unity (Frustum, Inputsimulation, UI-Elemente, Mouseposition)
 - Bowlinggame
 	-> Reset Jitter Bug (Fixed Joint)
 	-> Sounds
 	-> Multiplayer Punktesystem
-- 	OK - Buch-Eintrag
-		-> Grundsetting
+- Präsi
+- Doku Fussnoten
+- Doku Glossar
 
 Whoever:
 - 	OK - Wand / Eyes Movement Sensivity
@@ -109,11 +114,10 @@ Whoever:
 - 	OK - Viking Village: Download Project, add Camera_loop_001, add UnityPlugin, add mainCamera tag to CameraHigh- Benutzerhandbuch
 		OK -> Screenshots / Fotos machen
 		OK -> cpvr Benutzer anlegen + PW setzen
-	-> Projekt ablegen
 - Video CPVR
 	-> Textintro (Bachelorthesis Unity 3D Server for CAVE Rendering)
 	-> Screenrecording Plugin in App einfügen (Package importieren, Prefab hinzufügen, einige Einstellungen vornehmen, hurti Game ausführen, exportieren)
 	-> Aufnahme mit Person im CAVE (Shooting Gallery bedienen, Person mit Kostüm filmen)
 	-> Gleichzeitig wie CAVE-Aktion Screenrecording auf Laptop und im Film gegenüberstellen
 - Doku Quellenangaben
-- Doku Fussnoten
+- Projektdaten auf UnityServer ablegen
