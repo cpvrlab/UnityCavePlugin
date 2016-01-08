@@ -80,6 +80,7 @@ Julien:
 - 	OK - Ersetzen UnityPlugin mit Unity Plugin
 - Bucheintrag Texte überarbeiten
 - Überarbeitung Management Summary
+- Bucheintrag Grafik nur virtual CAVE (ohne XXL), damit Grafik über 2 Spalten ganz unten passt
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
@@ -110,6 +111,9 @@ Whoever:
 		OK -> cpvr Benutzer anlegen + PW setzen
 	-> Projekt ablegen
 - Video CPVR
-	-> Storyboard entwerfen
+	-> Textintro (Bachelorthesis Unity 3D Server for CAVE Rendering)
+	-> Screenrecording Plugin in App einfügen (Package importieren, Prefab hinzufügen, einige Einstellungen vornehmen, hurti Game ausführen, exportieren)
+	-> Aufnahme mit Person im CAVE (Shooting Gallery bedienen, Person mit Kostüm filmen)
+	-> Gleichzeitig wie CAVE-Aktion Screenrecording auf Laptop und im Film gegenüberstellen
 - Doku Quellenangaben
 - Doku Fussnoten
