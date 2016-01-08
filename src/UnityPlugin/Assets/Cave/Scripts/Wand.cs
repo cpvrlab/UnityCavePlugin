@@ -276,7 +276,7 @@ namespace Cave
 
             _pressedKeycode = (int)caveInput;
 
-            if (needWait) { 
+            if (!needWait) { 
                 StopCoroutine(ClearPressedKey());
                 StartCoroutine(ClearPressedKey());
             }
