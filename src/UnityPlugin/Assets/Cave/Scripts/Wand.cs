@@ -252,20 +252,22 @@ namespace Cave
 
         private void PressButton(CaveInput caveInput)
         {
-            bool needWait = true;
-            if (_pressedKeycodeBefore == (int)caveInput) needWait = false;
-
-
-            if (_pressedKeycode == (int)caveInput) 
+            // Same input as before
+            if (_pressedKeycodeBefore == (int)caveInput)
             {
-               return;
+                return;
+            }
+            else
+            {
+                StopCoroutine(ClearPressedKey());
+                StartCoroutine(ClearPressedKey());
             }
 
             if (caveInput == CaveInput.MouseLeft)
             {
                 mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)System.Windows.Forms.Cursor.Position.X, (uint)System.Windows.Forms.Cursor.Position.Y, 0, 0);
             }
-            else if(caveInput == CaveInput.MouseRight)
+            else if (caveInput == CaveInput.MouseRight)
             {
                 mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, (uint)System.Windows.Forms.Cursor.Position.X, (uint)System.Windows.Forms.Cursor.Position.Y, 0, 0);
             }
@@ -274,21 +276,12 @@ namespace Cave
                 WindowsInput.InputSimulator.SimulateKeyPress((WindowsInput.VirtualKeyCode)caveInput);
             }
 
-            _pressedKeycode = (int)caveInput;
-
-            if (!needWait) { 
-                StopCoroutine(ClearPressedKey());
-                StartCoroutine(ClearPressedKey());
-            }
-
-            _pressedKeycodeBefore = _pressedKeycode;
+            _pressedKeycodeBefore = (int)caveInput;
         }
 
         IEnumerator ClearPressedKey()
         {
-
-            
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
          
             _pressedKeycode = -1;
         }
