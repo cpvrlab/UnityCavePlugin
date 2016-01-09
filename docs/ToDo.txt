@@ -76,12 +76,12 @@ Julien:
 - 	OK - Doku Performance optimization
 - 	OK - Doku Prinzip der GUI-Kameras / Cursor-Kameras
 - 	OK - Ersetzen UnityPlugin mit Unity Plugin
+- 	OK - Doku Einstellungsmöglichkeiten über API
 - Shooting Gallery Belichtung
-- Bucheintrag Texte überarbeiten
-- Überarbeitung Management Summary
-- Bucheintrag Grafik nur virtual CAVE (ohne XXL), damit Grafik über 2 Spalten ganz unten passt
+- 	OK - Bucheintrag Texte überarbeiten
+- 	OK - Überarbeitung Management Summary
+- 	OK - Bucheintrag Grafik nur virtual CAVE (ohne XXL), damit Grafik über 2 Spalten ganz unten passt
 - Korretkuren / Styling Doku
-- Doku Einstellungsmöglichkeiten über API
 - Präsi
 
 Daniiiee:
