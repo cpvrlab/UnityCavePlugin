@@ -82,6 +82,7 @@ Julien:
 - 	OK - Überarbeitung Management Summary
 - 	OK - Bucheintrag Grafik nur virtual CAVE (ohne XXL), damit Grafik über 2 Spalten ganz unten passt
 - Korretkuren / Styling Doku
+- Shooting Gallery neue Wandfunktionalität im CAVE testen
 - Präsi
 
 Daniiiee:

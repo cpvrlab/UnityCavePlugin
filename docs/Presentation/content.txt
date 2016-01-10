@@ -25,9 +25,9 @@
 	- D Sequenzdiagramm
 - J UnityPlugin
 	- J Umsetzung Modular, OOP à la Unity
-	- J Verwendung (Drag&Drop, API)
+	- J Verwendung (Drag&Drop)
 	- J Zusätzliche Features
-	- J Einstellungsmöglichkeiten
+	- J Einstellungsmöglichkeiten (Inspector, API)
 	- J Performance
 	- J Debugging Plattform (Testing)
 - D Demo Apps
