@@ -21,8 +21,8 @@ public class FrustumManager : MonoBehaviour
 
     }
 
-    //void Update() {
-    void FixedUpdate() {
+    //void FixedUpdate()
+    void Update() {
 
         if (API.Instance.Cave == null) return;
         
