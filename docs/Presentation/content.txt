@@ -1,3 +1,5 @@
+Verteidigung:
+
 - Einleitung / Ausgangslage / Auftrag (Erläuterung Inhaltsverzeichnis)
 - D Vision
 	- Zukünftige Verwendung Plugin
@@ -38,3 +40,23 @@
 - J Handbuch
 - J Fazit
 - TO THE FAP CAVE
+
+Public:
+
+- Introfolie analylphe Ente
+- J VR / Stereoskopie / CAVE / Trackingsystem / Unity
+- D Einleitung / Problemstellung / Ausgangslage / Vision
+- J Übersicht Komponenten (Grafik ohne Legende)
+	- kurze Erklärung der Komponenten, Grundgedanke
+	- Multiple Kameras / was ist eine Kamera in Unity (Grafik Frustums)
+- D Plugin
+	- Aufgabenverteilung
+		- Kommunikation VRPN
+		- Inputs
+		- Kameraerstellung / Stereoskopie / Frustum
+		- Handling sekundäre Kameras / GUI
+		- Diverse Einstellungsmöglichkeiten
+	- In wenigen Augenblicken aktivierbar
+	- Video Plug & Play
+- J Demo Apps
+- J / D Video Stereoskopie

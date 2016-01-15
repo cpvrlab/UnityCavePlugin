@@ -85,6 +85,7 @@ Julien:
 - Shooting Gallery neue Wandfunktionalität im CAVE testen
 - Video: Zusammenschnippseln, Intro, Texte
 - Präsi
+- Public Video: Spacestation wegschneiden
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
