@@ -84,8 +84,19 @@ Julien:
 - Korretkuren / Styling Doku
 - Shooting Gallery neue Wandfunktionalität im CAVE testen
 - Video: Zusammenschnippseln, Intro, Texte
-- Präsi
+- Präsi Verteidigung
+- Präsi Public
 - Public Video: Spacestation wegschneiden
+- 	OK - Plugin: Buttons nacheinander drücken noch buggy
+- Feedback Künzler
+	- Management Summary überarbeiten
+	- Kap. 4-9 in Kapitel Realisation + Einleitung schreiben
+	- 	OK - Sequenzdiagramm korrigieren
+	- 	OK - Code Blocks dunkler (S. 38 ist ok)
+	- 	OK -. Tabellenköpfe schwächer
+	- 	OK Performance Verbessern -> Unity Profiler erwähnen
+	- Persönliches Fazit
+	- Drucken und prüfen: Tabellenköpfe schwächer? Code-BG stärker?
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
@@ -105,9 +116,15 @@ Daniiiee:
 	-> Reset Jitter Bug (Fixed Joint)
 	-> Sounds
 	-> Multiplayer Punktesystem
-- Präsi
+- Präsi Verteidigung
+- Präsi Public
 - Doku Fussnoten
 - Doku Glossar
+- Feedback Künzler
+	- Einführung Projekt 2 ausführlicher (ev. mit Grafik)
+	- Kap. 3 Packagediagramm / Architekturdiagramm mit Unity / Plugin
+	- Warping: Fazit, was ist machbar, welche Variante ist besser, ...
+	- PM: Zieldefinition ausführlicher (ähnlich Pflichtenheft) / hinzufügen von zusätzlich erledigten Arbeiten / Risikomanagement in Kapitel PM verschieben
 
 Whoever:
 - 	OK - Wand / Eyes Movement Sensivity
@@ -122,5 +139,6 @@ Whoever:
 	-> Screenrecording Plugin in App einfügen (Package importieren, Prefab hinzufügen, einige Einstellungen vornehmen, hurti Game ausführen, exportieren)
 	-> Aufnahme mit Person im CAVE (Shooting Gallery bedienen, Person mit Kostüm filmen)
 	-> Gleichzeitig wie CAVE-Aktion Screenrecording auf Laptop und im Film gegenüberstellen
-- Doku Quellenangaben
+- 	OK - Doku Quellenangaben
 - Projektdaten auf UnityServer ablegen
+- Bei allen neu exportierten Apps werden Rotation / Translation nicht mehr übernommen!! (Stand 15.01.2016)

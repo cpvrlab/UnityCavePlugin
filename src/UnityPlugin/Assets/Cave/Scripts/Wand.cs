@@ -34,8 +34,6 @@ namespace Cave
         private bool _joystickPress;
         private bool _buttonBack;
 
-        private int _pressedKeycode;
-
         private int _pressedKeycodeBefore;
 
         private RectTransform _caveCursorRect;
@@ -282,8 +280,8 @@ namespace Cave
         IEnumerator ClearPressedKey()
         {
             yield return new WaitForSeconds(0.5f);
-         
-            _pressedKeycode = -1;
+
+            _pressedKeycodeBefore = -1;
         }
 
         private void SetCursor()
