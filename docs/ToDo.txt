@@ -88,15 +88,15 @@ Julien:
 - Präsi Public
 - Public Video: Spacestation wegschneiden
 - 	OK - Plugin: Buttons nacheinander drücken noch buggy
-- Feedback Künzler
-	- Management Summary überarbeiten
-	- Kap. 4-9 in Kapitel Realisation + Einleitung schreiben
+- 	OK - Feedback Künzler
+	- 	OK - Management Summary überarbeiten
+	- 	OK - Kap. 4-9 in Kapitel Realisation + Einleitung schreiben
 	- 	OK - Sequenzdiagramm korrigieren
 	- 	OK - Code Blocks dunkler (S. 38 ist ok)
-	- 	OK -. Tabellenköpfe schwächer
-	- 	OK Performance Verbessern -> Unity Profiler erwähnen
-	- Persönliches Fazit
-	- Drucken und prüfen: Tabellenköpfe schwächer? Code-BG stärker?
+	- 	OK - Tabellenköpfe schwächer
+	- 	OK - Performance Verbessern -> Unity Profiler erwähnen
+	- 	OK - Persönliches Fazit
+	- 	OK - Drucken und prüfen: Tabellenköpfe schwächer? Code-BG stärker?
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
