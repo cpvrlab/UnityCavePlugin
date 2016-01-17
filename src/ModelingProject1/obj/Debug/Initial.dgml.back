@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1)" ConfigurationName="Debug|AnyCPU" FilePath="$(VsSolution)\UnityPlugin.CSharp.csproj" Label="D:\devZoneRoot\devZoneGit\ch.bfh.cpvr.unitycavethesis\src\UnityPlugin\UnityPlugin.CSharp.csproj" />
+    <Node Id="(@2)" Category="CodeSchema_Assembly" FilePath="$(69f51ca1-a0b1-23ce-1a28-c616649535ce.OutputPath)" Label="D:\devZoneRoot\devZoneGit\ch.bfh.cpvr.unitycavethesis\src\UnityPlugin\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll" />
+  </Nodes>
+  <Links>
+    <Link Source="(@1)" Target="(@2)" Category="Produces" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Assembly" Label="Assembly" BasedOn="File" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Assembly" NavigationActionLabel="Assemblies" />
+    <Category Id="File" Label="File" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="File" NavigationActionLabel="Files" />
+    <Category Id="Produces" Label="Produces" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Produced By" OutgoingActionLabel="Produces" />
+  </Categories>
+  <Properties>
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="ConfigurationName" Label="ConfigurationName" Description="ConfigurationName" DataType="System.String" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="FilePath" Label="File Path" Description="File Path" DataType="System.String" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(VsSolutionUri)/UnityPlugin.CSharp.csproj" />
+    <Alias n="2" Uri="Assembly=$(69f51ca1-a0b1-23ce-1a28-c616649535ce.OutputPathUri)" />
+  </IdentifierAliases>
+  <Paths>
+    <Path Id="69f51ca1-a0b1-23ce-1a28-c616649535ce.OutputPath" Value="D:\devZoneRoot\devZoneGit\ch.bfh.cpvr.unitycavethesis\src\UnityPlugin\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll" />
+    <Path Id="69f51ca1-a0b1-23ce-1a28-c616649535ce.OutputPathUri" Value="file:///D:/devZoneRoot/devZoneGit/ch.bfh.cpvr.unitycavethesis/src/UnityPlugin/Temp/UnityVS_bin/Debug/Assembly-CSharp.dll" />
+    <Path Id="VsSolution" Value="D:\devZoneRoot\devZoneGit\ch.bfh.cpvr.unitycavethesis\src\UnityPlugin" />
+    <Path Id="VsSolutionUri" Value="file:///D:/devZoneRoot/devZoneGit/ch.bfh.cpvr.unitycavethesis/src/UnityPlugin" />
+  </Paths>
+</DirectedGraph>

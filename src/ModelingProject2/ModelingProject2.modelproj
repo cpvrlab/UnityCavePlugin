@@ -5,10 +5,10 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{53da2996-dda1-4c2f-8b22-15644bdd8ebd}</ProjectGuid>
+    <ProjectGuid>{00000000-0000-0000-0000-000000000000}</ProjectGuid>
     <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
-    <Name>ModelingProject1</Name>
-    <RootNamespace>ModelingProject1</RootNamespace>
+    <Name>ModelingProject2</Name>
+    <RootNamespace>ModelingProject2</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -22,38 +22,9 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
   <ItemGroup>
-    <Content Include="ModelDefinition\Package_2158.uml">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="UMLClassDiagram1.classdiagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="UMLClassDiagram1.classdiagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>UMLClassDiagram1.classdiagram</DependentUpon>
-    </Content>
     <Folder Include="ModelDefinition\" />
-    <Content Include="ModelDefinition\ModelingProject1.uml">
+    <Content Include="ModelDefinition\ModelingProject2.uml">
       <SubType>Content</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Validate Include="LayerDiagram1.layerdiagram">
-      <SubType>Content</SubType>
-    </Validate>
-    <Validate Include="LayerDiagram1.layerdiagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>LayerDiagram1.layerdiagram</DependentUpon>
-    </Validate>
-    <Validate Include="LayerDiagram1.layerdiagram.suppressions">
-      <SubType>Content</SubType>
-      <DependentUpon>LayerDiagram1.layerdiagram</DependentUpon>
-    </Validate>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UnityPlugin\UnityPlugin.CSharp.csproj">
-      <Name>UnityPlugin.CSharp</Name>
-      <Project>{69f51ca1-a0b1-23ce-1a28-c616649535ce}</Project>
-    </ProjectReference>
   </ItemGroup>
 </Project>

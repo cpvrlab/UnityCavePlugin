@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1)" Category="File" FilePath="D:\devZoneRoot\devZoneGit\ch.bfh.cpvr.unitycavethesis\src\ModelingProject1\LayerDiagram1.layerdiagram" Label="LayerDiagram1.layerdiagram" />
+    <Node Id="fb776996-d26d-4076-880d-2a5e007bd3f8" Category="Dsl.LayerModel" Dsl.DiagramPath="D:\devZoneRoot\devZoneGit\ch.bfh.cpvr.unitycavethesis\src\ModelingProject1\LayerDiagram1.layerdiagram" Dsl.QualifiedName="" Label="LayerDiagram1" />
+    <Node Id="5d57d5ea-268c-4c33-9448-f75cf8cceb60" Category="Dsl.Layer" Dsl.ForbiddenNamespaceDependencies="" Dsl.ForbiddenNamespace="" Dsl.RequiredNamespace="" Dsl.QualifiedName="Scripts" Label="Scripts" />
+    <Node Id="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Category="Dsl.Reference" Dsl.SupportsValidation="True" Dsl.QualifiedName="Scripts.Scripts" Label="Scripts" />
+    <Node Id="(@2 @3 Type=API)" />
+    <Node Id="(@2 @3 Type=BasicSettings)" />
+    <Node Id="(@2 @3 Type=(Name=BlockPositionAxis @4))" />
+    <Node Id="(@2 @3 Type=(Name=BlockRotationAxisWand @4))" />
+    <Node Id="(@2 @3 Type=(Name=BlockRotationAxisEyes @4))" />
+    <Node Id="(@2 @3 Type=(Name=AxisSensivity @4))" />
+    <Node Id="(@2 @3 Type=(Name=MovementSmoothing @4))" />
+    <Node Id="(@2 @3 Type=(Name=Sides @4))" />
+    <Node Id="(@2 Type=CameraContainer)" />
+    <Node Id="(@2 Type=CameraFrustumGizmo)" />
+    <Node Id="(@2 @3 Type=CameraManager)" />
+    <Node Id="(@2 @3 Type=(Name=CameraInfo @5))" />
+    <Node Id="(@2 @3 Type=(Name=ViewInfo @5))" />
+    <Node Id="(@2 @3 Type=(Name=CAVEPlanesettings @5))" />
+    <Node Id="(@2 @3 Type=(Name=Corners @5))" />
+    <Node Id="(@2 @3 Type=(Name=CameraDepths @5))" />
+    <Node Id="(@2 @3 Type=CaveMain)" />
+    <Node Id="(@2 @3 Type=FrustumMode)" />
+    <Node Id="(@2 Type=CaveSettings)" />
+    <Node Id="(@2 @3 Type=DebugMover)" />
+    <Node Id="(@2 Namespace=CAVE Type=Enums)" />
+    <Node Id="(@2 @3 Type=Eyes)" />
+    <Node Id="(@2 @3 Type=EyesSettings)" />
+    <Node Id="(@2 Type=Frustum)" />
+    <Node Id="(@2 Type=FrustumManager)" />
+    <Node Id="(@2 @3 Type=JoystickAnalogDebugger)" />
+    <Node Id="(@2 Type=OneEuroFilter)" />
+    <Node Id="(@2 @3 Type=SecondaryCameraSettings)" />
+    <Node Id="(@2 @3 Type=SystemSettings)" />
+    <Node Id="(@2 @3 Type=VRPN)" />
+    <Node Id="(@2 @3 Type=Wand)" />
+    <Node Id="(@2 @3 Type=(Name=DelegateJoystickAnalog ParentType=Wand))" />
+    <Node Id="(@2 @3 Type=CaveInput)" />
+    <Node Id="(@2 @3 Type=WandSettingsButtons)" />
+    <Node Id="(@2 @3 Type=WandSettings)" />
+  </Nodes>
+  <Links>
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=API)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=BasicSettings)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=(Name=BlockPositionAxis @4))" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=(Name=BlockRotationAxisWand @4))" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=(Name=BlockRotationAxisEyes @4))" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=(Name=AxisSensivity @4))" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=(Name=MovementSmoothing @4))" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=(Name=Sides @4))" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 Type=CameraContainer)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 Type=CameraFrustumGizmo)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=CameraManager)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=(Name=CameraInfo @5))" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=(Name=ViewInfo @5))" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=(Name=CAVEPlanesettings @5))" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=(Name=Corners @5))" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=(Name=CameraDepths @5))" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=CaveMain)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=FrustumMode)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 Type=CaveSettings)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=DebugMover)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 Namespace=CAVE Type=Enums)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=Eyes)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=EyesSettings)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 Type=Frustum)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 Type=FrustumManager)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=JoystickAnalogDebugger)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 Type=OneEuroFilter)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=SecondaryCameraSettings)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=SystemSettings)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=VRPN)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=Wand)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=(Name=DelegateJoystickAnalog ParentType=Wand))" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=CaveInput)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=WandSettingsButtons)" Category="Represents" />
+    <Link Source="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Target="(@2 @3 Type=WandSettings)" Category="Represents" />
+    <Link Source="fb776996-d26d-4076-880d-2a5e007bd3f8" Target="5d57d5ea-268c-4c33-9448-f75cf8cceb60" Category="Dsl.LayerModelHasLayers" />
+    <Link Source="5d57d5ea-268c-4c33-9448-f75cf8cceb60" Target="a5b14807-d78d-4013-9bb1-1e450dadfb3b" Category="Dsl.LayerHasReferences" />
+  </Links>
+  <Categories>
+    <Category Id="Dsl.Layer" Label="Layer" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Layer" />
+    <Category Id="Dsl.LayerHasReferences" Label="Layer Has References" IsContainment="True" CanLinkedNodesBeDataDriven="True" CanBeDataDriven="True" IncomingActionLabel="Layer" OutgoingActionLabel="References" />
+    <Category Id="Dsl.LayerModel" Label="Layer Model" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Layer Model" />
+    <Category Id="Dsl.LayerModelHasLayers" Label="Layer Model Has Layers" IsContainment="True" CanLinkedNodesBeDataDriven="True" CanBeDataDriven="True" IncomingActionLabel="Layer Model" OutgoingActionLabel="Layers" />
+    <Category Id="Dsl.Reference" Label="Reference" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Reference" />
+    <Category Id="File" Label="File" CanBeDataDriven="True" NavigationActionLabel="Files" DefaultAction="Microsoft.Contains" />
+    <Category Id="Represents" Label="Represents" OutgoingActionLabel="Represents" IncomingActionLabel="Represented By" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IsContainment="True" />
+  </Categories>
+  <Properties>
+    <Property Id="FilePath" Label="File Path" Description="File Path" DataType="System.String" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Dsl.DiagramPath" DataType="System.String" />
+    <Property Id="Dsl.QualifiedName" DataType="System.String" />
+    <Property Id="Dsl.ForbiddenNamespaceDependencies" DataType="System.String" />
+    <Property Id="Dsl.ForbiddenNamespace" DataType="System.String" />
+    <Property Id="Dsl.RequiredNamespace" DataType="System.String" />
+    <Property Id="Dsl.SupportsValidation" DataType="System.Boolean" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+    <Name Id="Name" Label="Name" ValueType="System.String" />
+    <Name Id="ParentType" Label="Parent Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=file:///D:/devZoneRoot/devZoneGit/ch.bfh.cpvr.unitycavethesis/src/ModelingProject1/LayerDiagram1.layerdiagram" />
+    <Alias n="2" Uri="Assembly=Assembly-CSharp" />
+    <Alias n="3" Id="Namespace=Cave" />
+    <Alias n="4" Id="ParentType=BasicSettings" />
+    <Alias n="5" Id="ParentType=CameraManager" />
+  </IdentifierAliases>
+</DirectedGraph>
