@@ -59,4 +59,4 @@ Public:
 	- In wenigen Augenblicken aktivierbar
 	- Video Plug & Play
 - J Demo Apps
-- J / D Video Stereoskopie
+- J Video Stereoskopie

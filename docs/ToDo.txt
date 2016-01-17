@@ -84,8 +84,12 @@ Julien:
 - Korretkuren / Styling Doku
 - Shooting Gallery neue Wandfunktionalität im CAVE testen
 - Video: Zusammenschnippseln, Intro, Texte
+- 	OK - Video Public Präsi erweitern (bzw. 2 Versionen machen)
+		- Standard Unity Assets Projekt
+		- Bowling?
+		- Mehr Shooting Gallery?
 - Präsi Verteidigung
-- Präsi Public
+- 	OK - Präsi Public
 - Public Video: Spacestation wegschneiden
 - 	OK - Plugin: Buttons nacheinander drücken noch buggy
 - 	OK - Feedback Künzler
@@ -141,4 +145,4 @@ Whoever:
 	-> Gleichzeitig wie CAVE-Aktion Screenrecording auf Laptop und im Film gegenüberstellen
 - 	OK - Doku Quellenangaben
 - Projektdaten auf UnityServer ablegen
-- Bei allen neu exportierten Apps werden Rotation / Translation nicht mehr übernommen!! (Stand 15.01.2016)
+- Bei 
