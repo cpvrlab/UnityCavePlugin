@@ -89,8 +89,9 @@ Julien:
 		- Bowling?
 		- Mehr Shooting Gallery?
 - Präsi Verteidigung
-- 	OK - Präsi Public
-- Public Video: Spacestation wegschneiden
+- Präsi Public
+	- Kärtchen machen
+- 	OK - Public Video: Spacestation wegschneiden
 - 	OK - Plugin: Buttons nacheinander drücken noch buggy
 - 	OK - Feedback Künzler
 	- 	OK - Management Summary überarbeiten
@@ -145,4 +146,3 @@ Whoever:
 	-> Gleichzeitig wie CAVE-Aktion Screenrecording auf Laptop und im Film gegenüberstellen
 - 	OK - Doku Quellenangaben
 - Projektdaten auf UnityServer ablegen
-- Bei 
