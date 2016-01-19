@@ -102,6 +102,7 @@ Julien:
 	- 	OK - Performance Verbessern -> Unity Profiler erwähnen
 	- 	OK - Persönliches Fazit
 	- 	OK - Drucken und prüfen: Tabellenköpfe schwächer? Code-BG stärker?
+Präsi Public: Wand Bild bearbeiten (Texte weg)
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
