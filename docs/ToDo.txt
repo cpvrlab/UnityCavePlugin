@@ -81,16 +81,14 @@ Julien:
 - 	OK - Bucheintrag Texte überarbeiten
 - 	OK - Überarbeitung Management Summary
 - 	OK - Bucheintrag Grafik nur virtual CAVE (ohne XXL), damit Grafik über 2 Spalten ganz unten passt
-- Korretkuren / Styling Doku
-- Shooting Gallery neue Wandfunktionalität im CAVE testen
-- Video: Zusammenschnippseln, Intro, Texte
+-	OK - Korretkuren / Styling Doku
+	OK - Shooting Gallery neue Wandfunktionalität im CAVE testen
 - 	OK - Video Public Präsi erweitern (bzw. 2 Versionen machen)
 		- Standard Unity Assets Projekt
 		- Bowling?
 		- Mehr Shooting Gallery?
-- Präsi Verteidigung
-- Präsi Public
-	- Kärtchen machen
+-	OK - Präsi Public
+		- Kärtchen machen
 - 	OK - Public Video: Spacestation wegschneiden
 - 	OK - Plugin: Buttons nacheinander drücken noch buggy
 - 	OK - Feedback Künzler
@@ -102,7 +100,9 @@ Julien:
 	- 	OK - Performance Verbessern -> Unity Profiler erwähnen
 	- 	OK - Persönliches Fazit
 	- 	OK - Drucken und prüfen: Tabellenköpfe schwächer? Code-BG stärker?
-Präsi Public: Wand Bild bearbeiten (Texte weg)
+-	OK - Präsi Public: Wand Bild bearbeiten (Texte weg)
+- Präsi Verteidigung
+- Video: Zusammenschnippseln, Intro, Texte
 
 Daniiiee:
 - 	OK - Künzler-Frustum Transformation
@@ -147,3 +147,4 @@ Whoever:
 	-> Gleichzeitig wie CAVE-Aktion Screenrecording auf Laptop und im Film gegenüberstellen
 - 	OK - Doku Quellenangaben
 - Projektdaten auf UnityServer ablegen
+	- 
