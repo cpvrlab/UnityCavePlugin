@@ -25,8 +25,8 @@ Verteidigung:
 			- Projektionsmatrix
 	- D Screenshots aus UnityPlugin visualize.unity
 	- D Sequenzdiagramm
-- J UnityPlugin
-	- J Umsetzung Modular, OOP à la Unity
+- D UnityPlugin
+	- D Umsetzung Modular, OOP à la Unity
 	- J Verwendung (Drag&Drop)
 	- J Zusätzliche Features
 	- J Einstellungsmöglichkeiten (Inspector, API)
